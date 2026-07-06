@@ -1,0 +1,19 @@
+{
+  "_instructie": [
+    "== DEZE WEEK BIJWERKEN — elke maandag, VOOR de Instagram-post (5 minuten) ==",
+    "1. Zet in 'weekLabel' de datums van deze week, bijv. 'wo 8 t/m zo 12 juli'.",
+    "2. Vul per dag één regel tekst in, bijv. 'Donderdag — Studentendonderdag met DJ Jansen' of 'PSV – Ajax, aftrap 16:45. Wij zijn open!'.",
+    "3. Acties (zoals '4 bier € 10' of merkdeals) horen HIER, niet in de vaste programmateksten verderop.",
+    "4. Een dag geen programma? Maak de regel leeg: \"\" — die dag verdwijnt dan van de site.",
+    "5. Opslaan, committen en deployen (of vraag Claude Code: 'werk deze-week.json bij: wo ..., do ...').",
+    "De site is de bron, Instagram is de megafoon."
+  ],
+  "weekLabel": "deze week",
+  "dagen": {
+    "wo": "Costa's Game Nights — gratis meespelen vanaf 19:00",
+    "do": "Studentendonderdag met wisselende feest-DJ's",
+    "vr": "Feest-DJ's en entertainment aan de bar, open tot 04:00",
+    "za": "De grootste avond van de week — confetti gegarandeerd, open tot 04:00",
+    "zo": ""
+  }
+}

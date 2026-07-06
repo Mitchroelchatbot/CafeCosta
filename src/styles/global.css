@@ -1,0 +1,57 @@
+@import '@fontsource/archivo-black';
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+
+@theme {
+  /* Huisstijl: donkere basis met zomerse neonaccenten (magenta, geel, teal) */
+  --color-night: #0b0b10;
+  --color-night-soft: #15151f;
+  --color-night-line: #26263a;
+  --color-magenta: #ff2e88;
+  --color-magenta-hot: #ff5ba4;
+  --color-sun: #ffd23f;
+  --color-teal: #2de1c2;
+  --color-cream: #f5f2ec;
+
+  --font-display: 'Archivo Black', system-ui, sans-serif;
+  --font-sans: 'Inter Variable', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-night);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-cream);
+  background-color: var(--color-night);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Koppen: kapitalen, extra bold — zoals de contentdocumenten voorschrijven */
+.display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+/* Primaire CTA: magenta, groot, duimbereikbaar op mobiel */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-magenta px-8 py-4 text-base font-extrabold uppercase tracking-wide text-white transition-colors duration-150 hover:bg-magenta-hot focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-sun;
+}
+
+/* Secundaire CTA: outline */
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-cream/70 px-8 py-4 text-base font-extrabold uppercase tracking-wide text-cream transition-colors duration-150 hover:border-teal hover:text-teal focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-sun;
+}
+
+.input {
+  @apply w-full rounded-xl border border-night-line bg-night-soft px-4 py-3.5 text-base text-cream placeholder:text-cream/40 focus:border-magenta focus:outline-none;
+}
+
+.label {
+  @apply mb-1.5 block text-sm font-bold uppercase tracking-wide text-cream/80;
+}

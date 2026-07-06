@@ -1,0 +1,249 @@
+---
+import Base from '../layouts/Base.astro';
+
+const faq = [
+  {
+    q: 'Kan de besloten ruimte ook doordeweeks?',
+    a: 'Altijd bespreekbaar. Zet je gewenste datum in de aanvraag en we kijken wat er kan.',
+  },
+  {
+    q: 'Mogen we eigen muziek draaien?',
+    a: 'Ja — er staat een DJ-booth klaar. Neem je eigen DJ mee of sluit je eigen playlist aan.',
+  },
+  {
+    q: 'Tot hoe laat kan het feest doorgaan?',
+    a: 'Op vrijdag en zaterdag tot 04:00, op overige dagen tot 02:00.',
+  },
+  {
+    q: 'Wat als we met minder dan 20 of meer dan 60 zijn?',
+    a: 'Kleiner gezelschap? Boek een VIP-tafel. Groter feest? Dan huur je heel Costa af — plan een gesprek.',
+  },
+  {
+    q: 'Hoe zit het met betalen?',
+    a: 'Voor de VIP-tafel betaal je het tegoed van € 150 vooraf via een betaalverzoek — daarmee staat je tafel definitief vast. Voor de besloten ruimte geldt geen zaalhuur, alleen de minimale barbesteding van € 600 op de avond zelf.',
+  },
+  // TODO: FAQ-item "Kunnen we ook eten regelen?" toevoegen zodra de eigenaar de hapjes/platters-vraag beantwoordt (contentdoc "NOG AANLEVEREN" punt 2)
+];
+---
+
+<Base
+  title="Groepen & Verhuur | Café Costa Eindhoven — VIP-tafels & besloten feesten op het Stratumseind"
+  description="Zet je avond vast bij Café Costa: VIP-tafel voor 6–12 personen, besloten ruimte voor 20–60 personen zonder zaalhuur, of huur heel Costa af."
+>
+  {/* HERO — achtergrond: posterframe van de hero-loop. TODO: vervangen door een sterke foto van een volle VIP-tafel met flessen zodra die er is. */}
+  <section class="relative overflow-hidden">
+    <img
+      src="/img/hero-poster.jpg"
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-night/70" aria-hidden="true"></div>
+    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-night to-transparent" aria-hidden="true"></div>
+
+    <div class="relative mx-auto max-w-6xl px-4 pb-16 pt-36 sm:px-6 sm:pb-20 sm:pt-44">
+      <h1 class="display max-w-3xl text-4xl text-white sm:text-6xl">
+        Zet je avond vast <span class="text-sun">bij Costa</span>
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-cream/90 sm:text-xl">
+        Vijftig kroegen in één straat — maar jouw plek is al geregeld. Van VIP-tafel tot je eigen besloten feestzaal:
+        leg je avond vast en escaleer zorgeloos.
+      </p>
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+        <a href="#aanvragen" class="btn-primary" data-boek="VIP-tafel">Boek een VIP-tafel</a>
+        <a href="#aanvragen" class="btn-secondary" data-boek="Besloten ruimte">Huur de besloten ruimte</a>
+      </div>
+    </div>
+  </section>
+
+  {/* PRODUCT 1 — VIP-TAFEL */}
+  <section id="vip-tafel" class="mx-auto max-w-6xl scroll-mt-24 px-4 py-20 sm:px-6">
+    <p class="display text-sm text-magenta-hot">VIP-tafel</p>
+    <h2 class="display mt-3 max-w-3xl text-3xl text-white sm:text-4xl">Jouw eigen tafel. Midden in het feest.</h2>
+    <div class="mt-8 grid gap-10 lg:grid-cols-2">
+      <div>
+        <p class="text-lg text-cream/85">
+          Zaterdagavond, Stratumseind, en jij hoeft nergens voor te vechten. Geen rij, geen zoeken, geen statafel delen
+          met vreemden. Jullie tafel staat klaar, op naam — en de avond is al geregeld voordat je binnenstapt.
+        </p>
+        <p class="mt-6 text-2xl font-extrabold text-sun">€ 150 per tafel, volledig te besteden aan de bar</p>
+      </div>
+      <div>
+        <h3 class="display text-sm text-cream/70">Wat krijg je</h3>
+        <ul class="mt-4 space-y-3 text-cream/85">
+          <li class="flex gap-3"><span class="text-magenta-hot" aria-hidden="true">★</span>Gereserveerde VIP-tafel voor 6 tot 12 personen, de hele avond van jullie</li>
+          <li class="flex gap-3"><span class="text-magenta-hot" aria-hidden="true">★</span>€ 150 drankentegoed, vooraf betaald — makkelijk vooraf te splitten met je vrienden</li>
+          <li class="flex gap-3"><span class="text-magenta-hot" aria-hidden="true">★</span>Welkomstshotje voor de hele groep bij binnenkomst</li>
+          <li class="flex gap-3"><span class="text-magenta-hot" aria-hidden="true">★</span>Alles geregeld, tot aan gratis toiletgebruik voor de hele groep — portemonnee kan de hele avond in je zak</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-10">
+      <a href="#aanvragen" class="btn-primary" data-boek="VIP-tafel">Vraag je tafel aan</a>
+      <p class="mt-4 max-w-2xl text-sm text-cream/60">
+        Maximaal 3 VIP-tafels per avond — vol is vol. Na je aanvraag ontvang je binnen 24 uur een bevestiging met
+        betaalverzoek; je tafel staat definitief vast zodra het tegoed is voldaan. Tegoed is niet restitueerbaar, maar
+        tot 7 dagen vooraf kun je eenmalig kosteloos een nieuwe datum kiezen. Vanaf 18 jaar.
+      </p>
+    </div>
+  </section>
+
+  {/* PRODUCT 2 — DE BESLOTEN RUIMTE */}
+  <section id="besloten-ruimte" class="border-y border-night-line bg-night-soft">
+    <div class="mx-auto max-w-6xl scroll-mt-24 px-4 py-20 sm:px-6">
+      <p class="display text-sm text-teal">De besloten ruimte</p>
+      <h2 class="display mt-3 max-w-3xl text-3xl text-white sm:text-4xl">Je eigen feest. Onze zaak.</h2>
+      <div class="mt-8 grid gap-10 lg:grid-cols-2">
+        <div>
+          <p class="text-lg text-cream/85">
+            Boven op het feest van het Stratumseind heeft Costa een geheim: een eigen besloten ruimte voor 20 tot 60
+            personen. Intiem en gezellig als je dat wilt — en binnen een uur een knalfeest als het moet. Verjaardag,
+            vrijgezellenfeest, bedrijfsborrel of gewoon omdat het vrijdag is.
+          </p>
+          <p class="mt-4 text-lg text-cream/85">
+            En ja: officieel mogen er 90 mensen in. Wij houden het bewust op 60 — omdat een goed feest ademruimte nodig
+            heeft.
+          </p>
+          <p class="mt-6 text-2xl font-extrabold text-sun">
+            De deal: géén zaalhuur. Je betaalt alleen wat jullie drinken, met een minimale barbesteding van € 600.
+          </p>
+        </div>
+        <div>
+          <h3 class="display text-sm text-cream/70">Wat krijg je</h3>
+          <ul class="mt-4 space-y-3 text-cream/85">
+            <li class="flex gap-3"><span class="text-teal" aria-hidden="true">★</span>Besloten ruimte voor 20 tot 60 personen</li>
+            <li class="flex gap-3"><span class="text-teal" aria-hidden="true">★</span>Eigen bar met eigen barman of barvrouw</li>
+            <li class="flex gap-3"><span class="text-teal" aria-hidden="true">★</span>DJ-booth, lichtshow en beamer — neem je eigen DJ mee of draai je eigen playlist</li>
+            <li class="flex gap-3"><span class="text-teal" aria-hidden="true">★</span>Gratis toiletgebruik voor al je gasten, de hele avond</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-10">
+        <a href="#aanvragen" class="btn-primary" data-boek="Besloten ruimte">Vraag je datum aan</a>
+        <p class="mt-4 text-sm text-cream/60">Je hoort binnen 24 uur van ons — meestal veel sneller.</p>
+      </div>
+    </div>
+  </section>
+
+  {/* PRODUCT 3 — HELE ZAAK AFHUREN */}
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+    <p class="display text-sm text-sun">Heel Costa afhuren</p>
+    <h2 class="display mt-3 max-w-3xl text-3xl text-white sm:text-4xl">Heel Costa. Alleen voor jullie.</h2>
+    <p class="mt-6 max-w-3xl text-lg text-cream/85">
+      Bedrijfsfeest, jubileum of een feest dat te groot is voor een zaaltje? Huur heel Café Costa af: de beste
+      feest-DJ's van het land, confettikanonnen en een team van 50 man dat één opdracht heeft — jullie avond
+      onvergetelijk maken. Capaciteit, invulling en prijs? Dat is maatwerk, en maatwerk begint met een gesprek.
+    </p>
+    <a href="#aanvragen" class="btn-primary mt-8" data-boek="Heel Costa">Plan een gesprek</a>
+  </section>
+
+  {/* AANVRAAGFORMULIER — één formulier voor alle drie de producten (Netlify Forms) */}
+  <section id="aanvragen" class="border-y border-night-line bg-night-soft">
+    <div class="mx-auto max-w-2xl scroll-mt-24 px-4 py-20 sm:px-6">
+      <h2 class="display text-3xl text-white sm:text-4xl">Zet je avond vast</h2>
+      <p class="mt-4 text-cream/80">Je hoort binnen 24 uur van ons — meestal veel sneller.</p>
+
+      <form
+        name="boekingsaanvraag"
+        method="POST"
+        action="/bedankt"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="mt-10 space-y-6"
+      >
+        <input type="hidden" name="form-name" value="boekingsaanvraag" />
+        <p class="hidden" aria-hidden="true">
+          <label>Niet invullen als je een mens bent: <input name="bot-field" /></label>
+        </p>
+
+        <div>
+          <label for="wat" class="label">Wat wil je boeken?</label>
+          <select id="wat" name="wat-wil-je-boeken" required class="input">
+            <option value="VIP-tafel">VIP-tafel</option>
+            <option value="Besloten ruimte">Besloten ruimte</option>
+            <option value="Heel Costa">Heel Costa</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="naam" class="label">Naam</label>
+          <input id="naam" name="naam" type="text" required autocomplete="name" class="input" />
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div>
+            <label for="email" class="label">E-mailadres</label>
+            <input id="email" name="email" type="email" required autocomplete="email" class="input" />
+          </div>
+          <div>
+            <label for="telefoon" class="label">Telefoonnummer</label>
+            <input id="telefoon" name="telefoon" type="tel" required autocomplete="tel" class="input" />
+            <p class="mt-1.5 text-xs text-cream/50">Zodat we kunnen bellen als dat sneller is.</p>
+          </div>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div>
+            <label for="datum" class="label">Gewenste datum</label>
+            <input id="datum" name="gewenste-datum" type="date" required class="input" />
+          </div>
+          <div>
+            <label for="reservedatum" class="label">Reservedatum <span class="font-normal normal-case text-cream/50">(optioneel)</span></label>
+            <input id="reservedatum" name="reservedatum" type="date" class="input" />
+          </div>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div>
+            <label for="personen" class="label">Aantal personen</label>
+            <input id="personen" name="aantal-personen" type="number" min="1" required class="input" />
+          </div>
+          <div>
+            <label for="gelegenheid" class="label">Gelegenheid</label>
+            <select id="gelegenheid" name="gelegenheid" required class="input">
+              <option value="Verjaardag">Verjaardag</option>
+              <option value="Vrijgezellenfeest">Vrijgezellenfeest</option>
+              <option value="Bedrijfsfeest">Bedrijfsfeest</option>
+              <option value="Anders">Anders</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="opmerkingen" class="label">Opmerkingen <span class="font-normal normal-case text-cream/50">(optioneel)</span></label>
+          <textarea id="opmerkingen" name="opmerkingen" rows="4" class="input"></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary w-full">Verstuur je aanvraag</button>
+      </form>
+    </div>
+  </section>
+
+  {/* VEELGESTELDE VRAGEN */}
+  <section class="mx-auto max-w-3xl px-4 py-20 sm:px-6">
+    <h2 class="display text-3xl text-white sm:text-4xl">Veelgestelde vragen</h2>
+    <div class="mt-8 divide-y divide-night-line">
+      {
+        faq.map((item) => (
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-bold text-cream [&::-webkit-details-marker]:hidden">
+              {item.q}
+              <span class="text-magenta-hot transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-cream/80">{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Boek-knoppen vullen alvast de juiste keuze in het formulier in
+  const select = document.getElementById('wat') as HTMLSelectElement | null;
+  document.querySelectorAll<HTMLAnchorElement>('a[data-boek]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (select && btn.dataset.boek) select.value = btn.dataset.boek;
+    });
+  });
+</script>

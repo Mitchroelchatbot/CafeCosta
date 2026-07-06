@@ -1,0 +1,180 @@
+---
+import Base from '../layouts/Base.astro';
+import dezeWeek from '../data/deze-week.json';
+import specialsData from '../data/specials.json';
+import { SITE } from '../data/site';
+
+const dagNamen: Record<string, string> = {
+  wo: 'Woensdag',
+  do: 'Donderdag',
+  vr: 'Vrijdag',
+  za: 'Zaterdag',
+  zo: 'Zondag',
+};
+const weekRegels = (['wo', 'do', 'vr', 'za', 'zo'] as const)
+  .map((dag) => ({ dag: dagNamen[dag], tekst: (dezeWeek.dagen as Record<string, string>)[dag]?.trim() }))
+  .filter((r) => r.tekst);
+
+type Special = { titel: string; datum: string; tekst: string; poster?: string | null; ticketUrl?: string | null };
+const specials = (specialsData.specials as Special[]) ?? [];
+
+// Specials als schema.org/Event zodra ze bestaan (bouwprompt §6)
+const eventSchema =
+  specials.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@graph': specials.map((s) => ({
+          '@type': 'Event',
+          name: s.titel,
+          startDate: s.datum,
+          description: s.tekst,
+          ...(s.poster ? { image: new URL(s.poster, SITE.url).href } : {}),
+          ...(s.ticketUrl ? { offers: { '@type': 'Offer', url: s.ticketUrl } } : {}),
+          location: {
+            '@type': 'BarOrPub',
+            name: SITE.name,
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: SITE.address.street,
+              addressLocality: SITE.address.city,
+              addressCountry: SITE.address.country,
+            },
+          },
+        })),
+      }
+    : null;
+
+const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'numeric', month: 'long' });
+---
+
+<Base
+  title="Agenda Café Costa | Uitgaan op het Stratumseind — elke week feest"
+  description="Het weekprogramma van Café Costa Eindhoven: feest van woensdag t/m zaterdag, en elke PSV-wedstrijd live op zondag. Bekijk wat er deze week gebeurt."
+>
+  {eventSchema && <script slot="head" type="application/ld+json" set:html={JSON.stringify(eventSchema)} />}
+
+  {/* SECTIE 1 — DEZE WEEK (het enige wekelijkse blok, bron: src/data/deze-week.json) */}
+  <section class="mx-auto max-w-6xl px-4 pb-16 pt-32 sm:px-6 sm:pt-40">
+    <h1 class="display text-4xl text-white sm:text-6xl">
+      Deze week <span class="text-sun">bij Costa</span>
+    </h1>
+    {dezeWeek.weekLabel && dezeWeek.weekLabel !== 'deze week' && (
+      <p class="mt-3 text-lg font-bold uppercase tracking-wide text-cream/60">{dezeWeek.weekLabel}</p>
+    )}
+
+    <ul class="mt-10 divide-y divide-night-line overflow-hidden rounded-2xl border border-night-line bg-night-soft">
+      {
+        weekRegels.map((r) => (
+          <li class="flex flex-col gap-1 px-6 py-5 sm:flex-row sm:items-baseline sm:gap-6">
+            <span class="display w-28 shrink-0 text-sm text-magenta-hot">{r.dag}</span>
+            <span class="text-lg text-cream/90">{r.tekst}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  {/* SECTIE 2 — HET VASTE WEEKPROGRAMMA */}
+  <section class="border-y border-night-line bg-night-soft">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <h2 class="display max-w-3xl text-3xl text-white sm:text-5xl">
+        Elke week. <span class="text-teal">Elke avond anders.</span>
+      </h2>
+      <p class="mt-6 max-w-2xl text-lg text-cream/85">
+        Vier vaste avonden, één vast recept: de beste feest-DJ's, entertainment en een zaal die om 01:00 nog net zo vol
+        staat als om 23:00. En op zondag? Dan kijken we PSV.
+      </p>
+
+      {/*
+        TODO: per dag een LIGGENDE (16:9) dagposter toevoegen zodra beschikbaar — nu tijdelijk zonder beeld.
+        Alleen de Game Nights-poster bestaat al (liggende variant); voor do/vr/za moeten ze nog gemaakt worden.
+        Staande posters zijn voor Instagram, niet voor de site.
+      */}
+      <div class="mt-12 space-y-6">
+        <article class="rounded-2xl border border-night-line bg-night p-8">
+          <h3 class="display text-xl text-sun">Woensdag — Costa's Game Nights</h3>
+          <p class="mt-4 max-w-3xl text-cream/85">
+            Midden in de week, gratis meespelen: darts, beerpong, XXL Jenga, de borrelkrokodil en een stapel bord- en
+            kaartspellen. Verlies je? Dan trakteer jij. Win je? Dan ook eigenlijk wel.
+          </p>
+          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Vanaf 19:00, open tot 02:00</p>
+        </article>
+
+        <article class="rounded-2xl border border-night-line bg-night p-8">
+          <h3 class="display text-xl text-magenta-hot">Donderdag — Studentendonderdag</h3>
+          <p class="mt-4 max-w-3xl text-cream/85">
+            De kick-off van je weekend. Wisselende acties, wisselende DJ's, en één constante: donderdag bij Costa voelt
+            nooit als een doordeweekse dag. Welke actie er deze week loopt? Die staat bovenaan deze pagina.
+          </p>
+          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Vanaf 22:00, open tot 02:00</p>
+        </article>
+
+        <article class="rounded-2xl border border-night-line bg-night p-8">
+          <h3 class="display text-xl text-teal">Vrijdag — De Ontlading</h3>
+          <p class="mt-4 max-w-3xl text-cream/85">
+            De werkweek zit erop en dat gaat iemand merken. Feest-DJ's, entertainment aan de bar en een zaal die van
+            borrel naar escalatie schuift zonder dat je doorhebt wanneer het gebeurde.
+          </p>
+          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Open tot 04:00</p>
+        </article>
+
+        <article class="rounded-2xl border border-night-line bg-night p-8">
+          <h3 class="display text-xl text-sun">Zaterdag — Het Hoofdpodium</h3>
+          <p class="mt-4 max-w-3xl text-cream/85">
+            De grootste avond van de week. De bekendste feest-DJ's van het land, confettikanonnen en een vloer die tot
+            sluit vol staat. Dit is de avond waarvoor mensen uit het hele land naar het Stratumseind komen.
+          </p>
+          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Open tot 04:00</p>
+        </article>
+
+        <article class="rounded-2xl border border-night-line bg-night p-8">
+          <h3 class="display text-xl text-magenta-hot">Zondag — PSV-zondag</h3>
+          <p class="mt-4 max-w-3xl text-cream/85">
+            Speelt PSV? Dan is Costa open. Elke wedstrijd op groot scherm, met de sfeer die je van ons gewend bent — en
+            na het laatste fluitsignaal gaat het feest gewoon door. Kampioensduels, topper of uitwedstrijd: jij kijkt
+            hier.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  {/* SECTIE 3 — SPECIALS & EVENTS: geen aankomende specials = sectie onzichtbaar (bron: src/data/specials.json) */}
+  {
+    specials.length > 0 && (
+      <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <h2 class="display text-3xl text-white sm:text-5xl">Specials</h2>
+        <div class="mt-10 space-y-6">
+          {specials.map((s) => (
+            <article class="overflow-hidden rounded-2xl border border-night-line bg-night-soft">
+              {s.poster && (
+                <img src={s.poster} alt={`Poster: ${s.titel}`} loading="lazy" class="aspect-video w-full object-cover" />
+              )}
+              <div class="p-8">
+                <p class="text-sm font-bold uppercase tracking-wide text-sun">{datumFormat.format(new Date(s.datum))}</p>
+                <h3 class="display mt-2 text-xl text-white">{s.titel}</h3>
+                <p class="mt-4 max-w-3xl text-cream/85">{s.tekst}</p>
+                {s.ticketUrl && (
+                  <a href={s.ticketUrl} class="btn-primary mt-6" target="_blank" rel="noopener">
+                    Tickets
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  {/* SECTIE 4 — AFSLUITER */}
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+    <h2 class="display max-w-3xl text-3xl text-white sm:text-5xl">
+      Zeker weten dat je erbij bent<span class="text-magenta-hot">?</span>
+    </h2>
+    <p class="mt-6 max-w-2xl text-lg text-cream/85">
+      De leukste avonden zijn de drukste. Leg je plek vast met een VIP-tafel — dan hoef jij alleen nog te komen.
+    </p>
+    <a href="/groepen#vip-tafel" class="btn-primary mt-8">Boek een VIP-tafel</a>
+  </section>
+</Base>

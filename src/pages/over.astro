@@ -1,0 +1,148 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Over Café Costa | Sinds 2002 hét feestcafé van het Stratumseind, Eindhoven"
+  description="Van de zomer van Costa! tot drie keer Beste Feestcafé van Nederland. Lees het verhaal van Café Costa — en kom bij het team van 50 dat er elke week een feest van maakt."
+>
+  {/* SECTIE 1 — HET VERHAAL */}
+  <section class="mx-auto max-w-3xl px-4 pb-16 pt-32 sm:px-6 sm:pt-40">
+    <h1 class="display text-4xl text-white sm:text-6xl">
+      Sinds 2002. En nog steeds <span class="text-sun">niet uitgefeest.</span>
+    </h1>
+    <div class="mt-8 space-y-6 text-lg text-cream/85">
+      <p>
+        In 2001 kende heel Nederland maar één zomer: die van <em>Costa!</em> — de film over zon, proppers en escaleren
+        aan de Spaanse kust. Een jaar later opende op Stratumseind 31 een café dat die zomer simpelweg mee naar huis
+        nam. Naam: Costa. Missie: hier gaat de vakantie nooit meer uit.
+      </p>
+      <p>
+        De helden die toen achter de bar stonden zijn inmiddels vergeten — maar wat ze deden, zie je vandaag in elke
+        kroeg van de straat terug. Costa was het eerste café op het Stratumseind met een DJ ín de zaak en
+        discoverlichting aan het plafond. Toen werden we ervoor uitgelachen. Nu doet iedereen het na. Zo werkt dat met
+        goede ideeën.
+      </p>
+      <p>
+        Ruim twintig jaar later staat Costa er nog steeds — midden in de langste uitgaansstraat van de Benelux, tussen
+        vijftig concurrenten die allemaal om dezelfde avond vechten. Dat je die strijd twintig jaar volhoudt, is geen
+        geluk. Dat is elke week opnieuw de lat hoger leggen: de beste feest-DJ's van het land, artiesten op de bar,
+        confettikanonnen en een zaal waar het altijd zomer is — ook als het buiten november regent.
+      </p>
+      <p>
+        Drie keer werd Costa uitgeroepen tot Beste Feestcafé van Nederland. Mooi voor aan de muur. Maar wij spelen niet
+        voor de prijzenkast — wij spelen Champions League, elke avond dat de deuren opengaan. De enige jury die telt,
+        staat op de dansvloer.
+      </p>
+    </div>
+  </section>
+
+  {/* SECTIE 2 — HET TEAM */}
+  <section class="border-y border-night-line bg-night-soft">
+    <div class="mx-auto max-w-3xl px-4 py-20 sm:px-6">
+      <h2 class="display text-3xl text-white sm:text-4xl">Vijftig man. <span class="text-teal">Één opdracht.</span></h2>
+      <div class="mt-8 space-y-6 text-lg text-cream/85">
+        <p>
+          Achter elke Costa-avond staat een team van ruim vijftig mensen: barpersoneel, entertainment, DJ's, en de
+          mensen die je nooit ziet maar zonder wie niets draait.
+        </p>
+        <p>
+          Aan het roer: <strong>Gert-Jan van der Zee</strong> en <strong>Mitch Bastiaans</strong>. En hun verhaal ís het
+          verhaal van Costa: Gert-Jan begon hier als DJ — in het café dat als eerste op de straat een DJ neerzette — en
+          nam later de hele zaak over. Mitch begon met een bijbaantje achter de bar en werkte zich op tot mede-eigenaar.
+          Bij Costa is dat geen uitzondering. Dat is hoe het hier werkt.
+        </p>
+      </div>
+
+      {/*
+        TODO: hier komt één goede foto van Gert-Jan en Mitch samen in de zaak.
+        Geen pasfoto's, geen pakken — gewoon in het café waar het gebeurt.
+        Vervang deze placeholder door: <img src="/img/gertjan-en-mitch.jpg" alt="Gert-Jan van der Zee en Mitch Bastiaans samen in Café Costa" loading="lazy" class="mt-10 w-full rounded-2xl" />
+      */}
+      <div class="mt-10 flex aspect-video w-full items-center justify-center rounded-2xl border-2 border-dashed border-night-line bg-night">
+        <p class="px-6 text-center text-sm font-bold uppercase tracking-wide text-cream/40">
+          Foto volgt: Gert-Jan &amp; Mitch, samen in de zaak
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* SECTIE 3 — WERKEN BIJ COSTA */}
+  <section id="werken-bij" class="mx-auto max-w-3xl scroll-mt-24 px-4 py-20 sm:px-6">
+    <h2 class="display text-3xl text-white sm:text-4xl">Werken waar <span class="text-magenta-hot">anderen uitgaan</span></h2>
+    <p class="mt-8 text-lg text-cream/85">
+      De leukste bijbaan van Eindhoven bestaat, en je staat er middenin. Bij Costa werk je op de avonden waar de rest
+      van de stad naartoe komt — met een team dat na sluitingstijd net zo hecht is als tijdens de dienst.
+    </p>
+
+    <div class="mt-10 grid gap-10 sm:grid-cols-2">
+      <div>
+        <h3 class="display text-sm text-sun">Wat we zoeken</h3>
+        <ul class="mt-4 space-y-3 text-cream/85">
+          <li class="flex gap-3"><span class="text-magenta-hot" aria-hidden="true">★</span>Barpersoneel — ervaring is mooi, energie is verplicht</li>
+          {/* TODO: extra rollen (entertainment? garderobe? weekendkrachten?) toevoegen zodra de eigenaar ze doorgeeft — zie costa-over.md GAT 3 */}
+        </ul>
+      </div>
+      <div>
+        <h3 class="display text-sm text-sun">Wat je krijgt</h3>
+        <ul class="mt-4 space-y-3 text-cream/85">
+          <li class="flex gap-3"><span class="text-teal" aria-hidden="true">★</span>Werken in het drie keer beste feestcafé van Nederland</li>
+          <li class="flex gap-3"><span class="text-teal" aria-hidden="true">★</span>Een team van 50 collega's die je vrienden worden</li>
+          <li class="flex gap-3"><span class="text-teal" aria-hidden="true">★</span>Doorgroeien dat écht bestaat: beide huidige eigenaren begonnen op de vloer — de een als DJ, de ander achter de bar</li>
+          {/* TODO: personeelsfeesten / flexibele roosters toevoegen zodra bevestigd — zie costa-over.md open punt 4 */}
+        </ul>
+      </div>
+    </div>
+
+    {/* Sollicitatieformulier — kort: een sollicitant op zijn telefoon haakt af bij meer (Netlify Forms) */}
+    <form
+      name="sollicitatie"
+      method="POST"
+      action="/gesolliciteerd"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="mt-12 space-y-6 rounded-2xl border border-night-line bg-night-soft p-8"
+    >
+      <input type="hidden" name="form-name" value="sollicitatie" />
+      <p class="hidden" aria-hidden="true">
+        <label>Niet invullen als je een mens bent: <input name="bot-field" /></label>
+      </p>
+
+      <div>
+        <label for="naam" class="label">Naam</label>
+        <input id="naam" name="naam" type="text" required autocomplete="name" class="input" />
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label for="leeftijd" class="label">Leeftijd</label>
+          <input id="leeftijd" name="leeftijd" type="number" min="15" max="99" required class="input" />
+        </div>
+        <div>
+          <label for="telefoon" class="label">Telefoonnummer</label>
+          <input id="telefoon" name="telefoonnummer" type="tel" required autocomplete="tel" class="input" />
+        </div>
+      </div>
+      <div>
+        <label for="motivatie" class="label">Motivatie in één zin</label>
+        <input id="motivatie" name="motivatie" type="text" required class="input" />
+      </div>
+
+      <button type="submit" class="btn-primary w-full">Kom bij het team</button>
+    </form>
+  </section>
+
+  {/* SECTIE 4 — AFSLUITER */}
+  <section class="border-t border-night-line bg-night-soft">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+      <h2 class="display text-3xl text-white sm:text-5xl">Genoeg <span class="text-sun">gelezen.</span></h2>
+      <p class="mt-6 max-w-2xl text-lg text-cream/85">
+        Het echte verhaal van Costa lees je niet — dat maak je mee. Woensdag t/m zaterdag, Stratumseind 31. Of leg je
+        avond nu alvast vast.
+      </p>
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+        <a href="/agenda" class="btn-secondary">Bekijk de agenda</a>
+        <a href="/groepen#aanvragen" class="btn-primary">Zet je avond vast</a>
+      </div>
+    </div>
+  </section>
+</Base>

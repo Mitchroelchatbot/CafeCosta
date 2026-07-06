@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Café Costa Eindhoven | Feestcafé op het Stratumseind — VIP-tafels & besloten feesten"
+  description="Al 21 jaar hét feestcafé van het Stratumseind. Boek een VIP-tafel of huur onze besloten ruimte voor 20–60 personen — zonder zaalhuur."
+>
+  {/* SECTIE 1 — HERO: fullscreen videoloop, gedempt, autoplay, met posterframe als fallback */}
+  <section class="relative flex min-h-svh items-end overflow-hidden">
+    <video
+      class="absolute inset-0 h-full w-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="/img/hero-poster.jpg"
+      aria-hidden="true"
+    >
+      <source src="/video/costa-hero-loop.mp4" type="video/mp4" />
+    </video>
+    {/* Donkere overlay (±45%) zodat de witte kop leesbaar blijft */}
+    <div class="absolute inset-0 bg-night/45" aria-hidden="true"></div>
+    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" aria-hidden="true"></div>
+
+    <div class="relative mx-auto w-full max-w-6xl px-4 pb-16 pt-32 sm:px-6 sm:pb-24">
+      <h1 class="display max-w-4xl text-4xl text-white sm:text-6xl lg:text-7xl">
+        Het is altijd <span class="text-sun">zomer</span> bij Costa
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-cream/90 sm:text-xl">
+        Al 21 jaar de zomerse escalatie van het Stratumseind. Confettikanonnen, de beste feest-DJ's van het land en een
+        team van 50 man met één opdracht: jouw beste avond van het jaar.
+      </p>
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+        <a href="/groepen" class="btn-primary">Zet je avond vast</a>
+        <a href="/agenda" class="btn-secondary">Dit weekend bij Costa</a>
+      </div>
+    </div>
+  </section>
+
+  {/* SECTIE 2 — TEASER GROEPEN & VERHUUR (de belangrijkste sectie van de pagina) */}
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+    <h2 class="display max-w-3xl text-3xl text-white sm:text-5xl">
+      Vijftig kroegen in één straat. <span class="text-magenta-hot">Jouw plek is al geregeld.</span>
+    </h2>
+    <p class="mt-6 max-w-2xl text-lg text-cream/85">
+      Wie op het Stratumseind aankomt, moet kiezen. Wie bij Costa geboekt heeft, hoeft dat niet. Een VIP-tafel op naam
+      met tegoed op de bar, of een complete besloten ruimte voor je eigen feest — vastgelegd voordat de avond begint.
+    </p>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      <div class="flex flex-col rounded-2xl border border-night-line bg-night-soft p-8">
+        <h3 class="display text-xl text-sun">VIP-tafel</h3>
+        <p class="mt-4 grow text-cream/85">
+          Jullie eigen tafel, midden in het feest. Voor 6 tot 12 personen, inclusief € 150 drankentegoed en
+          welkomstshotjes. Maximaal 3 per avond.
+        </p>
+        <a href="/groepen#vip-tafel" class="btn-primary mt-8 self-start">Boek een VIP-tafel</a>
+      </div>
+
+      <div class="flex flex-col rounded-2xl border border-night-line bg-night-soft p-8">
+        <h3 class="display text-xl text-teal">Besloten ruimte</h3>
+        <p class="mt-4 grow text-cream/85">
+          Je eigen feest, onze zaak. Voor 20 tot 60 personen, met eigen bar, DJ-booth en lichtshow. Geen zaalhuur —
+          alleen een minimale barbesteding van € 600.
+        </p>
+        <a href="/groepen#besloten-ruimte" class="btn-primary mt-8 self-start">Huur de ruimte</a>
+      </div>
+    </div>
+  </section>
+
+  {/* SECTIE 3 — TEASER AGENDA */}
+  <section class="border-y border-night-line bg-night-soft">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+      <h2 class="display max-w-3xl text-3xl text-white sm:text-5xl">
+        Elke week feest. <span class="text-sun">Elke avond anders.</span>
+      </h2>
+      <p class="mt-6 max-w-2xl text-lg text-cream/85">
+        Van de bekendste feest-DJ's tot themafeesten en artiesten op de bar: bij Costa is het programma nooit hetzelfde,
+        maar de afloop wel — confetti in je haar en een verhaal voor maandag.
+      </p>
+      <a href="/agenda" class="btn-secondary mt-8">Bekijk de agenda</a>
+    </div>
+  </section>
+
+  {/* SECTIE 4 — WAAROM COSTA (social proof, kort) */}
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+    <h2 class="display max-w-4xl text-3xl text-white sm:text-4xl">
+      Drie keer beste feestcafé van Nederland. <span class="text-magenta-hot">En elke avond opnieuw bewijzen.</span>
+    </h2>
+    <p class="mt-6 max-w-2xl text-lg text-cream/85">
+      Sinds 2002 op Stratumseind 31. Drie landelijke awards, publiek uit het hele land, en een simpele filosofie:
+      Champions League spelen op horecagebied. Maar awards hangen aan de muur — het feest staat op de vloer. Kom het
+      zelf meemaken.
+    </p>
+    {/* TODO (optioneel, zie contentdoc): drie korte Google-reviewquotes van één zin — geen sterren-widgets of embeds */}
+  </section>
+</Base>

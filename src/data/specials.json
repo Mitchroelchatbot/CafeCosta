@@ -1,0 +1,12 @@
+{
+  "_instructie": [
+    "== SPECIALS & EVENTS — alleen vullen als er écht iets gepland staat ==",
+    "Lege lijst = de hele sectie is onzichtbaar op de site. Nooit 'binnenkort meer' laten staan.",
+    "Per special: titel, datum (JJJJ-MM-DD), eventueel eindtijd niet nodig, één alinea tekst.",
+    "poster: pad naar een LIGGENDE (16:9) afbeelding in /public/img/, of null voor geen beeld.",
+    "ticketUrl: alléén invullen als er kaartverkoop is — dan verschijnt er een ticketknop bij dat event.",
+    "Voorbeeld-item:",
+    "{ \"titel\": \"OUD & NIEUW BIJ COSTA\", \"datum\": \"2026-12-31\", \"tekst\": \"...\", \"poster\": \"/img/special-onw.jpg\", \"ticketUrl\": null }"
+  ],
+  "specials": []
+}

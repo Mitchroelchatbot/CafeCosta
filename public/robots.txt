@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /bedankt
+Disallow: /gesolliciteerd
+
+Sitemap: https://cafecosta.nl/sitemap-index.xml

@@ -1,0 +1,76 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Pad naar de Open Graph-sfeerfoto, absoluut vanaf de site-root */
+  ogImage?: string;
+}
+
+const { title, description, ogImage = '/img/og-costa.jpg' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+// schema.org/BarOrPub op elke pagina (bouwprompt §6)
+const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'BarOrPub',
+  name: SITE.name,
+  url: SITE.url,
+  image: new URL(ogImage, Astro.site).href,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    postalCode: SITE.address.postalCode,
+    addressLocality: SITE.address.city,
+    addressCountry: SITE.address.country,
+  },
+  openingHoursSpecification: SITE.openingHours.map((s) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: s.days,
+    opens: s.opens,
+    closes: s.closes,
+  })),
+};
+---
+
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    {/* Zoomen nooit blokkeren — bewust géén user-scalable/maximum-scale (bouwprompt §7) */}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:locale" content="nl_NL" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
+    <slot name="head" />
+  </head>
+  <body class="min-h-screen">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-magenta focus:px-6 focus:py-3 focus:font-bold focus:text-white"
+      >Direct naar inhoud</a
+    >
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
