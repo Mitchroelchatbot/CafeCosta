@@ -1,0 +1,27 @@
+---
+/**
+ * Officiële Café Costa-wordmark (uit CAFE_COSTA_EINDHOVEN.ai, vector).
+ * Kleurt mee met de CSS-`color` van de parent (currentColor).
+ * TODO: ronde kleurensticker (costa-logo-web.png) toevoegen zodra de
+ * eigenaar/ontwerper die als webbestand levert — nu alleen de wordmark.
+ */
+import logoSvg from '../assets/logo-costa.svg?raw';
+
+interface Props {
+  class?: string;
+  label?: string;
+}
+const { class: className = '', label = 'Café Costa Eindhoven' } = Astro.props;
+---
+
+<span class:list={['logo-costa inline-block', className]} role="img" aria-label={label}>
+  <Fragment set:html={logoSvg} />
+</span>
+
+<style>
+  .logo-costa :global(svg) {
+    display: block;
+    height: 100%;
+    width: auto;
+  }
+</style>

@@ -1,5 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import PalmFrond from '../components/PalmFrond.astro';
+import ruimteLichtshow from '../assets/ruimte/ruimte-overzicht-lichtshow.jpg';
 ---
 
 <Base
@@ -39,33 +42,44 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
-  {/* SECTIE 2 — TEASER GROEPEN & VERHUUR (de belangrijkste sectie van de pagina) */}
-  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+  {/* SECTIE 2 — TEASER GROEPEN & VERHUUR (de belangrijkste sectie van de pagina; besloten ruimte is het hoofdproduct) */}
+  <section class="relative mx-auto max-w-6xl overflow-hidden px-4 py-20 sm:px-6 sm:py-28">
+    <PalmFrond flip class="absolute -right-14 -top-6 h-40 w-52 text-teal/20 sm:h-52 sm:w-64" />
     <h2 class="display max-w-3xl text-3xl text-white sm:text-5xl">
       Vijftig kroegen in één straat. <span class="text-magenta-hot">Jouw plek is al geregeld.</span>
     </h2>
     <p class="mt-6 max-w-2xl text-lg text-cream/85">
-      Wie op het Stratumseind aankomt, moet kiezen. Wie bij Costa geboekt heeft, hoeft dat niet. Een VIP-tafel op naam
-      met tegoed op de bar, of een complete besloten ruimte voor je eigen feest — vastgelegd voordat de avond begint.
+      Wie op het Stratumseind aankomt, moet kiezen. Wie bij Costa geboekt heeft, hoeft dat niet. Een complete besloten
+      ruimte voor je eigen feest, of een VIP-tafel op naam met tegoed op de bar — vastgelegd voordat de avond begint.
     </p>
 
-    <div class="mt-12 grid gap-6 md:grid-cols-2">
-      <div class="flex flex-col rounded-2xl border border-night-line bg-night-soft p-8">
+    <div class="mt-12 grid gap-6 md:grid-cols-5">
+      <div class="flex flex-col overflow-hidden rounded-2xl border border-night-line bg-night-soft md:col-span-3">
+        <Image
+          src={ruimteLichtshow}
+          alt="De besloten ruimte van Café Costa met sfeerverlichting en lichtshow"
+          widths={[480, 768, 1200]}
+          sizes="(min-width: 768px) 55vw, 100vw"
+          loading="lazy"
+          class="aspect-[16/9] w-full object-cover"
+        />
+        <div class="flex grow flex-col p-8">
+          <h3 class="display text-xl text-teal">Besloten ruimte</h3>
+          <p class="mt-4 grow text-cream/85">
+            Je eigen feest, onze zaak. Voor 20 tot 60 personen, met eigen bar, DJ-booth en lichtshow. Geen zaalhuur —
+            alleen een minimale barbesteding van € 600.
+          </p>
+          <a href="/groepen#besloten-ruimte" class="btn-primary mt-8 self-start">Huur de ruimte</a>
+        </div>
+      </div>
+
+      <div class="flex flex-col rounded-2xl border border-night-line bg-night-soft p-8 md:col-span-2">
         <h3 class="display text-xl text-sun">VIP-tafel</h3>
         <p class="mt-4 grow text-cream/85">
           Jullie eigen tafel, midden in het feest. Voor 6 tot 12 personen, inclusief € 150 drankentegoed en
           welkomstshotjes. Maximaal 3 per avond.
         </p>
-        <a href="/groepen#vip-tafel" class="btn-primary mt-8 self-start">Boek een VIP-tafel</a>
-      </div>
-
-      <div class="flex flex-col rounded-2xl border border-night-line bg-night-soft p-8">
-        <h3 class="display text-xl text-teal">Besloten ruimte</h3>
-        <p class="mt-4 grow text-cream/85">
-          Je eigen feest, onze zaak. Voor 20 tot 60 personen, met eigen bar, DJ-booth en lichtshow. Geen zaalhuur —
-          alleen een minimale barbesteding van € 600.
-        </p>
-        <a href="/groepen#besloten-ruimte" class="btn-primary mt-8 self-start">Huur de ruimte</a>
+        <a href="/groepen#vip-tafel" class="btn-secondary mt-8 self-start">Boek een VIP-tafel</a>
       </div>
     </div>
   </section>

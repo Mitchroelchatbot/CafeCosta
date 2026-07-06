@@ -14,11 +14,12 @@ export const SITE = {
     // TODO: TikTok-account niet gevonden bij oplevering — juiste URL invullen of dit veld op null zetten om het icoon te verbergen.
     tiktok: 'https://www.tiktok.com/@cafecostaeindhoven',
   },
-  // Openingstijden voor schema.org. Sluitingstijden staan vast (vr/za 04:00, overig 02:00).
-  // TODO: openingstijd van vrijdag en zaterdag checken bij de eigenaar (nu 22:00 aangehouden, zoals donderdag).
+  // Openingstijden voor schema.org: deuren open 19:00 (zaterdag 17:00),
+  // sluiting vr/za 04:00, wo/do 02:00. Zondag bewust niet opgenomen —
+  // dan alleen open bij PSV-wedstrijden (staat in de content).
   openingHours: [
-    { days: ['Wednesday'], opens: '19:00', closes: '02:00' },
-    { days: ['Thursday'], opens: '22:00', closes: '02:00' },
-    { days: ['Friday', 'Saturday'], opens: '22:00', closes: '04:00' },
+    { days: ['Wednesday', 'Thursday'], opens: '19:00', closes: '02:00' },
+    { days: ['Friday'], opens: '19:00', closes: '04:00' },
+    { days: ['Saturday'], opens: '17:00', closes: '04:00' },
   ],
 };

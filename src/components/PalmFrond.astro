@@ -1,0 +1,67 @@
+---
+/**
+ * Decoratief palmblad in de stijl van de logo-palmen: spits en getand.
+ * Het blad wordt hier (op buildtijd) gegenereerd: een gebogen bladnerf
+ * met naar de punt toe korter wordende blaadjes.
+ *
+ * Gebruik: absoluut positioneren in een sectiehoek, kleur via text-*.
+ * Altijd aria-hidden en pointer-events-none — puur decoratie.
+ */
+interface Props {
+  class?: string;
+  /** spiegel het blad horizontaal (voor rechterhoeken) */
+  flip?: boolean;
+}
+const { class: className = '', flip = false } = Astro.props;
+
+// Kwadratische bezier als bladnerf
+const P0 = { x: 8, y: 12 };
+const P1 = { x: 150, y: 30 };
+const P2 = { x: 340, y: 210 };
+const q = (t: number) => ({
+  x: (1 - t) ** 2 * P0.x + 2 * (1 - t) * t * P1.x + t ** 2 * P2.x,
+  y: (1 - t) ** 2 * P0.y + 2 * (1 - t) * t * P1.y + t ** 2 * P2.y,
+});
+const qTan = (t: number) => {
+  const dx = 2 * (1 - t) * (P1.x - P0.x) + 2 * t * (P2.x - P1.x);
+  const dy = 2 * (1 - t) * (P1.y - P0.y) + 2 * t * (P2.y - P1.y);
+  const len = Math.hypot(dx, dy);
+  return { x: dx / len, y: dy / len };
+};
+
+const leaflets: string[] = [];
+const N = 14;
+for (let i = 0; i < N; i++) {
+  const t = 0.05 + (i / (N - 1)) * 0.9;
+  const base = q(t);
+  const tan = qTan(t);
+  const normal = { x: -tan.y, y: tan.x };
+  // blaadjes aan beide kanten van de nerf; lengte loopt terug naar de punt
+  for (const side of [1, -1]) {
+    const len = 88 * (1 - t * 0.75);
+    const lean = 0.62; // blaadjes hangen mee met de nerfrichting
+    const tip = {
+      x: base.x + (normal.x * side + tan.x * lean) * len,
+      y: base.y + (normal.y * side + tan.y * lean) * len,
+    };
+    const w = 10 * (1 - t * 0.6);
+    const c1 = { x: base.x + tan.x * w, y: base.y + tan.y * w };
+    const c2 = { x: base.x - tan.x * w, y: base.y - tan.y * w };
+    leaflets.push(
+      `M${c1.x.toFixed(1)} ${c1.y.toFixed(1)} Q${(base.x + (tip.x - base.x) * 0.35 + tan.x * w * 1.6).toFixed(1)} ${(base.y + (tip.y - base.y) * 0.35 + tan.y * w * 1.6).toFixed(1)} ${tip.x.toFixed(1)} ${tip.y.toFixed(1)} Q${(base.x + (tip.x - base.x) * 0.45 - tan.x * w).toFixed(1)} ${(base.y + (tip.y - base.y) * 0.45 - tan.y * w).toFixed(1)} ${c2.x.toFixed(1)} ${c2.y.toFixed(1)} Z`
+    );
+  }
+}
+const rib = `M${P0.x} ${P0.y} Q${P1.x} ${P1.y} ${P2.x} ${P2.y}`;
+---
+
+<span class:list={['pointer-events-none select-none', className]} aria-hidden="true">
+  <svg
+    viewBox="0 0 380 290"
+    fill="none"
+    class:list={['h-full w-full', flip && '-scale-x-100']}
+  >
+    <path d={rib} stroke="currentColor" stroke-width="7" stroke-linecap="round"></path>
+    {leaflets.map((d) => <path d={d} fill="currentColor" />)}
+  </svg>
+</span>

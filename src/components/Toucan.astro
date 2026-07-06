@@ -1,0 +1,32 @@
+---
+/**
+ * Kleine gestileerde toekan in de huisstijlkleuren — terugkerend detail
+ * van de oude site. Puur decoratief (aria-hidden).
+ */
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<span class:list={['pointer-events-none inline-block select-none', className]} aria-hidden="true">
+  <svg viewBox="0 0 140 120" fill="none" class="h-full w-auto">
+    {/* tak */}
+    <path d="M10 108 Q70 100 132 106" stroke="#8a6a4f" stroke-width="6" stroke-linecap="round"></path>
+    {/* staart */}
+    <path d="M38 64 L14 96 Q26 100 40 92 Z" fill="#23233a"></path>
+    {/* lijf */}
+    <path d="M64 22 C 44 22, 32 38, 32 58 C 32 82, 46 96, 64 96 C 80 96, 90 84, 90 66 L90 42 C 90 30, 78 22, 64 22 Z" fill="#23233a"></path>
+    {/* borst */}
+    <path d="M62 42 C 52 44, 46 54, 46 66 C 46 80, 54 90, 64 92 C 74 90, 80 80, 80 66 L80 52 C 76 44, 70 41, 62 42 Z" fill="#FFD500"></path>
+    {/* kop-oogring */}
+    <circle cx="72" cy="38" r="9" fill="#fff"></circle>
+    <circle cx="74" cy="38" r="3.5" fill="#0b0b10"></circle>
+    {/* snavel: groen met magenta punt */}
+    <path d="M84 28 C 104 22, 124 30, 132 46 C 134 52, 132 58, 126 58 L 96 52 C 88 50, 84 44, 84 36 Z" fill="#2EC98A"></path>
+    <path d="M124 40 C 128 42, 131 45, 132 46 C 134 52, 132 58, 126 58 L 112 55.5 C 116 50, 120 44, 124 40 Z" fill="#E7217F"></path>
+    <path d="M86 40 L 122 47" stroke="#0b0b10" stroke-width="2" stroke-linecap="round"></path>
+    {/* poten */}
+    <path d="M56 96 L54 106 M70 96 L70 106" stroke="#8a8aa0" stroke-width="4" stroke-linecap="round"></path>
+  </svg>
+</span>

@@ -3,14 +3,16 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Huisstijl: donkere basis met zomerse neonaccenten (magenta, geel, teal) */
+  /* Huisstijl: donkere basis met de zomerse logokleuren als accenten.
+     Waarden benaderd van de ronde Costa-sticker (magenta/geel/groen).
+     TODO: exact samplen zodra costa-logo-web.png als bestand geleverd is. */
   --color-night: #0b0b10;
   --color-night-soft: #15151f;
   --color-night-line: #26263a;
-  --color-magenta: #ff2e88;
-  --color-magenta-hot: #ff5ba4;
-  --color-sun: #ffd23f;
-  --color-teal: #2de1c2;
+  --color-magenta: #e7217f;
+  --color-magenta-hot: #ff5ba8;
+  --color-sun: #ffd500;
+  --color-teal: #2ec98a; /* fris logo-groen */
   --color-cream: #f5f2ec;
 
   --font-display: 'Archivo Black', system-ui, sans-serif;

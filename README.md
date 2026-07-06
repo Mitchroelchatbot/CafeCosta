@@ -33,12 +33,15 @@ Het adres staat bewust nérgens in de code of HTML.
 
 ## Nog openstaand (content)
 
+- [ ] Ronde kleurensticker als webbestand (`costa-logo-web.png`) → nu alleen de wordmark uit het .ai-bestand (TODO in `src/components/Logo.astro`)
+- [ ] Foto's besloten ruimte in vol bedrijf → vervangen max. 2 van de huidige lege-ruimte-foto's (TODO in `src/pages/groepen.astro`)
+- [ ] Foto van een volle VIP-tafel met flessen → VIP-sectie op `/groepen` heeft nog geen beeld
 - [ ] Liggende (16:9) dagposters voor donderdag/vrijdag/zaterdag → nu tekstblokken zonder beeld
 - [ ] Foto Gert-Jan & Mitch samen in de zaak → placeholder op `/over` (zoek op TODO)
 - [ ] FAQ-antwoord "Kunnen we ook eten regelen?" → item staat klaar in `src/pages/groepen.astro` (TODO)
-- [ ] Extra rollen + arbeidsvoorwaarden voor "Werken bij" → TODO's in `src/pages/over.astro`
+- [ ] Personeelsfeesten / flexibele roosters vermelden bij "Werken bij"? → TODO in `src/pages/over.astro`
 - [ ] TikTok-URL checken in `src/data/site.ts` (Instagram/Facebook zijn geverifieerd)
-- [ ] Openingstijd vrijdag/zaterdag checken in `src/data/site.ts` (voor schema.org; nu 22:00 aangehouden)
+- [ ] Exacte logokleuren samplen zodra `costa-logo-web.png` er is (TODO in `src/styles/global.css`)
 - [ ] Drie Google-reviewquotes voor de homepage (optioneel)
 
 ## Lanceervolgorde (uit BOUWPROMPT.md §9)

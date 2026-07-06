@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PalmFrond from '../components/PalmFrond.astro';
 import dezeWeek from '../data/deze-week.json';
 import specialsData from '../data/specials.json';
 import { SITE } from '../data/site';
@@ -54,7 +55,8 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
   {eventSchema && <script slot="head" type="application/ld+json" set:html={JSON.stringify(eventSchema)} />}
 
   {/* SECTIE 1 — DEZE WEEK (het enige wekelijkse blok, bron: src/data/deze-week.json) */}
-  <section class="mx-auto max-w-6xl px-4 pb-16 pt-32 sm:px-6 sm:pt-40">
+  <section class="relative mx-auto max-w-6xl overflow-hidden px-4 pb-16 pt-32 sm:px-6 sm:pt-40">
+    <PalmFrond flip class="absolute -right-14 top-20 h-40 w-52 text-teal/20 sm:h-52 sm:w-64" />
     <h1 class="display text-4xl text-white sm:text-6xl">
       Deze week <span class="text-sun">bij Costa</span>
     </h1>
@@ -81,8 +83,8 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
         Elke week. <span class="text-teal">Elke avond anders.</span>
       </h2>
       <p class="mt-6 max-w-2xl text-lg text-cream/85">
-        Vier vaste avonden, één vast recept: de beste feest-DJ's, entertainment en een zaal die om 01:00 nog net zo vol
-        staat als om 23:00. En op zondag? Dan kijken we PSV.
+        Vier vaste avonden, één vast recept: elke week een andere line-up uit onze vaste poule van acht feest-DJ's,
+        entertainment en een zaal die om 01:00 nog net zo vol staat als om 23:00. En op zondag? Dan kijken we PSV.
       </p>
 
       {/*
@@ -97,7 +99,7 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
             Midden in de week, gratis meespelen: darts, beerpong, XXL Jenga, de borrelkrokodil en een stapel bord- en
             kaartspellen. Verlies je? Dan trakteer jij. Win je? Dan ook eigenlijk wel.
           </p>
-          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Vanaf 19:00, open tot 02:00</p>
+          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 19:00 · tot 02:00</p>
         </article>
 
         <article class="rounded-2xl border border-night-line bg-night p-8">
@@ -106,7 +108,7 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
             De kick-off van je weekend. Wisselende acties, wisselende DJ's, en één constante: donderdag bij Costa voelt
             nooit als een doordeweekse dag. Welke actie er deze week loopt? Die staat bovenaan deze pagina.
           </p>
-          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Vanaf 22:00, open tot 02:00</p>
+          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 19:00 · tot 02:00</p>
         </article>
 
         <article class="rounded-2xl border border-night-line bg-night p-8">
@@ -115,7 +117,7 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
             De werkweek zit erop en dat gaat iemand merken. Feest-DJ's, entertainment aan de bar en een zaal die van
             borrel naar escalatie schuift zonder dat je doorhebt wanneer het gebeurde.
           </p>
-          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Open tot 04:00</p>
+          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 19:00 · tot 04:00</p>
         </article>
 
         <article class="rounded-2xl border border-night-line bg-night p-8">
@@ -124,7 +126,7 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
             De grootste avond van de week. De bekendste feest-DJ's van het land, confettikanonnen en een vloer die tot
             sluit vol staat. Dit is de avond waarvoor mensen uit het hele land naar het Stratumseind komen.
           </p>
-          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Open tot 04:00</p>
+          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 17:00 · tot 04:00</p>
         </article>
 
         <article class="rounded-2xl border border-night-line bg-night p-8">

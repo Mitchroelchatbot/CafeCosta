@@ -1,4 +1,6 @@
 ---
+import Logo from './Logo.astro';
+
 const links = [
   { href: '/agenda', label: 'Agenda' },
   { href: '/groepen', label: 'Groepen & Verhuur' },
@@ -8,9 +10,10 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <header class="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-night/80 backdrop-blur-md">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6" aria-label="Hoofdmenu">
-    <a href="/" class="display text-2xl text-white" aria-label="Café Costa — home">
-      C<span class="text-magenta">O</span>STA
+  <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2.5 sm:px-6" aria-label="Hoofdmenu">
+    {/* Wordmark uit het .ai-bestand; max ±56px hoog op mobiel (hier 44px) */}
+    <a href="/" class="text-white transition-colors hover:text-magenta-hot" aria-label="Café Costa — home">
+      <Logo class="h-11" />
     </a>
 
     <div class="hidden items-center gap-6 md:flex">
