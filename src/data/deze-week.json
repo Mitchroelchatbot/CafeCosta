@@ -1,19 +1,26 @@
 {
   "_instructie": [
-    "== DEZE WEEK BIJWERKEN — elke maandag, VOOR de Instagram-post (5 minuten) ==",
-    "1. Zet in 'weekLabel' de datums van deze week, bijv. 'wo 8 t/m zo 12 juli'.",
-    "2. Vul per dag één regel tekst in, bijv. 'Donderdag — Studentendonderdag met DJ Jansen' of 'PSV – Ajax, aftrap 16:45. Wij zijn open!'.",
-    "3. Acties (zoals '4 bier € 10' of merkdeals) horen HIER, niet in de vaste programmateksten verderop.",
-    "4. Een dag geen programma? Maak de regel leeg: \"\" — die dag verdwijnt dan van de site.",
-    "5. Opslaan, committen en deployen (of vraag Claude Code: 'werk deze-week.json bij: wo ..., do ...').",
+    "== DEZE WEEK BIJWERKEN — elke maandag, VOOR de Instagram-post ==",
+    "DE POSTER: vervang het bestand public/deze-week/programma.jpg door de nieuwe weekposter.",
+    "  Houd EXACT dezelfde bestandsnaam (programma.jpg) — dan verschijnt hij automatisch op de site.",
+    "  Staand formaat (4:5, bijv. 1080x1350) is prima; dat is precies je Instagram-poster.",
+    "",
+    "DE TEKST (aanrader, kost 2 min): zet per dag kort neer wat de poster laat zien.",
+    "  Dit is wat Google leest en wat mensen zien als de afbeelding niet laadt.",
+    "  Acties (zoals '4 bier € 10') horen HIER, niet in de vaste programmateksten verderop.",
+    "  Een dag geen programma? Maak de regel leeg: \"\" — die dag verdwijnt dan.",
+    "",
+    "Zet in 'weekLabel' eventueel de datums, bijv. 'wo 8 t/m za 11 juli'. Opslaan, committen, deployen.",
     "De site is de bron, Instagram is de megafoon."
   ],
-  "weekLabel": "deze week",
+  "poster": "/deze-week/programma.jpg",
+  "posterAlt": "Weekprogramma van Café Costa: woensdag Game Nights, donderdag Rocket Shot Mania met DJ Mitch Official, vrijdag Guilty Pleasure met DJ Mikey, zaterdag Zwoele Zomernachten met Mister Costa. Elke dag open vanaf 19:00.",
+  "weekLabel": "wo 8 t/m za 11 juli",
   "dagen": {
-    "wo": "Costa's Game Nights — gratis meespelen vanaf 19:00",
-    "do": "Studentendonderdag met wisselende feest-DJ's",
-    "vr": "Feest-DJ's en entertainment aan de bar, open tot 04:00",
-    "za": "De grootste avond van de week — confetti gegarandeerd, open tot 04:00",
+    "wo": "Costa's Game Nights — 4 bier voor € 10. Deuren open 19:00",
+    "do": "Rocket Shot Mania met DJ Mitch Official — 10 shots € 10. Deuren open 19:00",
+    "vr": "Guilty Pleasure Friday met DJ Mikey. Deuren open 19:00",
+    "za": "Zwoele Zomernachten met Mister Costa. Deuren open 19:00",
     "zo": ""
   }
 }

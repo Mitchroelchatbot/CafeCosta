@@ -54,7 +54,8 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
 >
   {eventSchema && <script slot="head" type="application/ld+json" set:html={JSON.stringify(eventSchema)} />}
 
-  {/* SECTIE 1 — DEZE WEEK (het enige wekelijkse blok, bron: src/data/deze-week.json) */}
+  {/* SECTIE 1 — DEZE WEEK (het enige wekelijkse blok, bron: src/data/deze-week.json).
+      Poster wekelijks vervangen: public/deze-week/programma.jpg (zelfde bestandsnaam). */}
   <section class="relative mx-auto max-w-6xl overflow-hidden px-4 pb-16 pt-32 sm:px-6 sm:pt-40">
     <PalmFrond flip class="absolute -right-14 top-20 h-40 w-52 text-teal/20 sm:h-52 sm:w-64" />
     <h1 class="display text-4xl text-white sm:text-6xl">
@@ -64,16 +65,42 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
       <p class="mt-3 text-lg font-bold uppercase tracking-wide text-cream/60">{dezeWeek.weekLabel}</p>
     )}
 
-    <ul class="mt-10 divide-y divide-night-line overflow-hidden rounded-2xl border border-night-line bg-night-soft">
-      {
-        weekRegels.map((r) => (
-          <li class="flex flex-col gap-1 px-6 py-5 sm:flex-row sm:items-baseline sm:gap-6">
-            <span class="display w-28 shrink-0 text-sm text-magenta-hot">{r.dag}</span>
-            <span class="text-lg text-cream/90">{r.tekst}</span>
-          </li>
-        ))
-      }
-    </ul>
+    <div class="mt-10 grid gap-8 lg:grid-cols-5 lg:items-start">
+      {dezeWeek.poster && (
+        <a
+          href={dezeWeek.poster}
+          target="_blank"
+          rel="noopener"
+          class="group block lg:col-span-2"
+          aria-label="Bekijk de weekposter op volledig formaat"
+        >
+          <img
+            src={dezeWeek.poster}
+            alt={dezeWeek.posterAlt}
+            width="1080"
+            height="1350"
+            fetchpriority="high"
+            class="w-full rounded-2xl border border-night-line shadow-xl transition-transform group-hover:scale-[1.01]"
+          />
+        </a>
+      )}
+
+      {weekRegels.length > 0 && (
+        <ul
+          class:list={[
+            'divide-y divide-night-line overflow-hidden rounded-2xl border border-night-line bg-night-soft',
+            dezeWeek.poster ? 'lg:col-span-3' : 'lg:col-span-5',
+          ]}
+        >
+          {weekRegels.map((r) => (
+            <li class="flex flex-col gap-1 px-6 py-5 sm:flex-row sm:items-baseline sm:gap-6">
+              <span class="display w-28 shrink-0 text-sm text-magenta-hot">{r.dag}</span>
+              <span class="text-lg text-cream/90">{r.tekst}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   </section>
 
   {/* SECTIE 2 — HET VASTE WEEKPROGRAMMA */}

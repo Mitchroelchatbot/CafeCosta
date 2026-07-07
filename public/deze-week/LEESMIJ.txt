@@ -1,0 +1,16 @@
+WEEKPOSTER VERVANGEN — elke week
+=================================
+
+1. Sleep je nieuwe weekposter hierheen en geef hem EXACT deze naam:
+      programma.jpg
+   (de oude overschrijven — zelfde naam, anders verschijnt hij niet)
+
+   Staand formaat (4:5, bijvoorbeeld 1080 x 1350 pixels) is precies goed —
+   dat is dezelfde poster als voor Instagram.
+
+2. Werk eventueel de tekstregels bij in:  src/data/deze-week.json
+   (dat is wat Google leest en wat mensen zien als de foto niet laadt)
+
+3. Opslaan → committen → deployen. Klaar.
+
+De poster staat bovenaan de agendapagina onder "Deze week bij Costa".
