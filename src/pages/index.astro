@@ -1,10 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import PalmFrond from '../components/PalmFrond.astro';
 import { JAREN_COSTA } from '../data/site';
 import ruimteLichtshow from '../assets/ruimte/ruimte-overzicht-lichtshow.jpg';
 import sfeerHanden from '../assets/sfeer/sfeer-handen-omhoog.jpg';
+import bladRoze from '../assets/decor/blad-roze-rechts.webp';
 ---
 
 <Base
@@ -46,7 +46,16 @@ import sfeerHanden from '../assets/sfeer/sfeer-handen-omhoog.jpg';
 
   {/* SECTIE 2 — TEASER GROEPEN & VERHUUR (de belangrijkste sectie van de pagina; besloten ruimte is het hoofdproduct) */}
   <section class="relative mx-auto max-w-6xl overflow-hidden px-4 py-20 sm:px-6 sm:py-28">
-    <PalmFrond flip class="absolute -right-14 -top-6 h-40 w-52 text-teal/20 sm:h-52 sm:w-64" />
+    {/* Bladeren-crop uit de banners (ronde 3-stijl), uitgefade naar de achtergrond */}
+    <Image
+      src={bladRoze}
+      alt=""
+      widths={[300, 590]}
+      sizes="300px"
+      loading="lazy"
+      class="leaf-fade-tr pointer-events-none absolute -top-4 right-0 w-48 select-none opacity-60 sm:w-72"
+      aria-hidden="true"
+    />
     <h2 class="display max-w-4xl text-3xl text-white sm:text-5xl">
       Het best bewaarde geheim <span class="text-magenta-hot">van de langste stapstraat van de Benelux</span>
     </h2>

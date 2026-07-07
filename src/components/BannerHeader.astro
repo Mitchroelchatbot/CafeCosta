@@ -1,0 +1,57 @@
+---
+/**
+ * Paginaheader in de banner-stijl (ronde 3, §1–2): CSS-gradiënt,
+ * bladeren-crops uit de aangeleverde banners en de kop als échte
+ * HTML-tekst met roze neongloed — zichtbaar én indexeerbaar.
+ */
+import { Image } from 'astro:assets';
+import bladBlauw from '../assets/decor/blad-blauw-linksboven.webp';
+import bladRoze from '../assets/decor/blad-roze-rechts.webp';
+import bladMagenta from '../assets/decor/blad-magenta-links.webp';
+import bladTeal from '../assets/decor/blad-teal-rechtsboven.webp';
+
+interface Props {
+  title: string;
+  /** heading-niveau: h1 voor paginakoppen, h2 voor secties */
+  tag?: 'h1' | 'h2';
+  /** welk bladerenpaar in de hoeken staat */
+  variant?: 'agenda' | 'impressie';
+  class?: string;
+}
+const { title, tag: Tag = 'h2', variant = 'agenda', class: className = '' } = Astro.props;
+const links = variant === 'agenda' ? bladBlauw : bladMagenta;
+const rechts = variant === 'agenda' ? bladRoze : bladTeal;
+---
+
+<div class:list={['banner-gradient relative overflow-hidden', className]}>
+  {/* max. 2 decoratie-elementen, altijd achter de content (ronde 2/3-regel) */}
+  <Image
+    src={links}
+    alt=""
+    widths={[420, 760]}
+    sizes="(min-width: 1024px) 30vw, 45vw"
+    loading="lazy"
+    class:list={[
+      'pointer-events-none absolute left-0 top-0 w-[45%] max-w-sm select-none sm:max-w-md',
+      variant === 'agenda' ? 'leaf-fade-tl' : 'leaf-fade-l',
+    ]}
+    aria-hidden="true"
+  />
+  <Image
+    src={rechts}
+    alt=""
+    widths={[420, 760]}
+    sizes="(min-width: 1024px) 30vw, 45vw"
+    loading="lazy"
+    class:list={[
+      'pointer-events-none absolute right-0 top-0 w-[42%] max-w-sm select-none sm:max-w-md',
+      variant === 'agenda' ? 'leaf-fade-r' : 'leaf-fade-tr',
+    ]}
+    aria-hidden="true"
+  />
+
+  <div class="relative mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 sm:py-24">
+    <Tag class="neon-title text-5xl sm:text-7xl">{title}</Tag>
+    <slot />
+  </div>
+</div>

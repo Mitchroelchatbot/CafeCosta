@@ -1,4 +1,5 @@
 @import '@fontsource/archivo-black';
+@import '@fontsource/protest-strike';
 @import '@fontsource-variable/inter';
 @import 'tailwindcss';
 
@@ -15,7 +16,13 @@
   --color-teal: #2ec98a; /* fris logo-groen */
   --color-cream: #f5f2ec;
 
+  /* Banner-stijl (ronde 3): gesampled uit de aangeleverde banners */
+  --color-berry: #9c2063; /* magenta-kern van de gradiënt */
+  --color-grape: #4a1240; /* dieppaars */
+  --color-plum: #150811; /* bijna-zwarte hoeken */
+
   --font-display: 'Archivo Black', system-ui, sans-serif;
+  --font-banner: 'Protest Strike', 'Archivo Black', system-ui, sans-serif;
   --font-sans: 'Inter Variable', system-ui, sans-serif;
 }
 
@@ -56,4 +63,47 @@ body {
 
 .label {
   @apply mb-1.5 block text-sm font-bold uppercase tracking-wide text-cream/80;
+}
+
+/* ── Banner-stijl (ronde 3): herbouwd uit de aangeleverde banners ── */
+
+/* Diepdonkere paars-magenta gradiënt: hoeken vrijwel zwart, midden dieppaars/magenta */
+.banner-gradient {
+  background:
+    radial-gradient(110% 130% at 50% 45%, var(--color-berry) 0%, #6e1450 34%, var(--color-grape) 58%, var(--color-plum) 100%);
+}
+
+/* Witte blocky kop met roze neongloed, zoals "AGENDA"/"IMPRESSIE" op de banners */
+.neon-title {
+  font-family: var(--font-banner);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fff;
+  text-shadow:
+    0 0 6px rgba(255, 91, 168, 0.95),
+    0 0 18px #ff2e9d,
+    0 0 46px #e7217f,
+    0 0 90px rgba(231, 33, 127, 0.55);
+}
+
+/* Bladeren-crops uit de banners: uitfaden richting de sectieachtergrond */
+.leaf-fade-tl {
+  mask-image: radial-gradient(135% 135% at 0% 0%, black 35%, transparent 82%);
+}
+.leaf-fade-tr {
+  mask-image: radial-gradient(135% 135% at 100% 0%, black 35%, transparent 82%);
+}
+.leaf-fade-l {
+  mask-image: radial-gradient(145% 125% at 0% 50%, black 32%, transparent 82%);
+}
+.leaf-fade-r {
+  mask-image: radial-gradient(145% 125% at 100% 50%, black 32%, transparent 82%);
+}
+
+/* Gescheurde/organische fotorand in collagestijl (subtiel, voor het impressiegrid) */
+.torn-a {
+  clip-path: polygon(2% 3%, 31% 0%, 52% 2%, 78% 0%, 99% 4%, 100% 38%, 98% 63%, 100% 88%, 97% 98%, 66% 100%, 38% 97%, 12% 100%, 0% 96%, 2% 66%, 0% 34%);
+}
+.torn-b {
+  clip-path: polygon(0% 5%, 22% 0%, 49% 3%, 71% 0%, 100% 2%, 98% 30%, 100% 58%, 97% 84%, 100% 97%, 74% 99%, 47% 100%, 21% 98%, 2% 100%, 0% 70%, 3% 38%);
 }

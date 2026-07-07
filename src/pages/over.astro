@@ -1,11 +1,14 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import BannerHeader from '../components/BannerHeader.astro';
 import { JAREN_COSTA } from '../data/site';
 
+import stickerCosta from '../assets/costa-sticker.png';
 import sfeerVlaggetjes from '../assets/sfeer/sfeer-vlaggetjes.jpg';
 import sfeerHanden from '../assets/sfeer/sfeer-handen-omhoog.jpg';
 import sfeerVolleZaak from '../assets/sfeer/sfeer-volle-zaak.jpg';
+import sfeerTerras from '../assets/sfeer/sfeer-terras.jpg';
 import ruimteLichtshow from '../assets/ruimte/ruimte-overzicht-lichtshow.jpg';
 import ruimteEigenBar from '../assets/ruimte/ruimte-eigen-bar.jpg';
 import ruimteDjBooth from '../assets/ruimte/ruimte-dj-booth.jpg';
@@ -25,12 +28,22 @@ const impressie = [
   title="Over Café Costa | Sinds 2002 hét feestcafé van het Stratumseind, Eindhoven"
   description="Van de zomer van Costa! tot drie keer Beste Feestcafé van Nederland. Lees het verhaal van Café Costa — en kom bij het team van 50 dat er elke week een feest van maakt."
 >
-  {/* SECTIE 1 — HET VERHAAL */}
-  <section class="mx-auto max-w-3xl px-4 pb-16 pt-32 sm:px-6 sm:pt-40">
-    <h1 class="display text-4xl text-white sm:text-6xl">
-      Sinds 2002. En nog steeds <span class="text-sun">niet uitgefeest.</span>
-    </h1>
-    <div class="mt-8 space-y-6 text-lg text-cream/85">
+  {/* SECTIE 1 — HET VERHAAL, met de ronde sticker groot ernaast (ronde 3, §3) */}
+  <section class="mx-auto max-w-5xl px-4 pb-16 pt-32 sm:px-6 sm:pt-40">
+    <div class="flex flex-col-reverse items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
+      <h1 class="display max-w-2xl text-4xl text-white sm:text-6xl">
+        Sinds 2002. En nog steeds <span class="text-sun">niet uitgefeest.</span>
+      </h1>
+      <Image
+        src={stickerCosta}
+        alt="Het ronde logo van Café Costa Eindhoven, sinds 2002"
+        widths={[280, 560]}
+        sizes="(min-width: 640px) 280px, 176px"
+        loading="eager"
+        class="w-44 shrink-0 sm:w-64 lg:w-72"
+      />
+    </div>
+    <div class="mt-8 max-w-3xl space-y-6 text-lg text-cream/85">
       <p>
         In 2001 kende heel Nederland maar één zomer: die van <em>Costa!</em> — de film over zon, proppers en escaleren
         aan de Spaanse kust. Een jaar later opende op Stratumseind 31 een café dat die zomer simpelweg mee naar huis
@@ -87,20 +100,23 @@ const impressie = [
     </div>
   </section>
 
-  {/* IMPRESSIE — compact fotogrid (ronde 3, §5).
-      TODO: Impressie-banner.jpg als sectiekop zodra het bestand geleverd is. */}
-  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-    <h2 class="display text-3xl text-white sm:text-4xl">Impressie</h2>
-    <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+  {/* IMPRESSIE — sectiekop in banner-stijl + compact fotogrid in collagestijl (ronde 3, §5) */}
+  <BannerHeader title="Impressie" tag="h2" variant="impressie" />
+  <section class="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+    <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">
       {
-        impressie.map((f) => (
+        impressie.map((f, i) => (
           <Image
             src={f.img}
             alt={f.alt}
             widths={[360, 640, 960]}
             sizes="(min-width: 640px) 30vw, 45vw"
             loading="lazy"
-            class="aspect-[4/3] w-full rounded-xl object-cover"
+            class:list={[
+              'aspect-[4/3] w-full object-cover',
+              i % 2 === 0 ? 'torn-a' : 'torn-b',
+              ['rotate-1', '-rotate-1', 'rotate-0'][i % 3],
+            ]}
           />
         ))
       }
@@ -170,6 +186,42 @@ const impressie = [
 
       <button type="submit" class="btn-primary w-full">Kom bij het team</button>
     </form>
+  </section>
+
+  {/* CONTACT — sectiekop in banner-stijl (ronde 3, §2); /contact redirect landt op deze pagina.
+      Bewust geen e-mailadres: het formulier is het enige kanaal. */}
+  <BannerHeader title="Contact" tag="h2" variant="agenda" />
+  <section class="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+    <div class="grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <h3 class="display text-xl text-white">Zo vind je ons</h3>
+        <p class="mt-4 text-lg text-cream/85">
+          Café Costa<br />
+          Stratumseind 31, Eindhoven
+        </p>
+        <p class="mt-4 text-lg text-cream/85">
+          Woensdag t/m zaterdag — en op zondag bij elke wedstrijd van PSV.<br />
+          Deuren open om 19:00, zaterdag al om 17:00.<br />
+          Vrijdag &amp; zaterdag tot 04:00, overige dagen tot 02:00.
+        </p>
+        <p class="mt-4 text-lg text-cream/85">
+          Iets boeken of vragen over een feest? Via het aanvraagformulier hoor je binnen 24 uur van ons — meestal veel
+          sneller.
+        </p>
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+          <a href="/groepen#aanvragen" class="btn-primary">Zet je avond vast</a>
+          <a href="#werken-bij" class="btn-secondary">Werken bij Costa</a>
+        </div>
+      </div>
+      <Image
+        src={sfeerTerras}
+        alt="Het terras van Café Costa op het Stratumseind"
+        widths={[480, 768, 1200]}
+        sizes="(min-width: 1024px) 45vw, 100vw"
+        loading="lazy"
+        class="w-full rounded-2xl object-cover"
+      />
+    </div>
   </section>
 
   {/* SECTIE 4 — AFSLUITER */}

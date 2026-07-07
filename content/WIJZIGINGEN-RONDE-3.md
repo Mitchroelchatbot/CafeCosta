@@ -4,22 +4,19 @@
 
 ---
 
-## 1. DE STIJL — kopieer de banners, verzin niets zelf
+## 1. DE STIJL — herbouw de banner-stijl in code, verzin geen eigen stijl
 
-De bijgeleverde banners (`Agenda-banner.jpg`, `Homepage-banner.jpg`, `Contact...jpg`, `Impressie-banner.jpg`) definiëren de huisstijl. Neem hieruit over:
-- **Basis:** diepdonkere paars-magenta gradiënt (sample de exacte kleuren uit de banners; hoeken vrijwel zwart, midden dieppaars/magenta)
-- **Decoratie:** tropische papierknip-palmbladeren en monstera's in de hoeken, in paars/roze/petrol-tinten — subtiel donkerder dan de content, nooit óver tekst
-- **Koppen:** wit, blocky display-lettertype met roze neongloed, zoals "AGENDA" / "IMPRESSIE" op de banners — zoek de dichtstbijzijnde vrije webfont en gebruik text-shadow voor de gloed
-- **Foto's:** met gescheurde/organische randen in collagestijl waar passend (zoals op de banners), niet als strakke rechthoeken overal
+De bijgeleverde banners (`Agenda-banner.jpg`, `Homepage-banner.jpg`, `Contact-banner.jpg`, `Impressie-banner.jpg`) definiëren de huisstijl. Ze mogen worden aangepast en verknipt; wat heilig is, is de STIJL, niet de bestanden. Werkwijze:
+- **Herbouw de stijl als CSS/HTML-compositie** (voorkeur boven het plaatsen van de banner-JPG's als geheel): de gradiënt als CSS-achtergrond, de bladeren als losse uitgeknipte beeldelementen uit de banners (croppen mag), en de koppen als échte HTML-tekst — ingebakken tekst in afbeeldingen is onzichtbaar voor Google en schaalt niet op mobiel.
+- **Stijl-tokens, te samplen uit de banners:** diepdonkere paars-magenta gradiënt (hoeken vrijwel zwart, midden dieppaars/magenta); tropische papierknip-palmbladeren en monstera's in de hoeken in paars/roze/petrol, subtiel donkerder dan de content, nooit óver tekst; koppen in wit blocky display-lettertype met roze neongloed (dichtstbijzijnde vrije webfont + text-shadow); foto's met gescheurde/organische randen in collagestijl waar passend.
+- Wat NIET mag veranderen bij het aanpassen van banners: het kleurenpalet, de bladeren-stijl en het logo — niet hertekenen of vervangen door iets soortgelijks.
 - De eerder gemaakte SVG-decoraties vervangen door dit; de regel "max 2 decoratie-elementen per sectie, contrast AA" blijft gelden.
 
-## 2. BANNERS ALS PAGINAHEADERS
+## 2. PAGINAHEADERS IN BANNER-STIJL
 
-- `Agenda-banner.jpg` → header van /agenda (de kop "AGENDA" staat er al in; geen dubbele H1 eroverheen — de HTML-H1 visueel verbergen maar voor SEO behouden)
-- `Homepage-banner.jpg` → NIET op de homepage (daar blijft de video-hero), maar bruikbaar als OG-image en als fallback-posterframe voor de video
-- `Contact...jpg` → header van de contact-sectie op /over
-- `Impressie-banner.jpg` → header van een nieuwe compacte fotosectie (zie punt 5)
-- Banners comprimeren naar WebP, max ±350 KB elk.
+- Bouw de paginaheaders van /agenda, /over (contact-sectie) en de impressie-sectie als CSS/HTML-composities in de banner-stijl uit §1, met échte tekst-koppen (H1 zichtbaar én indexeerbaar). De banner-JPG's dienen als visuele referentie en als bron om bladeren/elementen uit te croppen.
+- De banner-JPG's mogen daarnaast als geheel worden ingezet waar ingebakken tekst geen kwaad kan: `Homepage-banner.jpg` als OG-image en als fallback-posterframe voor de hero-video.
+- Alle gebruikte beeldelementen comprimeren naar WebP.
 
 ## 3. LOGO'S OMWISSELEN
 
