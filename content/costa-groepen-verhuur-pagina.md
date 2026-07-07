@@ -4,6 +4,15 @@
 
 ---
 
+## SEO (invullen in het CMS)
+
+**Paginatitel:** Vrijgezellenfeest, bedrijfsfeest of VIP-tafel | Groepen & Verhuur — Café Costa Eindhoven
+**Meta-omschrijving:** Vier je vrijgezellenfeest, bedrijfsfeest of verjaardag bij Café Costa op het Stratumseind. Huur de verborgen parel (20–60 pers., geen zaalhuur) of boek een VIP-tafel met € 150 tegoed.
+
+*(Fase 2, direct na livegang: eigen landingspagina voor "vrijgezellenfeest Eindhoven" met het thuisbasis-blok als basis. Niet eerder bouwen dan de livegang, niet later dan twee weken erna — het boekingsseizoen wacht niet.)*
+
+---
+
 ## HERO (bovenaan de pagina)
 
 **Kop:** ZET JE AVOND VAST BIJ COSTA
@@ -62,6 +71,22 @@ Zaterdagavond, Stratumseind, en jij hoeft nergens voor te vechten. Geen rij, gee
 **Kleine lettertjes onder de knop:**
 Maximaal 3 VIP-tafels per avond — vol is vol. Na je aanvraag ontvang je binnen 24 uur een bevestiging met betaalverzoek; je tafel staat definitief vast zodra het tegoed is voldaan. Tegoed is niet restitueerbaar, maar tot 7 dagen vooraf kun je eenmalig kosteloos een nieuwe datum kiezen. Vanaf 18 jaar.
 
+### DE VRIJGEZELLEN-EDITIE (variant van de VIP-tafel — zelfde prijs, zelfde boeking)
+
+**Kop:** VRIJGEZELLENFEEST? DIT IS JULLIE THUISBASIS.
+
+**Tekst:**
+Vijftig kroegen en één missie — dan wil je geen startpunt, maar een thuisbasis. Boek de VIP-tafel als vaste stek van je vrijgezellenfeest: begin bij ons, verover de straat, en kom terug wanneer je wilt. Jullie tafel blijft de hele avond staan, jullie tegoed staat op de bar te wachten.
+
+En de vrijgezel? Die krijgt de Costa-behandeling:
+- Een persoonlijke shout-out van de DJ, mét confettimoment — dit gebeurt áltijd, bij elke geboekte vrijgezellentafel
+- Welkomstshotje voor de hele groep — en eentje extra voor de vrijgezel
+- De vrijgezel tapt zijn of haar eerste biertje zélf, achter onze bar — camera's klaar
+
+**Knop:** Boek jullie thuisbasis
+
+*(Intern, niet op de site: dit is GEEN apart product — het is de VIP-tafel met vrijgezellen-aankleding. In het formulier kiest de groep bij "gelegenheid" al voor vrijgezellenfeest; dat is het signaal voor het ritueel. Leg de drie ritueel-onderdelen vast in een one-pager voor het personeel, zodat élke shiftmanager ze zonder overleg kan uitvoeren. Beloof op de site nooit iets wat afhangt van wie er die avond werkt.)*
+
 *(Intern proces: aanvraag binnen → bevestiging + betaallink binnen 24 uur, liefst binnen het uur → niet betaald binnen 48 uur = tafel automatisch vrijgegeven. Geen uitzonderingen: zonder betaling geen reservering.)*
 
 ---
@@ -110,6 +135,9 @@ Op vrijdag en zaterdag tot 04:00, op overige dagen tot 02:00.
 
 **Wat als we met minder dan 20 of meer dan 60 zijn?**
 Kleiner gezelschap? Boek een VIP-tafel. Groter feest? Dan huur je heel Costa af — plan een gesprek.
+
+**Kunnen we ook gewoon met onze vrijgezellengroep binnenlopen zonder te boeken?**
+Altijd welkom — de deur staat open. Maar de Costa-behandeling voor de vrijgezel en de gegarandeerde tafel zijn er alleen voor geboekte groepen. Op een drukke zaterdag is dat het verschil tussen een thuisbasis en een uur zoeken naar een plek.
 
 **Hoe zit het met betalen?**
 Voor de VIP-tafel betaal je het tegoed van € 150 vooraf via een betaalverzoek — daarmee staat je tafel definitief vast. Voor de besloten ruimte geldt geen zaalhuur, alleen de minimale barbesteding van € 600 op de avond zelf.
