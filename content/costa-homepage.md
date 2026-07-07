@@ -26,18 +26,18 @@
 
 ## SECTIE 2 — TEASER GROEPEN & VERHUUR (de belangrijkste sectie van de pagina)
 
-**Kop:** VIJFTIG KROEGEN IN ÉÉN STRAAT. JOUW PLEK IS AL GEREGELD.
+**Kop:** HET BEST BEWAARDE GEHEIM VAN DE LANGSTE STAPSTRAAT VAN DE BENELUX
 
 **Tekst:**
-Wie op het Stratumseind aankomt, moet kiezen. Wie bij Costa geboekt heeft, hoeft dat niet. Een VIP-tafel op naam met tegoed op de bar, of een complete besloten ruimte voor je eigen feest — vastgelegd voordat de avond begint.
+Vijftig kroegen telt het Stratumseind, en al sinds 2002 feest Costa er middenin. Maar wat de meeste stappers nooit te zien krijgen: verscholen in ons café ligt een verborgen parel. Een complete besloten ruimte met eigen bar, eigen DJ-booth en eigen lichtshow — en voor één avond is hij helemaal van jou.
 
-**Blok A — VIP-tafel**
+**Blok A — De verborgen parel (het hoofdproduct)**
+Je eigen feest, onze zaak. Voor 20 tot 60 personen, met eigen bar, DJ-booth en lichtshow. Geen zaalhuur — alleen een minimale barbesteding van € 600.
+*Knop: Huur de verborgen parel*
+
+**Blok B — VIP-tafel**
 Jullie eigen tafel, midden in het feest. Voor 6 tot 12 personen, inclusief € 150 drankentegoed en welkomstshotjes. Maximaal 3 per avond.
 *Knop: Boek een VIP-tafel*
-
-**Blok B — Besloten ruimte**
-Je eigen feest, onze zaak. Voor 20 tot 60 personen, met eigen bar, DJ-booth en lichtshow. Geen zaalhuur — alleen een minimale barbesteding van € 600.
-*Knop: Huur de ruimte*
 
 ---
 
@@ -71,6 +71,7 @@ Stratumseind 31, Eindhoven
 
 **Kolom 2 — Open**
 Woensdag t/m zaterdag — en op zondag bij elke wedstrijd van PSV
+Deuren open om 19:00, zaterdag al om 17:00
 Vrijdag & zaterdag tot 04:00, overige dagen tot 02:00
 
 **Kolom 3 — Boeken**

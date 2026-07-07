@@ -8,16 +8,41 @@
 
 **Kop:** ZET JE AVOND VAST BIJ COSTA
 
-**Subkop:** Vijftig kroegen in één straat — maar jouw plek is al geregeld. Van VIP-tafel tot je eigen besloten feestzaal: leg je avond vast en escaleer zorgeloos.
+**Subkop:** Vijftig kroegen in één straat — maar jouw plek is al geregeld. Van je eigen besloten feestzaal tot een VIP-tafel midden in het feest: leg je avond vast en escaleer zorgeloos.
 
-**Knop 1:** Boek een VIP-tafel
-**Knop 2:** Huur de besloten ruimte
+**Knop 1:** Huur de besloten ruimte
+**Knop 2:** Boek een VIP-tafel
 
-*(Achtergrond: de hero-videoloop, of een sterke foto van een volle VIP-tafel met flessen.)*
+*(Achtergrond: een sterke foto van de besloten ruimte in vol bedrijf, of de hero-videoloop.)*
 
 ---
 
-## PRODUCT 1 — VIP-TAFEL
+## PRODUCT 1 — DE BESLOTEN RUIMTE (het hoofdproduct)
+
+**Kop:** DE VERBORGEN PAREL VAN HET STRATUMSEIND
+
+**Subkop:** Je eigen feest. Onze zaak.
+
+**Tekst:**
+Vijftig kroegen telt de langste stapstraat van de Benelux — en al sinds 2002 feest Costa er middenin. Maar verscholen in ons café ligt iets wat de meeste stappers nooit te zien krijgen: een eigen besloten ruimte voor 20 tot 60 personen. Intiem en gezellig als je dat wilt — en binnen een uur een knalfeest als het moet. Verjaardag, vrijgezellenfeest, bedrijfsborrel of gewoon omdat het vrijdag is.
+
+En ja: officieel mogen er 90 mensen in. Wij houden het bewust op 60 — omdat een goed feest ademruimte nodig heeft.
+
+**Wat krijg je:**
+- Besloten ruimte voor 20 tot 60 personen
+- Eigen bar met eigen barman of barvrouw
+- DJ-booth, lichtshow en beamer — neem je eigen DJ mee of draai je eigen playlist
+- Gratis toiletgebruik voor al je gasten, de hele avond
+
+**De deal:** géén zaalhuur. Je betaalt alleen wat jullie drinken, met een minimale barbesteding van € 600.
+
+**Knop:** Vraag je datum aan
+
+**Onder de knop:** Je hoort binnen 24 uur van ons — meestal veel sneller.
+
+---
+
+## PRODUCT 2 — VIP-TAFEL
 
 **Kop:** JOUW EIGEN TAFEL. MIDDEN IN HET FEEST.
 
@@ -41,29 +66,6 @@ Maximaal 3 VIP-tafels per avond — vol is vol. Na je aanvraag ontvang je binnen
 
 ---
 
-## PRODUCT 2 — DE BESLOTEN RUIMTE
-
-**Kop:** JE EIGEN FEEST. ONZE ZAAK.
-
-**Tekst:**
-Boven op het feest van het Stratumseind heeft Costa een geheim: een eigen besloten ruimte voor 20 tot 60 personen. Intiem en gezellig als je dat wilt — en binnen een uur een knalfeest als het moet. Verjaardag, vrijgezellenfeest, bedrijfsborrel of gewoon omdat het vrijdag is.
-
-En ja: officieel mogen er 90 mensen in. Wij houden het bewust op 60 — omdat een goed feest ademruimte nodig heeft.
-
-**Wat krijg je:**
-- Besloten ruimte voor 20 tot 60 personen
-- Eigen bar met eigen barman of barvrouw
-- DJ-booth, lichtshow en beamer — neem je eigen DJ mee of draai je eigen playlist
-- Gratis toiletgebruik voor al je gasten, de hele avond
-
-**De deal:** géén zaalhuur. Je betaalt alleen wat jullie drinken, met een minimale barbesteding van € 600.
-
-**Knop:** Vraag je datum aan
-
-**Onder de knop:** Je hoort binnen 24 uur van ons — meestal veel sneller.
-
----
-
 ## PRODUCT 3 — HELE ZAAK AFHUREN
 
 **Kop:** HEEL COSTA. ALLEEN VOOR JULLIE.
@@ -79,7 +81,7 @@ Bedrijfsfeest, jubileum of een feest dat te groot is voor een zaaltje? Huur heel
 
 Velden — niet meer dan dit, elke extra vraag kost leads:
 
-1. Wat wil je boeken? — VIP-tafel / Besloten ruimte / Heel Costa
+1. Wat wil je boeken? — Besloten ruimte / VIP-tafel / Heel Costa
 2. Naam
 3. E-mailadres
 4. Telefoonnummer *(van de gast — zodat jullie kunnen bellen als dat sneller is)*
