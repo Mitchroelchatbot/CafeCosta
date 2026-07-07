@@ -67,12 +67,11 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
 
     <div class="mt-10 grid gap-8 lg:grid-cols-5 lg:items-start">
       {dezeWeek.poster && (
-        <a
-          href={dezeWeek.poster}
-          target="_blank"
-          rel="noopener"
-          class="group block lg:col-span-2"
-          aria-label="Bekijk de weekposter op volledig formaat"
+        <button
+          type="button"
+          data-poster-open
+          class="group relative block cursor-zoom-in lg:col-span-2"
+          aria-label="Vergroot de weekposter"
         >
           <img
             src={dezeWeek.poster}
@@ -82,7 +81,17 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
             fetchpriority="high"
             class="w-full rounded-2xl border border-night-line shadow-xl transition-transform group-hover:scale-[1.01]"
           />
-        </a>
+          <span
+            class="pointer-events-none absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-night/80 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-cream backdrop-blur-sm transition-opacity group-hover:bg-magenta"
+            aria-hidden="true"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path>
+            </svg>
+            Vergroot
+          </span>
+        </button>
       )}
 
       {weekRegels.length > 0 && (
@@ -102,6 +111,33 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
       )}
     </div>
   </section>
+
+  {/* Lightbox voor de weekposter — vergroot op de site, weg te klikken */}
+  {dezeWeek.poster && (
+    <div
+      id="poster-lightbox"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-night/90 p-4 backdrop-blur-sm sm:p-8"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Weekprogramma van Café Costa, vergroot"
+    >
+      <button
+        type="button"
+        data-poster-close
+        class="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-night-soft text-cream transition-colors hover:bg-magenta focus-visible:outline-4 focus-visible:outline-sun sm:right-6 sm:top-6"
+        aria-label="Sluiten"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M6 6l12 12M18 6L6 18"></path>
+        </svg>
+      </button>
+      <img
+        src={dezeWeek.poster}
+        alt={dezeWeek.posterAlt}
+        class="max-h-full w-auto max-w-full rounded-xl shadow-2xl"
+      />
+    </div>
+  )}
 
   {/* SECTIE 2 — HET VASTE WEEKPROGRAMMA */}
   <section class="border-y border-night-line bg-night-soft">
@@ -207,3 +243,38 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
     <a href="/groepen#vip-tafel" class="btn-primary mt-8">Boek een VIP-tafel</a>
   </section>
 </Base>
+
+<script>
+  // Lightbox voor de weekposter: openen bij klik, sluiten via kruisje,
+  // klik naast de poster, of Escape.
+  const box = document.getElementById('poster-lightbox');
+  if (box) {
+    const openers = document.querySelectorAll<HTMLButtonElement>('[data-poster-open]');
+    const closeBtn = box.querySelector<HTMLButtonElement>('[data-poster-close]');
+    let lastFocused: HTMLElement | null = null;
+
+    const open = () => {
+      lastFocused = document.activeElement as HTMLElement;
+      box.classList.remove('hidden');
+      box.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      closeBtn?.focus();
+    };
+    const close = () => {
+      box.classList.add('hidden');
+      box.classList.remove('flex');
+      document.body.style.overflow = '';
+      lastFocused?.focus();
+    };
+
+    openers.forEach((btn) => btn.addEventListener('click', open));
+    closeBtn?.addEventListener('click', close);
+    // Klik op de achtergrond (niet op de poster zelf) sluit
+    box.addEventListener('click', (e) => {
+      if (e.target === box) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !box.classList.contains('hidden')) close();
+    });
+  }
+</script>
