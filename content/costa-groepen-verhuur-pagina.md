@@ -13,16 +13,23 @@
 
 ---
 
-## HERO (bovenaan de pagina)
+## HERO (bovenaan de pagina — beeld eerst, tekst minimaal)
 
-**Kop:** ZET JE AVOND VAST BIJ COSTA
+**Opmaak:** full-width foto (`ruimte-hero-overzicht.jpg`, later te vervangen door een vol-bedrijf-foto), daaroverheen alleen de kop, de feitenstrip en één knop. Alles hieronder komt pas ná het scrollen.
 
-**Subkop:** Vijftig kroegen in één straat — maar jouw plek is al geregeld. Van je eigen besloten feestzaal tot een VIP-tafel midden in het feest: leg je avond vast en escaleer zorgeloos.
+**Kop:** DE VERBORGEN PAREL VAN HET STRATUMSEIND
 
-**Knop 1:** Huur de besloten ruimte
-**Knop 2:** Boek een VIP-tafel
+**Subkop:** Jouw privéfeest, één trap boven de drukste stapstraat van de Benelux.
 
-*(Achtergrond: een sterke foto van de besloten ruimte in vol bedrijf, of de hero-videoloop.)*
+**FEITENSTRIP (vier compacte blokjes met icoon, direct onder de kop — dit is de pitch in één oogopslag):**
+1. 1e etage, midden op het Stratumseind
+2. 20 tot 60 personen
+3. Eigen bar, DJ-booth & lichtshow
+4. Geen zaalhuur — min. besteding € 600
+
+**Knop:** Vraag je datum aan *(scrollt naar het formulier)*
+
+**Secundaire link eronder, klein:** Liever een VIP-tafel in het café? ↓
 
 ---
 
@@ -33,7 +40,14 @@
 **Subkop:** Je eigen feest. Onze zaak.
 
 **Tekst:**
-Vijftig kroegen telt de langste stapstraat van de Benelux — en al sinds 2002 feest Costa er middenin. Maar verscholen in ons café ligt iets wat de meeste stappers nooit te zien krijgen: een eigen besloten ruimte voor 20 tot 60 personen. Intiem en gezellig als je dat wilt — en binnen een uur een knalfeest als het moet. Verjaardag, vrijgezellenfeest, bedrijfsborrel of gewoon omdat het vrijdag is.
+Vijftig kroegen telt de langste stapstraat van de Benelux — en al sinds 2002 feest Costa er middenin. Maar wat de meeste stappers nooit te zien krijgen: één trap hoger, op de eerste etage, ligt een verborgen parel. Een eigen besloten ruimte voor 20 tot 60 personen, met de drukste straat van de Benelux onder je voeten. Intiem en gezellig als je dat wilt — en binnen een uur een knalfeest als het moet. Verjaardag, vrijgezellenfeest, bedrijfsborrel of gewoon omdat het vrijdag is.
+
+**FOTOSTRIP (direct onder deze tekst):** de zes ruimte-foto's als horizontale strip of compact grid — de ruimte, de eigen bar, de DJ-booth. Beeld verkoopt deze etage, niet de bulletlijst.
+
+**ZO WERKT HET (drie stappen, met nummers, vlak boven het formulier):**
+1. Vraag je datum aan via het formulier
+2. Binnen 24 uur persoonlijke bevestiging
+3. Feesten — de rest regelen wij
 
 En ja: officieel mogen er 90 mensen in. Wij houden het bewust op 60 — omdat een goed feest ademruimte nodig heeft.
 
@@ -146,6 +160,15 @@ Voor de VIP-tafel betaal je het tegoed van € 150 vooraf via een betaalverzoek 
 [Nog beantwoorden: hapjes/platters mogelijk?]
 
 ---
+
+## OPMAAK-INSTRUCTIES VOOR DE BOUWER (conversielaag /groepen)
+
+1. **Above the fold op mobiel:** kop + feitenstrip + knop moeten zonder scrollen zichtbaar zijn op 380px breedte. De feitenstrip wordt daar een 2×2-grid.
+2. **Sticky CTA op mobiel:** een vaste knop "Vraag je datum aan" onderin beeld zodra de bezoeker voorbij de hero scrolt. Op desktop niet nodig.
+3. **Fotostrip Product 1:** lazy-loaded, klikbaar voor groot beeld mag maar hoeft niet — geen zware lightbox-library.
+4. **De feitenstrip-iconen:** simpel en in huisstijlkleur (trap/locatiepin, personen, cocktail/DJ, euroteken). Geen emoji.
+5. **"Zo werkt het"** direct boven het formulier, drie genummerde stappen op één regel (desktop) of onder elkaar (mobiel).
+6. **Volgorde blijft:** hero → Product 1 (verborgen parel) met fotostrip → Product 2 (VIP-tafel + vrijgezellen-editie) → Product 3 (heel Costa) → zo werkt het → formulier → FAQ.
 
 ## NOG AANLEVEREN
 

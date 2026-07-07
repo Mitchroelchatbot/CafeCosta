@@ -10,9 +10,10 @@ import ruimteEigenBar from '../assets/ruimte/ruimte-eigen-bar.jpg';
 import ruimteBarDetail from '../assets/ruimte/ruimte-bar-detail.jpg';
 import ruimteDjBooth from '../assets/ruimte/ruimte-dj-booth.jpg';
 
-// Foto's van de besloten ruimte — dezelfde volgorde als de thumbnails op de pagina.
+// Foto's van de besloten ruimte — dezelfde volgorde als de fotostrip op de pagina.
 // Voor de lightbox genereren we grote WebP-versies om doorheen te bladeren.
 const ruimteFotos = [
+  { img: heroRuimte, alt: 'Overzicht van de besloten ruimte van Café Costa op de eerste etage' },
   { img: ruimteLichtshow, alt: 'De besloten ruimte van Café Costa met sfeerverlichting en lichtshow' },
   { img: ruimteTafels, alt: 'Statafels en zitplekken in de besloten ruimte van Café Costa' },
   { img: ruimteEigenBar, alt: 'De eigen bar van de besloten ruimte van Café Costa' },
@@ -58,9 +59,9 @@ const faq = [
   description="Vier je vrijgezellenfeest, bedrijfsfeest of verjaardag bij Café Costa op het Stratumseind. Huur de verborgen parel (20–60 pers., geen zaalhuur) of boek een VIP-tafel met € 150 tegoed."
   ogImage="/img/og-groepen.jpg"
 >
-  {/* HERO — de besloten ruimte is het hoofdproduct en verdient de openingsfoto.
-      TODO: vervangen door een foto van de ruimte in vol bedrijf zodra die er is. */}
-  <section class="relative overflow-hidden">
+  {/* HERO — beeld eerst, tekst minimaal: kop + feitenstrip + één knop, above the fold op 380px.
+      TODO: foto vervangen door een vol-bedrijf-foto zodra die er is. */}
+  <section id="groepen-hero" class="relative overflow-hidden">
     <Image
       src={heroRuimte}
       alt=""
@@ -70,21 +71,43 @@ const faq = [
       fetchpriority="high"
       class="absolute inset-0 h-full w-full object-cover"
     />
-    <div class="absolute inset-0 bg-night/65" aria-hidden="true"></div>
-    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-night to-transparent" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-night/70" aria-hidden="true"></div>
+    <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-night to-transparent" aria-hidden="true"></div>
 
-    <div class="relative mx-auto max-w-6xl px-4 pb-16 pt-36 sm:px-6 sm:pb-20 sm:pt-44">
-      <h1 class="display max-w-3xl text-4xl text-white sm:text-6xl">
-        Zet je avond vast <span class="text-sun">bij Costa</span>
+    <div class="relative mx-auto max-w-6xl px-4 pb-10 pt-24 sm:px-6 sm:pb-16 sm:pt-40">
+      <h1 class="display max-w-3xl text-3xl text-white sm:text-6xl">
+        De verborgen parel <span class="text-sun">van het Stratumseind</span>
       </h1>
-      <p class="mt-6 max-w-2xl text-lg text-cream/90 sm:text-xl">
-        Vijftig kroegen in één straat — maar jouw plek is al geregeld. Van je eigen besloten feestzaal tot een
-        VIP-tafel midden in het feest: leg je avond vast en escaleer zorgeloos.
+      <p class="mt-3 max-w-2xl text-base text-cream/90 sm:mt-5 sm:text-xl">
+        Jouw privéfeest, één trap boven de drukste stapstraat van de Benelux.
       </p>
-      <div class="mt-8 flex flex-col gap-4 sm:flex-row">
-        <a href="#aanvragen" class="btn-primary" data-boek="Besloten ruimte">Huur de besloten ruimte</a>
-        <a href="#aanvragen" class="btn-secondary" data-boek="VIP-tafel">Boek een VIP-tafel</a>
+
+      {/* Feitenstrip — de pitch in één oogopslag; 2×2 op mobiel, 4 naast elkaar op desktop */}
+      <ul class="mt-4 grid max-w-3xl grid-cols-2 gap-2 sm:mt-7 sm:gap-3 lg:grid-cols-4">
+        <li class="flex items-center gap-2.5 rounded-xl border border-white/15 bg-night/70 px-3 py-2.5 backdrop-blur-sm">
+          <svg class="h-5 w-5 shrink-0 text-magenta-hot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z"></path><circle cx="12" cy="11" r="2.5"></circle></svg>
+          <span class="text-xs font-bold text-cream sm:text-sm">1e etage, midden op het Stratumseind</span>
+        </li>
+        <li class="flex items-center gap-2.5 rounded-xl border border-white/15 bg-night/70 px-3 py-2.5 backdrop-blur-sm">
+          <svg class="h-5 w-5 shrink-0 text-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5"></path><circle cx="16.5" cy="9" r="2.5"></circle><path d="M15 14.4c2.6.2 4.5 2.1 4.5 4.6"></path></svg>
+          <span class="text-xs font-bold text-cream sm:text-sm">20 tot 60 personen</span>
+        </li>
+        <li class="flex items-center gap-2.5 rounded-xl border border-white/15 bg-night/70 px-3 py-2.5 backdrop-blur-sm">
+          <svg class="h-5 w-5 shrink-0 text-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5h14l-7 8v5"></path><path d="M9 21h6"></path><path d="M8 9h8"></path></svg>
+          <span class="text-xs font-bold text-cream sm:text-sm">Eigen bar, DJ-booth &amp; lichtshow</span>
+        </li>
+        <li class="flex items-center gap-2.5 rounded-xl border border-white/15 bg-night/70 px-3 py-2.5 backdrop-blur-sm">
+          <svg class="h-5 w-5 shrink-0 text-magenta-hot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 6.5a6.5 6.5 0 1 0 0 11"></path><path d="M5 10.5h8"></path><path d="M5 13.5h7"></path></svg>
+          <span class="text-xs font-bold text-cream sm:text-sm">Geen zaalhuur — min. besteding € 600</span>
+        </li>
+      </ul>
+
+      <div class="mt-5 sm:mt-8">
+        <a href="#aanvragen" class="btn-primary" data-boek="Besloten ruimte">Vraag je datum aan</a>
       </div>
+      <a href="#vip-tafel" class="mt-4 inline-block text-sm font-bold text-cream/75 underline-offset-4 hover:text-cream hover:underline">
+        Liever een VIP-tafel in het café? ↓
+      </a>
     </div>
   </section>
 
@@ -94,50 +117,45 @@ const faq = [
     <h2 class="display mt-3 max-w-3xl text-3xl text-white sm:text-4xl">De verborgen parel van het Stratumseind</h2>
     <p class="mt-4 text-xl font-extrabold text-cream/90">Je eigen feest. Onze zaak.</p>
 
-    <div class="mt-8 grid gap-10 lg:grid-cols-2">
-      <div>
-        <p class="text-lg text-cream/85">
-          Vijftig kroegen telt de langste stapstraat van de Benelux — en al sinds 2002 feest Costa er middenin. Maar
-          verscholen in ons café ligt iets wat de meeste stappers nooit te zien krijgen: een eigen besloten ruimte voor
-          20 tot 60 personen. Intiem en gezellig als je dat wilt — en binnen een uur een knalfeest als het moet.
-          Verjaardag, vrijgezellenfeest, bedrijfsborrel of gewoon omdat het vrijdag is.
-        </p>
-        <p class="mt-4 text-lg text-cream/85">
-          En ja: officieel mogen er 90 mensen in. Wij houden het bewust op 60 — omdat een goed feest ademruimte nodig
-          heeft.
-        </p>
-        <p class="mt-6 text-2xl font-extrabold text-sun">
-          De deal: géén zaalhuur. Je betaalt alleen wat jullie drinken, met een minimale barbesteding van € 600.
-        </p>
-      </div>
-      <div class="grid grid-rows-2 gap-4">
-        {/* TODO: dit zijn sfeerfoto's van de lege, aangeklede ruimte — maximaal twee vervangen door foto's in vol bedrijf zodra die er zijn */}
-        <button type="button" data-gallery-index="0" class="ruimte-foto group relative block h-full cursor-zoom-in overflow-hidden rounded-2xl" aria-label="Vergroot foto: sfeerverlichting en lichtshow">
-          <Image
-            src={ruimteLichtshow}
-            alt="De besloten ruimte van Café Costa met sfeerverlichting en lichtshow"
-            widths={[480, 768, 1200]}
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            loading="lazy"
-            class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-          <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
-        </button>
-        <button type="button" data-gallery-index="1" class="ruimte-foto group relative block h-full cursor-zoom-in overflow-hidden rounded-2xl" aria-label="Vergroot foto: statafels en zitplekken">
-          <Image
-            src={ruimteTafels}
-            alt="Statafels en zitplekken in de besloten ruimte van Café Costa"
-            widths={[480, 768, 1200]}
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            loading="lazy"
-            class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-          <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
-        </button>
-      </div>
+    <div class="mt-8 max-w-3xl">
+      <p class="text-lg text-cream/85">
+        Vijftig kroegen telt de langste stapstraat van de Benelux — en al sinds 2002 feest Costa er middenin. Maar wat
+        de meeste stappers nooit te zien krijgen: één trap hoger, op de eerste etage, ligt een verborgen parel. Een
+        eigen besloten ruimte voor 20 tot 60 personen, met de drukste straat van de Benelux onder je voeten. Intiem en
+        gezellig als je dat wilt — en binnen een uur een knalfeest als het moet. Verjaardag, vrijgezellenfeest,
+        bedrijfsborrel of gewoon omdat het vrijdag is.
+      </p>
+      <p class="mt-4 text-lg text-cream/85">
+        En ja: officieel mogen er 90 mensen in. Wij houden het bewust op 60 — omdat een goed feest ademruimte nodig
+        heeft.
+      </p>
     </div>
 
-    <div class="mt-12">
+    {/* Fotostrip — beeld verkoopt deze etage; klikbaar via de galerij-lightbox.
+        TODO: dit zijn sfeerfoto's van de lege, aangeklede ruimte — maximaal twee vervangen door vol-bedrijf-foto's zodra die er zijn. */}
+    <div class="mt-8 grid grid-cols-3 gap-2 sm:gap-3 lg:grid-cols-6">
+      {
+        ruimteFotos.map((f, i) => (
+          <button
+            type="button"
+            data-gallery-index={i}
+            class="ruimte-foto group relative block cursor-zoom-in overflow-hidden rounded-lg"
+            aria-label={`Vergroot foto: ${f.alt}`}
+          >
+            <Image
+              src={f.img}
+              alt={f.alt}
+              widths={[240, 480, 768]}
+              sizes="(min-width: 1024px) 16vw, 30vw"
+              loading="lazy"
+              class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="mt-10">
       <h3 class="display text-sm text-cream/70">Wat krijg je</h3>
       <ul class="mt-4 grid gap-3 text-cream/85 sm:grid-cols-2">
         <li class="flex gap-3"><span class="text-teal" aria-hidden="true">★</span>Besloten ruimte voor 20 tot 60 personen</li>
@@ -145,42 +163,9 @@ const faq = [
         <li class="flex gap-3"><span class="text-teal" aria-hidden="true">★</span>DJ-booth, lichtshow en beamer — neem je eigen DJ mee of draai je eigen playlist</li>
         <li class="flex gap-3"><span class="text-teal" aria-hidden="true">★</span>Gratis toiletgebruik voor al je gasten, de hele avond</li>
       </ul>
-
-      <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
-        <button type="button" data-gallery-index="2" class="ruimte-foto group relative block cursor-zoom-in overflow-hidden rounded-xl" aria-label="Vergroot foto: de eigen bar">
-          <Image
-            src={ruimteEigenBar}
-            alt="De eigen bar van de besloten ruimte van Café Costa"
-            widths={[360, 640, 960]}
-            sizes="(min-width: 640px) 30vw, 45vw"
-            loading="lazy"
-            class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-          <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
-        </button>
-        <button type="button" data-gallery-index="3" class="ruimte-foto group relative block cursor-zoom-in overflow-hidden rounded-xl" aria-label="Vergroot foto: detail van de bar">
-          <Image
-            src={ruimteBarDetail}
-            alt="Detail van de bar in de besloten ruimte van Café Costa"
-            widths={[360, 640, 960]}
-            sizes="(min-width: 640px) 30vw, 45vw"
-            loading="lazy"
-            class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-          <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
-        </button>
-        <button type="button" data-gallery-index="4" class="ruimte-foto group relative col-span-2 block cursor-zoom-in overflow-hidden rounded-xl sm:col-span-1" aria-label="Vergroot foto: de DJ-booth">
-          <Image
-            src={ruimteDjBooth}
-            alt="De DJ-booth met lichtshow in de besloten ruimte van Café Costa"
-            widths={[360, 640, 960]}
-            sizes="(min-width: 640px) 30vw, 45vw"
-            loading="lazy"
-            class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-          <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
-        </button>
-      </div>
+      <p class="mt-8 max-w-3xl text-2xl font-extrabold text-sun">
+        De deal: géén zaalhuur. Je betaalt alleen wat jullie drinken, met een minimale barbesteding van € 600.
+      </p>
     </div>
 
     <div class="mt-10">
@@ -268,7 +253,26 @@ const faq = [
 
   {/* AANVRAAGFORMULIER — één formulier voor alle drie de producten (Netlify Forms) */}
   <section id="aanvragen" class="border-y border-night-line bg-night-soft">
-    <div class="mx-auto max-w-2xl scroll-mt-24 px-4 py-20 sm:px-6">
+    <div class="mx-auto max-w-4xl scroll-mt-24 px-4 pt-16 sm:px-6 sm:pt-20">
+      {/* Zo werkt het — drie stappen, vlak boven het formulier */}
+      <h2 class="display text-2xl text-white sm:text-3xl">Zo werkt het</h2>
+      <ol class="mt-6 grid gap-4 sm:grid-cols-3 sm:gap-6">
+        <li class="flex items-start gap-4 rounded-xl border border-night-line bg-night p-5">
+          <span class="display text-3xl text-magenta-hot" aria-hidden="true">1</span>
+          <span class="pt-1 text-cream/85">Vraag je datum aan via het formulier</span>
+        </li>
+        <li class="flex items-start gap-4 rounded-xl border border-night-line bg-night p-5">
+          <span class="display text-3xl text-sun" aria-hidden="true">2</span>
+          <span class="pt-1 text-cream/85">Binnen 24 uur persoonlijke bevestiging</span>
+        </li>
+        <li class="flex items-start gap-4 rounded-xl border border-night-line bg-night p-5">
+          <span class="display text-3xl text-teal" aria-hidden="true">3</span>
+          <span class="pt-1 text-cream/85">Feesten — de rest regelen wij</span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="mx-auto max-w-2xl px-4 py-14 sm:px-6 sm:py-16">
       <h2 class="display text-3xl text-white sm:text-4xl">Zet je avond vast</h2>
       <p class="mt-4 text-cream/80">Je hoort binnen 24 uur van ons — meestal veel sneller.</p>
 
@@ -366,6 +370,15 @@ const faq = [
     </div>
   </section>
 
+  {/* Sticky CTA op mobiel — verschijnt zodra de bezoeker voorbij de hero scrolt,
+      verdwijnt zodra het formulier in beeld is (anders bedekt hij de verstuurknop) */}
+  <div
+    id="sticky-cta"
+    class="fixed inset-x-0 bottom-0 z-40 hidden border-t border-white/10 bg-night/90 p-3 backdrop-blur-md sm:!hidden"
+  >
+    <a href="#aanvragen" class="btn-primary w-full !py-3.5" data-boek="Besloten ruimte">Vraag je datum aan</a>
+  </div>
+
   {/* Foto-lightbox met doorbladeren — vergroot op de site, weg te klikken */}
   <div
     id="foto-lightbox"
@@ -420,6 +433,30 @@ const faq = [
       if (gelegenheid && btn.dataset.gelegenheid) gelegenheid.value = btn.dataset.gelegenheid;
     });
   });
+
+  // Sticky CTA op mobiel: tonen voorbij de hero, verbergen zodra het formulier in beeld is
+  const stickyCta = document.getElementById('sticky-cta');
+  const hero = document.getElementById('groepen-hero');
+  const formSection = document.getElementById('aanvragen');
+  if (stickyCta && hero && formSection) {
+    let pastHero = false;
+    let formInView = false;
+    const update = () => stickyCta.classList.toggle('hidden', !pastHero || formInView);
+    new IntersectionObserver(
+      ([e]) => {
+        pastHero = !e.isIntersecting;
+        update();
+      },
+      { threshold: 0 }
+    ).observe(hero);
+    new IntersectionObserver(
+      ([e]) => {
+        formInView = e.isIntersecting;
+        update();
+      },
+      { threshold: 0.1 }
+    ).observe(formSection);
+  }
 
   // Foto-lightbox met doorbladeren
   type Foto = { src: string; alt: string };

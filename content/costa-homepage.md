@@ -34,7 +34,7 @@
 Vijftig kroegen telt het Stratumseind, en al sinds 2002 feest Costa er middenin. Maar wat de meeste stappers nooit te zien krijgen: verscholen in ons café ligt een verborgen parel. Een complete besloten ruimte met eigen bar, eigen DJ-booth en eigen lichtshow — en voor één avond is hij helemaal van jou.
 
 **Blok A — De verborgen parel (het hoofdproduct)**
-Je eigen feest, onze zaak. Voor 20 tot 60 personen, met eigen bar, DJ-booth en lichtshow. Geen zaalhuur — alleen een minimale barbesteding van € 600.
+Je eigen feest, één trap boven het Stratumseind. Voor 20 tot 60 personen, met eigen bar, DJ-booth en lichtshow. Geen zaalhuur — alleen een minimale barbesteding van € 600.
 *Knop: Huur de verborgen parel*
 
 **Blok B — VIP-tafel**
