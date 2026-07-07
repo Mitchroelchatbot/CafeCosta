@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import PalmFrond from '../components/PalmFrond.astro';
 
@@ -9,6 +9,20 @@ import ruimteTafels from '../assets/ruimte/ruimte-tafels-en-bar.jpg';
 import ruimteEigenBar from '../assets/ruimte/ruimte-eigen-bar.jpg';
 import ruimteBarDetail from '../assets/ruimte/ruimte-bar-detail.jpg';
 import ruimteDjBooth from '../assets/ruimte/ruimte-dj-booth.jpg';
+
+// Foto's van de besloten ruimte — dezelfde volgorde als de thumbnails op de pagina.
+// Voor de lightbox genereren we grote WebP-versies om doorheen te bladeren.
+const ruimteFotos = [
+  { img: ruimteLichtshow, alt: 'De besloten ruimte van Café Costa met sfeerverlichting en lichtshow' },
+  { img: ruimteTafels, alt: 'Statafels en zitplekken in de besloten ruimte van Café Costa' },
+  { img: ruimteEigenBar, alt: 'De eigen bar van de besloten ruimte van Café Costa' },
+  { img: ruimteBarDetail, alt: 'Detail van de bar in de besloten ruimte van Café Costa' },
+  { img: ruimteDjBooth, alt: 'De DJ-booth met lichtshow in de besloten ruimte van Café Costa' },
+];
+const ruimteFotosGroot = await Promise.all(
+  ruimteFotos.map((f) => getImage({ src: f.img, width: 1600, format: 'webp' }))
+);
+const gallerySrcs = ruimteFotosGroot.map((f, i) => ({ src: f.src, alt: ruimteFotos[i].alt }));
 
 const faq = [
   {
@@ -94,22 +108,28 @@ const faq = [
       </div>
       <div class="grid grid-rows-2 gap-4">
         {/* TODO: dit zijn sfeerfoto's van de lege, aangeklede ruimte — maximaal twee vervangen door foto's in vol bedrijf zodra die er zijn */}
-        <Image
-          src={ruimteLichtshow}
-          alt="De besloten ruimte van Café Costa met sfeerverlichting en lichtshow"
-          widths={[480, 768, 1200]}
-          sizes="(min-width: 1024px) 45vw, 100vw"
-          loading="lazy"
-          class="h-full w-full rounded-2xl object-cover"
-        />
-        <Image
-          src={ruimteTafels}
-          alt="Statafels en zitplekken in de besloten ruimte van Café Costa"
-          widths={[480, 768, 1200]}
-          sizes="(min-width: 1024px) 45vw, 100vw"
-          loading="lazy"
-          class="h-full w-full rounded-2xl object-cover"
-        />
+        <button type="button" data-gallery-index="0" class="ruimte-foto group relative block h-full cursor-zoom-in overflow-hidden rounded-2xl" aria-label="Vergroot foto: sfeerverlichting en lichtshow">
+          <Image
+            src={ruimteLichtshow}
+            alt="De besloten ruimte van Café Costa met sfeerverlichting en lichtshow"
+            widths={[480, 768, 1200]}
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            loading="lazy"
+            class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
+        </button>
+        <button type="button" data-gallery-index="1" class="ruimte-foto group relative block h-full cursor-zoom-in overflow-hidden rounded-2xl" aria-label="Vergroot foto: statafels en zitplekken">
+          <Image
+            src={ruimteTafels}
+            alt="Statafels en zitplekken in de besloten ruimte van Café Costa"
+            widths={[480, 768, 1200]}
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            loading="lazy"
+            class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
+        </button>
       </div>
     </div>
 
@@ -123,30 +143,39 @@ const faq = [
       </ul>
 
       <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
-        <Image
-          src={ruimteEigenBar}
-          alt="De eigen bar van de besloten ruimte van Café Costa"
-          widths={[360, 640, 960]}
-          sizes="(min-width: 640px) 30vw, 45vw"
-          loading="lazy"
-          class="aspect-[4/3] w-full rounded-xl object-cover"
-        />
-        <Image
-          src={ruimteBarDetail}
-          alt="Detail van de bar in de besloten ruimte van Café Costa"
-          widths={[360, 640, 960]}
-          sizes="(min-width: 640px) 30vw, 45vw"
-          loading="lazy"
-          class="aspect-[4/3] w-full rounded-xl object-cover"
-        />
-        <Image
-          src={ruimteDjBooth}
-          alt="De DJ-booth met lichtshow in de besloten ruimte van Café Costa"
-          widths={[360, 640, 960]}
-          sizes="(min-width: 640px) 30vw, 45vw"
-          loading="lazy"
-          class="col-span-2 aspect-[4/3] w-full rounded-xl object-cover sm:col-span-1"
-        />
+        <button type="button" data-gallery-index="2" class="ruimte-foto group relative block cursor-zoom-in overflow-hidden rounded-xl" aria-label="Vergroot foto: de eigen bar">
+          <Image
+            src={ruimteEigenBar}
+            alt="De eigen bar van de besloten ruimte van Café Costa"
+            widths={[360, 640, 960]}
+            sizes="(min-width: 640px) 30vw, 45vw"
+            loading="lazy"
+            class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
+        </button>
+        <button type="button" data-gallery-index="3" class="ruimte-foto group relative block cursor-zoom-in overflow-hidden rounded-xl" aria-label="Vergroot foto: detail van de bar">
+          <Image
+            src={ruimteBarDetail}
+            alt="Detail van de bar in de besloten ruimte van Café Costa"
+            widths={[360, 640, 960]}
+            sizes="(min-width: 640px) 30vw, 45vw"
+            loading="lazy"
+            class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
+        </button>
+        <button type="button" data-gallery-index="4" class="ruimte-foto group relative col-span-2 block cursor-zoom-in overflow-hidden rounded-xl sm:col-span-1" aria-label="Vergroot foto: de DJ-booth">
+          <Image
+            src={ruimteDjBooth}
+            alt="De DJ-booth met lichtshow in de besloten ruimte van Café Costa"
+            widths={[360, 640, 960]}
+            sizes="(min-width: 640px) 30vw, 45vw"
+            loading="lazy"
+            class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
+        </button>
       </div>
     </div>
 
@@ -302,7 +331,72 @@ const faq = [
       }
     </div>
   </section>
+
+  {/* Foto-lightbox met doorbladeren — vergroot op de site, weg te klikken */}
+  <div
+    id="foto-lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-night/90 p-4 backdrop-blur-sm sm:p-8"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Foto's van de besloten ruimte"
+  >
+    <button
+      type="button"
+      data-gallery-close
+      class="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-night-soft text-cream transition-colors hover:bg-magenta focus-visible:outline-4 focus-visible:outline-sun sm:right-6 sm:top-6"
+      aria-label="Sluiten"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </button>
+
+    <button
+      type="button"
+      data-gallery-prev
+      class="absolute left-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-night-soft/80 text-cream transition-colors hover:bg-magenta focus-visible:outline-4 focus-visible:outline-sun sm:left-6"
+      aria-label="Vorige foto"
+    >
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+    </button>
+
+    <figure class="flex max-h-full max-w-5xl flex-col items-center gap-3">
+      <img id="gallery-image" src="" alt="" class="max-h-[80vh] w-auto max-w-full rounded-xl shadow-2xl" />
+      <figcaption id="gallery-counter" class="text-sm font-bold uppercase tracking-wide text-cream/70"></figcaption>
+    </figure>
+
+    <button
+      type="button"
+      data-gallery-next
+      class="absolute right-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-night-soft/80 text-cream transition-colors hover:bg-magenta focus-visible:outline-4 focus-visible:outline-sun sm:right-6"
+      aria-label="Volgende foto"
+    >
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+    </button>
+  </div>
+
+  <script type="application/json" id="gallery-data" is:inline set:html={JSON.stringify(gallerySrcs)} />
 </Base>
+
+<style>
+  .foto-badge {
+    position: absolute;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--color-night) 75%, transparent);
+    color: var(--color-cream);
+    backdrop-filter: blur(4px);
+    transition: background-color 150ms;
+    pointer-events: none;
+  }
+  .ruimte-foto:hover .foto-badge {
+    background: var(--color-magenta);
+  }
+</style>
 
 <script>
   // Boek-knoppen vullen alvast de juiste keuze in het formulier in
@@ -312,4 +406,61 @@ const faq = [
       if (select && btn.dataset.boek) select.value = btn.dataset.boek;
     });
   });
+
+  // Foto-lightbox met doorbladeren
+  type Foto = { src: string; alt: string };
+  const box = document.getElementById('foto-lightbox');
+  const dataEl = document.getElementById('gallery-data');
+  const imgEl = document.getElementById('gallery-image') as HTMLImageElement | null;
+  const counterEl = document.getElementById('gallery-counter');
+
+  if (box && dataEl && imgEl) {
+    const fotos: Foto[] = JSON.parse(dataEl.textContent || '[]');
+    const thumbs = document.querySelectorAll<HTMLButtonElement>('[data-gallery-index]');
+    let current = 0;
+    let lastFocused: HTMLElement | null = null;
+
+    const render = () => {
+      const f = fotos[current];
+      if (!f) return;
+      imgEl.src = f.src;
+      imgEl.alt = f.alt;
+      if (counterEl) counterEl.textContent = `${current + 1} / ${fotos.length}`;
+    };
+    const open = (index: number) => {
+      current = index;
+      render();
+      lastFocused = document.activeElement as HTMLElement;
+      box.classList.remove('hidden');
+      box.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      (box.querySelector('[data-gallery-close]') as HTMLElement | null)?.focus();
+    };
+    const close = () => {
+      box.classList.add('hidden');
+      box.classList.remove('flex');
+      document.body.style.overflow = '';
+      lastFocused?.focus();
+    };
+    const step = (delta: number) => {
+      current = (current + delta + fotos.length) % fotos.length;
+      render();
+    };
+
+    thumbs.forEach((btn) =>
+      btn.addEventListener('click', () => open(Number(btn.dataset.galleryIndex)))
+    );
+    box.querySelector('[data-gallery-close]')?.addEventListener('click', close);
+    box.querySelector('[data-gallery-prev]')?.addEventListener('click', () => step(-1));
+    box.querySelector('[data-gallery-next]')?.addEventListener('click', () => step(1));
+    box.addEventListener('click', (e) => {
+      if (e.target === box) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (box.classList.contains('hidden')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') step(-1);
+      else if (e.key === 'ArrowRight') step(1);
+    });
+  }
 </script>
