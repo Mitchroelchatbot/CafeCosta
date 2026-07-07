@@ -17,9 +17,9 @@
 
 **Opmaak:** full-width foto (`ruimte-hero-overzicht.jpg`, later te vervangen door een vol-bedrijf-foto), daaroverheen alleen de kop, de feitenstrip en één knop. Alles hieronder komt pas ná het scrollen.
 
-**Kop:** DE VERBORGEN PAREL VAN HET STRATUMSEIND
+**Kop:** JE EIGEN BESLOTEN RUIMTE, MIDDEN OP HET STRATUMSEIND
 
-**Subkop:** Jouw privéfeest, één trap boven de drukste stapstraat van de Benelux.
+**Subkop:** Onze verborgen parel: jouw privéfeest, één trap boven de drukste stapstraat van de Benelux.
 
 **FEITENSTRIP (vier compacte blokjes met icoon, direct onder de kop — dit is de pitch in één oogopslag):**
 1. 1e etage, midden op het Stratumseind
