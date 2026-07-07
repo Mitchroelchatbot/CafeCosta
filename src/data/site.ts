@@ -1,4 +1,10 @@
 // Centrale sitegegevens — pas hier aan, werkt overal door.
+
+// Aantal jaren Costa, altijd berekend (ronde 3, §7): nooit een vast getal in
+// tekst. Wordt bepaald op buildtijd — de site wordt minimaal wekelijks
+// gedeployd (weekposter), dus dit loopt vanzelf mee.
+export const JAREN_COSTA = new Date().getFullYear() - 2002;
+
 export const SITE = {
   name: 'Café Costa',
   url: 'https://cafecosta.nl',

@@ -1,21 +1,30 @@
 ---
 /**
- * Officiële Café Costa-wordmark (uit CAFE_COSTA_EINDHOVEN.ai, vector).
+ * Officiële Café Costa-wordmark (vector, uit CAFE_COSTA_EINDHOVEN.ai).
  * Kleurt mee met de CSS-`color` van de parent (currentColor).
- * TODO: ronde kleurensticker (costa-logo-web.png) toevoegen zodra de
- * eigenaar/ontwerper die als webbestand levert — nu alleen de wordmark.
+ *
+ * Varianten:
+ *  - 'kaal'     → CAFÉ costa (zonder EINDHOVEN) — voor de header, conform
+ *                 het aangeleverde costa-woordmerk-wit.png maar als vector
+ *  - 'volledig' → CAFÉ costa EINDHOVEN — voor de footer
+ *
+ * TODO: ronde kleurensticker (costa-logo-web.png) groot in de footer en op
+ * /over bij het verhaal zodra die als webbestand geleverd is (ronde 3, §3).
  */
-import logoSvg from '../assets/logo-costa.svg?raw';
+import logoVolledig from '../assets/logo-costa.svg?raw';
+import logoKaal from '../assets/logo-costa-kaal.svg?raw';
 
 interface Props {
   class?: string;
   label?: string;
+  variant?: 'kaal' | 'volledig';
 }
-const { class: className = '', label = 'Café Costa Eindhoven' } = Astro.props;
+const { class: className = '', label = 'Café Costa Eindhoven', variant = 'volledig' } = Astro.props;
+const svg = variant === 'kaal' ? logoKaal : logoVolledig;
 ---
 
 <span class:list={['logo-costa inline-block', className]} role="img" aria-label={label}>
-  <Fragment set:html={logoSvg} />
+  <Fragment set:html={svg} />
 </span>
 
 <style>

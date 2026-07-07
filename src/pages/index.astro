@@ -2,12 +2,14 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import PalmFrond from '../components/PalmFrond.astro';
+import { JAREN_COSTA } from '../data/site';
 import ruimteLichtshow from '../assets/ruimte/ruimte-overzicht-lichtshow.jpg';
+import sfeerHanden from '../assets/sfeer/sfeer-handen-omhoog.jpg';
 ---
 
 <Base
   title="Café Costa Eindhoven | Feestcafé op het Stratumseind — VIP-tafels & besloten feesten"
-  description="Al 21 jaar hét feestcafé van het Stratumseind. Boek een VIP-tafel of huur onze besloten ruimte voor 20–60 personen — zonder zaalhuur."
+  description={`Al ${JAREN_COSTA} jaar hét feestcafé van het Stratumseind. Boek een VIP-tafel of huur onze besloten ruimte voor 20–60 personen — zonder zaalhuur.`}
 >
   {/* SECTIE 1 — HERO: fullscreen videoloop, gedempt, autoplay, met posterframe als fallback */}
   <section class="relative flex min-h-svh items-end overflow-hidden">
@@ -32,8 +34,8 @@ import ruimteLichtshow from '../assets/ruimte/ruimte-overzicht-lichtshow.jpg';
         Het is altijd <span class="text-sun">zomer</span> bij Costa
       </h1>
       <p class="mt-6 max-w-2xl text-lg text-cream/90 sm:text-xl">
-        Al 21 jaar de zomerse escalatie van het Stratumseind. Confettikanonnen, de beste feest-DJ's van het land en een
-        team van 50 man met één opdracht: jouw beste avond van het jaar.
+        Sinds 2002 de zomerse escalatie van het Stratumseind. Confettikanonnen, DJ's uit onze vaste poule van acht en
+        een team van 50 man met één opdracht: jouw beste avond van het jaar.
       </p>
       <div class="mt-8 flex flex-col gap-4 sm:flex-row">
         <a href="/groepen" class="btn-primary">Zet je avond vast</a>
@@ -102,14 +104,26 @@ import ruimteLichtshow from '../assets/ruimte/ruimte-overzicht-lichtshow.jpg';
 
   {/* SECTIE 4 — WAAROM COSTA (social proof, kort) */}
   <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-    <h2 class="display max-w-4xl text-3xl text-white sm:text-4xl">
-      Drie keer beste feestcafé van Nederland. <span class="text-magenta-hot">En elke avond opnieuw bewijzen.</span>
-    </h2>
-    <p class="mt-6 max-w-2xl text-lg text-cream/85">
-      Sinds 2002 op Stratumseind 31. Drie landelijke awards, publiek uit het hele land, en een simpele filosofie:
-      Champions League spelen op horecagebied. Maar awards hangen aan de muur — het feest staat op de vloer. Kom het
-      zelf meemaken.
-    </p>
-    {/* TODO (optioneel, zie contentdoc): drie korte Google-reviewquotes van één zin — geen sterren-widgets of embeds */}
+    <div class="grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <h2 class="display max-w-4xl text-3xl text-white sm:text-4xl">
+          Drie keer beste feestcafé van Nederland. <span class="text-magenta-hot">En elke avond opnieuw bewijzen.</span>
+        </h2>
+        <p class="mt-6 max-w-2xl text-lg text-cream/85">
+          Sinds 2002 op Stratumseind 31. Drie landelijke awards, publiek uit het hele land, en een simpele filosofie:
+          Champions League spelen op horecagebied. Maar awards hangen aan de muur — het feest staat op de vloer. Kom
+          het zelf meemaken.
+        </p>
+        {/* TODO (optioneel, zie contentdoc): drie korte Google-reviewquotes van één zin — geen sterren-widgets of embeds */}
+      </div>
+      <Image
+        src={sfeerHanden}
+        alt="Volle zaal bij Café Costa met handen in de lucht tijdens een DJ-set"
+        widths={[480, 768, 1200]}
+        sizes="(min-width: 1024px) 45vw, 100vw"
+        loading="lazy"
+        class="w-full rounded-2xl object-cover"
+      />
+    </div>
   </section>
 </Base>

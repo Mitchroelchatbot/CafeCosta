@@ -11,9 +11,9 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 <header class="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-night/80 backdrop-blur-md">
   <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2.5 sm:px-6" aria-label="Hoofdmenu">
-    {/* Wordmark uit het .ai-bestand; max ±56px hoog op mobiel (hier 44px) */}
+    {/* Kaal woordmerk (zonder EINDHOVEN) in de header, conform ronde 3 §3; max ±56px hoog op mobiel */}
     <a href="/" class="text-white transition-colors hover:text-magenta-hot" aria-label="Café Costa — home">
-      <Logo class="h-11" />
+      <Logo variant="kaal" class="h-11" />
     </a>
 
     <div class="hidden items-center gap-6 md:flex">

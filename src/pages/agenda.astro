@@ -1,9 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import PalmFrond from '../components/PalmFrond.astro';
 import dezeWeek from '../data/deze-week.json';
 import specialsData from '../data/specials.json';
 import { SITE } from '../data/site';
+import sfeerVolleZaak from '../assets/sfeer/sfeer-volle-zaak.jpg';
+import sfeerTerras from '../assets/sfeer/sfeer-terras.jpg';
 
 const dagNamen: Record<string, string> = {
   wo: 'Woensdag',
@@ -51,6 +54,7 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
 <Base
   title="Agenda Café Costa | Uitgaan op het Stratumseind — elke week feest"
   description="Het weekprogramma van Café Costa Eindhoven: feest van woensdag t/m zaterdag, en elke PSV-wedstrijd live op zondag. Bekijk wat er deze week gebeurt."
+  ogImage="/img/og-agenda.jpg"
 >
   {eventSchema && <script slot="head" type="application/ld+json" set:html={JSON.stringify(eventSchema)} />}
 
@@ -183,22 +187,43 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
           <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 19:00 · tot 04:00</p>
         </article>
 
-        <article class="rounded-2xl border border-night-line bg-night p-8">
-          <h3 class="display text-xl text-sun">Zaterdag — Het Hoofdpodium</h3>
-          <p class="mt-4 max-w-3xl text-cream/85">
-            De grootste avond van de week. De bekendste feest-DJ's van het land, confettikanonnen en een vloer die tot
-            sluit vol staat. Dit is de avond waarvoor mensen uit het hele land naar het Stratumseind komen.
-          </p>
-          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 17:00 · tot 04:00</p>
+        <article class="overflow-hidden rounded-2xl border border-night-line bg-night">
+          <Image
+            src={sfeerVolleZaak}
+            alt="Stampvolle zaal bij Café Costa op zaterdagavond"
+            widths={[480, 768, 1200]}
+            sizes="(min-width: 1024px) 60vw, 100vw"
+            loading="lazy"
+            class="aspect-[21/9] w-full object-cover"
+          />
+          <div class="p-8">
+            <h3 class="display text-xl text-sun">Zaterdag — Het Hoofdpodium</h3>
+            <p class="mt-4 max-w-3xl text-cream/85">
+              De grootste avond van de week. De bekendste feest-DJ's van het land, confettikanonnen en een vloer die
+              tot sluit vol staat. Dit is de avond waarvoor mensen uit het hele land naar het Stratumseind komen.
+            </p>
+            <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 17:00 · tot 04:00</p>
+          </div>
         </article>
 
+        {/* TODO: MATCHDAY-poster (staand) als kaart naast deze tekst zodra het bestand geleverd is (ronde 3, §6) */}
         <article class="rounded-2xl border border-night-line bg-night p-8">
           <h3 class="display text-xl text-magenta-hot">Zondag — PSV-zondag</h3>
-          <p class="mt-4 max-w-3xl text-cream/85">
-            Speelt PSV? Dan is Costa open. Elke wedstrijd op groot scherm, met de sfeer die je van ons gewend bent — en
-            na het laatste fluitsignaal gaat het feest gewoon door. Kampioensduels, topper of uitwedstrijd: jij kijkt
-            hier.
-          </p>
+          <div class="mt-4 grid gap-6 lg:grid-cols-2 lg:items-center">
+            <p class="max-w-3xl text-cream/85">
+              Speelt PSV? Dan is Costa open. Elke wedstrijd op groot scherm, met de sfeer die je van ons gewend bent —
+              en na het laatste fluitsignaal gaat het feest gewoon door. Binnen op groot scherm én buiten op ons
+              terras. Kampioensduels, topper of uitwedstrijd: jij kijkt hier.
+            </p>
+            <Image
+              src={sfeerTerras}
+              alt="Het terras van Café Costa op het Stratumseind"
+              widths={[480, 768, 1200]}
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              loading="lazy"
+              class="aspect-[16/9] w-full rounded-xl object-cover"
+            />
+          </div>
         </article>
       </div>
     </div>

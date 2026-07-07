@@ -1,5 +1,24 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import { JAREN_COSTA } from '../data/site';
+
+import sfeerVlaggetjes from '../assets/sfeer/sfeer-vlaggetjes.jpg';
+import sfeerHanden from '../assets/sfeer/sfeer-handen-omhoog.jpg';
+import sfeerVolleZaak from '../assets/sfeer/sfeer-volle-zaak.jpg';
+import ruimteLichtshow from '../assets/ruimte/ruimte-overzicht-lichtshow.jpg';
+import ruimteEigenBar from '../assets/ruimte/ruimte-eigen-bar.jpg';
+import ruimteDjBooth from '../assets/ruimte/ruimte-dj-booth.jpg';
+
+// Impressie-grid (ronde 3, §5): max 6 beelden — 3 sfeer + 3 besloten ruimte
+const impressie = [
+  { img: sfeerHanden, alt: 'Volle zaal met handen in de lucht bij Café Costa' },
+  { img: ruimteLichtshow, alt: 'De besloten ruimte van Café Costa met lichtshow' },
+  { img: sfeerVlaggetjes, alt: 'Feest onder de vlaggetjes bij Café Costa' },
+  { img: ruimteEigenBar, alt: 'De eigen bar van de besloten ruimte van Café Costa' },
+  { img: sfeerVolleZaak, alt: 'Stampvolle zaak bij Café Costa' },
+  { img: ruimteDjBooth, alt: 'De DJ-booth in de besloten ruimte van Café Costa' },
+];
 ---
 
 <Base
@@ -24,10 +43,11 @@ import Base from '../layouts/Base.astro';
         goede ideeën.
       </p>
       <p>
-        Ruim twintig jaar later staat Costa er nog steeds — midden in de langste uitgaansstraat van de Benelux, tussen
-        vijftig concurrenten die allemaal om dezelfde avond vechten. Dat je die strijd twintig jaar volhoudt, is geen
-        geluk. Dat is elke week opnieuw de lat hoger leggen: de beste feest-DJ's van het land, artiesten op de bar,
-        confettikanonnen en een zaal waar het altijd zomer is — ook als het buiten november regent.
+        {JAREN_COSTA} jaar later staat Costa er nog steeds — midden in de langste uitgaansstraat van de Benelux,
+        tussen vijftig concurrenten die allemaal om dezelfde avond vechten. Dat je die strijd {JAREN_COSTA} jaar
+        volhoudt, is geen geluk. Dat is elke week opnieuw de lat hoger leggen: de beste feest-DJ's van het land,
+        artiesten op de bar, confettikanonnen en een zaal waar het altijd zomer is — ook als het buiten november
+        regent.
       </p>
       <p>
         Drie keer werd Costa uitgeroepen tot Beste Feestcafé van Nederland. Mooi voor aan de muur. Maar wij spelen niet
@@ -64,6 +84,26 @@ import Base from '../layouts/Base.astro';
           Foto volgt: Gert-Jan &amp; Mitch, samen in de zaak
         </p>
       </div>
+    </div>
+  </section>
+
+  {/* IMPRESSIE — compact fotogrid (ronde 3, §5).
+      TODO: Impressie-banner.jpg als sectiekop zodra het bestand geleverd is. */}
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+    <h2 class="display text-3xl text-white sm:text-4xl">Impressie</h2>
+    <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+      {
+        impressie.map((f) => (
+          <Image
+            src={f.img}
+            alt={f.alt}
+            widths={[360, 640, 960]}
+            sizes="(min-width: 640px) 30vw, 45vw"
+            loading="lazy"
+            class="aspect-[4/3] w-full rounded-xl object-cover"
+          />
+        ))
+      }
     </div>
   </section>
 
