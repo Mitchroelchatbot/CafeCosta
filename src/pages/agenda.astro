@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import BannerHeader from '../components/BannerHeader.astro';
 import dezeWeek from '../data/deze-week.json';
@@ -7,6 +7,12 @@ import specialsData from '../data/specials.json';
 import { SITE } from '../data/site';
 import sfeerVolleZaak from '../assets/sfeer/sfeer-volle-zaak.jpg';
 import psvPoster from '../assets/psv-matchday.jpg';
+import posterGameNights from '../assets/dagposters/game-nights.jpg';
+import posterStelz from '../assets/dagposters/stelz-donderdag.webp';
+
+// Grote versies voor de lightbox
+const gameNightsGroot = await getImage({ src: posterGameNights, width: 1600, format: 'webp' });
+const stelzGroot = await getImage({ src: posterStelz, width: 1080, format: 'webp' });
 
 const dagNamen: Record<string, string> = {
   wo: 'Woensdag',
@@ -75,7 +81,8 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
       {dezeWeek.poster && (
         <button
           type="button"
-          data-poster-open
+          data-lightbox-src={dezeWeek.poster}
+          data-lightbox-alt={dezeWeek.posterAlt}
           class="group relative block cursor-zoom-in lg:col-span-2"
           aria-label="Vergroot de weekposter"
         >
@@ -118,32 +125,26 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
     </div>
   </section>
 
-  {/* Lightbox voor de weekposter — vergroot op de site, weg te klikken */}
-  {dezeWeek.poster && (
-    <div
-      id="poster-lightbox"
-      class="fixed inset-0 z-50 hidden items-center justify-center bg-night/90 p-4 backdrop-blur-sm sm:p-8"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Weekprogramma van Café Costa, vergroot"
+  {/* Lightbox voor week- en dagposters — vergroot op de site, weg te klikken */}
+  <div
+    id="poster-lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-night/90 p-4 backdrop-blur-sm sm:p-8"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Poster van Café Costa, vergroot"
+  >
+    <button
+      type="button"
+      data-poster-close
+      class="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-night-soft text-cream transition-colors hover:bg-magenta focus-visible:outline-4 focus-visible:outline-sun sm:right-6 sm:top-6"
+      aria-label="Sluiten"
     >
-      <button
-        type="button"
-        data-poster-close
-        class="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-night-soft text-cream transition-colors hover:bg-magenta focus-visible:outline-4 focus-visible:outline-sun sm:right-6 sm:top-6"
-        aria-label="Sluiten"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-          <path d="M6 6l12 12M18 6L6 18"></path>
-        </svg>
-      </button>
-      <img
-        src={dezeWeek.poster}
-        alt={dezeWeek.posterAlt}
-        class="max-h-full w-auto max-w-full rounded-xl shadow-2xl"
-      />
-    </div>
-  )}
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+    <img id="poster-lightbox-image" src="" alt="" class="max-h-full w-auto max-w-full rounded-xl shadow-2xl" />
+  </div>
 
   {/* SECTIE 2 — HET VASTE WEEKPROGRAMMA */}
   <section class="border-y border-night-line bg-night-soft">
@@ -156,28 +157,66 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
         entertainment en een zaal die om 01:00 nog net zo vol staat als om 23:00. En op zondag? Dan kijken we PSV.
       </p>
 
-      {/*
-        TODO: per dag een LIGGENDE (16:9) dagposter toevoegen zodra beschikbaar — nu tijdelijk zonder beeld.
-        Alleen de Game Nights-poster bestaat al (liggende variant); voor do/vr/za moeten ze nog gemaakt worden.
-        Staande posters zijn voor Instagram, niet voor de site.
-      */}
+      {/* TODO: liggende (16:9) dagposters voor vrijdag/zaterdag zodra beschikbaar — wo en do hebben er al een. */}
       <div class="mt-12 space-y-6">
         <article class="rounded-2xl border border-night-line bg-night p-8">
-          <h3 class="display text-xl text-sun">Woensdag — Costa's Game Nights</h3>
-          <p class="mt-4 max-w-3xl text-cream/85">
-            Midden in de week, gratis meespelen: darts, beerpong, XXL Jenga, de borrelkrokodil en een stapel bord- en
-            kaartspellen. Verlies je? Dan trakteer jij. Win je? Dan ook eigenlijk wel.
-          </p>
-          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 19:00 · tot 02:00</p>
+          <div class="grid gap-6 lg:grid-cols-[1fr_15rem] lg:items-center">
+            <div>
+              <h3 class="display text-xl text-sun">Woensdag — Costa's Game Nights</h3>
+              <p class="mt-4 max-w-3xl text-cream/85">
+                Midden in de week, gratis meespelen: darts, beerpong, XXL Jenga, de borrelkrokodil en een stapel bord-
+                en kaartspellen. Verlies je? Dan trakteer jij. Win je? Dan ook eigenlijk wel.
+              </p>
+              <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 19:00 · tot 02:00</p>
+            </div>
+            <button
+              type="button"
+              data-lightbox-src={gameNightsGroot.src}
+              data-lightbox-alt="Poster: Cafe Costa's Game Nights, elke woensdagavond"
+              class="ruimte-foto group relative block w-full max-w-60 cursor-zoom-in overflow-hidden rounded-xl justify-self-start lg:justify-self-end"
+              aria-label="Vergroot de Game Nights-poster"
+            >
+              <Image
+                src={posterGameNights}
+                alt="Poster: Cafe Costa's Game Nights, elke woensdagavond"
+                widths={[240, 480, 960]}
+                sizes="240px"
+                loading="lazy"
+                class="aspect-video w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
+            </button>
+          </div>
         </article>
 
         <article class="rounded-2xl border border-night-line bg-night p-8">
-          <h3 class="display text-xl text-magenta-hot">Donderdag — Studentendonderdag</h3>
-          <p class="mt-4 max-w-3xl text-cream/85">
-            De kick-off van je weekend. Wisselende acties, wisselende DJ's, en één constante: donderdag bij Costa voelt
-            nooit als een doordeweekse dag. Welke actie er deze week loopt? Die staat bovenaan deze pagina.
-          </p>
-          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 19:00 · tot 02:00</p>
+          <div class="grid gap-6 lg:grid-cols-[1fr_10rem] lg:items-center">
+            <div>
+              <h3 class="display text-xl text-magenta-hot">Donderdag — Studentendonderdag</h3>
+              <p class="mt-4 max-w-3xl text-cream/85">
+                De kick-off van je weekend. Wisselende acties, wisselende DJ's, en één constante: donderdag bij Costa
+                voelt nooit als een doordeweekse dag. Welke actie er deze week loopt? Die staat bovenaan deze pagina.
+              </p>
+              <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 19:00 · tot 02:00</p>
+            </div>
+            <button
+              type="button"
+              data-lightbox-src={stelzGroot.src}
+              data-lightbox-alt="Poster: Costa op Stëlz'n — 3 Stëlz voor € 10 op donderdagavond"
+              class="ruimte-foto group relative block w-full max-w-36 cursor-zoom-in overflow-hidden rounded-xl justify-self-start lg:justify-self-end"
+              aria-label="Vergroot de donderdag-actieposter"
+            >
+              <Image
+                src={posterStelz}
+                alt="Poster: Costa op Stëlz'n — 3 Stëlz voor € 10 op donderdagavond"
+                widths={[160, 320, 640]}
+                sizes="160px"
+                loading="lazy"
+                class="aspect-[4/5] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
+            </button>
+          </div>
         </article>
 
         <article class="rounded-2xl border border-night-line bg-night p-8">
@@ -272,15 +311,18 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
 </Base>
 
 <script>
-  // Lightbox voor de weekposter: openen bij klik, sluiten via kruisje,
-  // klik naast de poster, of Escape.
+  // Lightbox voor week- en dagposters: openen bij klik op elke knop met
+  // data-lightbox-src; sluiten via kruisje, klik naast de poster, of Escape.
   const box = document.getElementById('poster-lightbox');
-  if (box) {
-    const openers = document.querySelectorAll<HTMLButtonElement>('[data-poster-open]');
+  const imgEl = document.getElementById('poster-lightbox-image') as HTMLImageElement | null;
+  if (box && imgEl) {
+    const openers = document.querySelectorAll<HTMLButtonElement>('[data-lightbox-src]');
     const closeBtn = box.querySelector<HTMLButtonElement>('[data-poster-close]');
     let lastFocused: HTMLElement | null = null;
 
-    const open = () => {
+    const open = (src: string, alt: string) => {
+      imgEl.src = src;
+      imgEl.alt = alt;
       lastFocused = document.activeElement as HTMLElement;
       box.classList.remove('hidden');
       box.classList.add('flex');
@@ -294,7 +336,9 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
       lastFocused?.focus();
     };
 
-    openers.forEach((btn) => btn.addEventListener('click', open));
+    openers.forEach((btn) =>
+      btn.addEventListener('click', () => open(btn.dataset.lightboxSrc ?? '', btn.dataset.lightboxAlt ?? ''))
+    );
     closeBtn?.addEventListener('click', close);
     // Klik op de achtergrond (niet op de poster zelf) sluit
     box.addEventListener('click', (e) => {

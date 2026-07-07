@@ -385,28 +385,6 @@ const faq = [
   <script type="application/json" id="gallery-data" is:inline set:html={JSON.stringify(gallerySrcs)} />
 </Base>
 
-<style>
-  .foto-badge {
-    position: absolute;
-    right: 0.6rem;
-    bottom: 0.6rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2rem;
-    width: 2rem;
-    border-radius: 9999px;
-    background: color-mix(in srgb, var(--color-night) 75%, transparent);
-    color: var(--color-cream);
-    backdrop-filter: blur(4px);
-    transition: background-color 150ms;
-    pointer-events: none;
-  }
-  .ruimte-foto:hover .foto-badge {
-    background: var(--color-magenta);
-  }
-</style>
-
 <script>
   // Boek-knoppen vullen alvast de juiste keuze in het formulier in
   const select = document.getElementById('wat') as HTMLSelectElement | null;

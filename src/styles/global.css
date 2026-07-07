@@ -65,6 +65,27 @@ body {
   @apply mb-1.5 block text-sm font-bold uppercase tracking-wide text-cream/80;
 }
 
+/* Zoom-badge op klikbare foto's/posters */
+.foto-badge {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--color-night) 75%, transparent);
+  color: var(--color-cream);
+  backdrop-filter: blur(4px);
+  transition: background-color 150ms;
+  pointer-events: none;
+}
+.ruimte-foto:hover .foto-badge {
+  background: var(--color-magenta);
+}
+
 /* ── Banner-stijl (ronde 3): herbouwd uit de aangeleverde banners ── */
 
 /* Diepdonkere paars-magenta gradiënt: hoeken vrijwel zwart, midden dieppaars/magenta */
