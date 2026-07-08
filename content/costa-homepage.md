@@ -13,9 +13,11 @@
 
 ## SECTIE 1 — HERO (volledig scherm, videoloop als achtergrond)
 
-**Kop:** HET IS ALTIJD ZOMER BIJ COSTA
+**Kop:** HET FEESTCAFÉ IN ZOMERSE SFEREN
 
-**Subkop:** Sinds 2002 de zomerse escalatie van het Stratumseind. Confettikanonnen, DJ's uit onze vaste poule van acht en een team van 50 man met één opdracht: jouw beste avond van het jaar.
+**Subkop:** Sinds 2002 de zomerse hotspot van het Stratumseind, het gehele jaar door. Confettikanonnen, de beste feest-DJ's en een groot team met één opdracht: jouw beste avond, het hele jaar door.
+
+*(Gewijzigd op verzoek van de eigenaar, juli 2026 — verving "Het is altijd zomer bij Costa".)*
 
 *(Regel voor de bouwer: als er ergens een aantal jaren wordt genoemd, wordt dat ALTIJD berekend in de code — huidig jaar min 2002 — en nooit als vast getal in de tekst gezet. Vaste jaartallen verouderen; zo stond er drie jaar lang "21 jaar" op de oude site.)*
 
