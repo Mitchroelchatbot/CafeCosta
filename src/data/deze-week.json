@@ -14,13 +14,13 @@
     "De site is de bron, Instagram is de megafoon."
   ],
   "poster": "/deze-week/programma.jpg",
-  "posterAlt": "Weekprogramma van Café Costa: woensdag Game Nights, donderdag Rocket Shot Mania met DJ Mitch Official, vrijdag Guilty Pleasure met DJ Mikey, zaterdag Zwoele Zomernachten met Mister Costa. Elke dag open vanaf 19:00.",
-  "weekLabel": "wo 8 t/m za 11 juli",
+  "posterAlt": "Weekprogramma van Café Costa: woensdag Costa's Game Night met 4 bier voor € 10, donderdag Costa op Stëlz'n met DJ Mitch Official en 3 Stëlz voor € 10, vrijdag Friday Night Out met DJ Ian Zwaardski, zaterdag XXL Saturday met Mister Costa. Elke dag open vanaf 19:00.",
+  "weekLabel": "wo 1 t/m za 4 juli",
   "dagen": {
-    "wo": "Costa's Game Nights — 4 bier voor € 10. Deuren open 19:00",
-    "do": "Rocket Shot Mania met DJ Mitch Official — 10 shots € 10. Deuren open 19:00",
-    "vr": "Guilty Pleasure Friday met DJ Mikey. Deuren open 19:00",
-    "za": "Zwoele Zomernachten met Mister Costa. Deuren open 19:00",
+    "wo": "Costa's Game Night — actie: 4 bier € 10. Deuren open 19:00",
+    "do": "Costa op Stëlz'n met DJ Mitch Official — 3 Stëlz € 10. Deuren open 19:00",
+    "vr": "\"Friday Night Out\" met DJ Ian Zwaardski. Deuren open 19:00",
+    "za": "XXL Saturday met Mister Costa. Deuren open 19:00",
     "zo": ""
   }
 }
