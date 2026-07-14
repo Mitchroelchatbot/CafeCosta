@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import WeekPopup from '../components/WeekPopup.astro';
 import { SITE } from '../data/site';
 
 interface Props {
@@ -74,5 +75,7 @@ const localBusiness = {
       <slot />
     </main>
     <Footer />
+    {/* Weekprogramma-popup: niet op /agenda (staat daar al) en niet op de bevestigingspagina's */}
+    {!['/agenda', '/bedankt', '/gesolliciteerd'].includes(Astro.url.pathname.replace(/\/$/, '')) && <WeekPopup />}
   </body>
 </html>
