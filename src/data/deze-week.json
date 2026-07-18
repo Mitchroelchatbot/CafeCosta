@@ -14,13 +14,13 @@
     "De site is de bron, Instagram is de megafoon."
   ],
   "poster": "/deze-week/programma.jpg",
-  "posterAlt": "Weekprogramma van Café Costa: woensdag Costa's Game Night met 4 bier voor € 10, donderdag Costa op Stëlz'n met DJ Mitch Official en 3 Stëlz voor € 10, vrijdag Friday Night Out met DJ Ian Zwaardski, zaterdag XXL Saturday met Mister Costa. Elke dag open vanaf 19:00.",
-  "weekLabel": "wo 1 t/m za 4 juli",
+  "posterAlt": "Weekprogramma van Café Costa: donderdag Tijdmachine met Mister Costa, vrijdag Flügel Friday met DJ Finn (actie: doos Flügel € 50), zaterdag Totale Escalatie met DJ Davey Beijer, zondag de WK-finale Spanje–Argentinië om 21:00 live op groot scherm (open 18:00).",
+  "weekLabel": "do 16 t/m zo 19 juli",
   "dagen": {
-    "wo": "Costa's Game Night — actie: 4 bier € 10. Deuren open 19:00",
-    "do": "Costa op Stëlz'n met DJ Mitch Official — 3 Stëlz € 10. Deuren open 19:00",
-    "vr": "\"Friday Night Out\" met DJ Ian Zwaardski. Deuren open 19:00",
-    "za": "XXL Saturday met Mister Costa. Deuren open 19:00",
-    "zo": ""
+    "wo": "",
+    "do": "Tijdmachine met Mister Costa. Deuren open 19:00",
+    "vr": "Flügel Friday met DJ Finn — actie: doos Flügel € 50. Deuren open 19:00",
+    "za": "\"Totale Escalatie\" met DJ Davey Beijer. Deuren open 19:00",
+    "zo": "WK-finale: Spanje – Argentinië, 21:00 live op groot scherm. Open vanaf 18:00!"
   }
 }
