@@ -14,13 +14,13 @@
     "De site is de bron, Instagram is de megafoon."
   ],
   "poster": "/deze-week/programma.jpg",
-  "posterAlt": "Weekprogramma van Café Costa: donderdag Tijdmachine met Mister Costa, vrijdag Flügel Friday met DJ Finn (actie: doos Flügel € 50), zaterdag Totale Escalatie met DJ Davey Beijer, zondag de WK-finale Spanje–Argentinië om 21:00 live op groot scherm (open 18:00).",
-  "weekLabel": "do 16 t/m zo 19 juli",
+  "posterAlt": "Weekprogramma van Café Costa: woensdag Game Nights met hele avond 4 bier voor € 10, donderdag Costa op Stëlz'n met Jordy Graat en 3 Stëlz voor € 10, vrijdag Park Hilaria After Party met DJ Mitch Official, zaterdag Lakedance After Party met Mister Costa en PSV–Fortuna (aftrap 20:00), open vanaf 16:00.",
+  "weekLabel": "wo 5 t/m za 8 augustus",
   "dagen": {
-    "wo": "",
-    "do": "Tijdmachine met Mister Costa. Deuren open 19:00",
-    "vr": "Flügel Friday met DJ Finn — actie: doos Flügel € 50. Deuren open 19:00",
-    "za": "\"Totale Escalatie\" met DJ Davey Beijer. Deuren open 19:00",
-    "zo": "WK-finale: Spanje – Argentinië, 21:00 live op groot scherm. Open vanaf 18:00!"
+    "wo": "Costa's Game Nights — hele avond 4 bier € 10. Open vanaf 19:00",
+    "do": "Costa op Stëlz'n met Jordy Graat — actie: 3 Stëlz € 10. Open vanaf 19:00",
+    "vr": "Park Hilaria After Party met DJ Mitch Official. Open vanaf 19:00",
+    "za": "Lakedance After Party met Mister Costa + PSV – Fortuna op groot scherm (aftrap 20:00). Open vanaf 16:00",
+    "zo": ""
   }
 }
