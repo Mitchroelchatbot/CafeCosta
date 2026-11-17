@@ -1,7 +1,6 @@
 ---
 import { Image, getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import BannerHeader from '../components/BannerHeader.astro';
 import dezeWeek from '../data/deze-week.json';
 import specialsData from '../data/specials.json';
 import { SITE } from '../data/site';
@@ -64,71 +63,67 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
 >
   {eventSchema && <script slot="head" type="application/ld+json" set:html={JSON.stringify(eventSchema)} />}
 
-  {/* Paginaheader in banner-stijl: échte H1, geen ingebakken tekst (ronde 3, §2) */}
-  <BannerHeader title="Agenda" tag="h1" variant="agenda" class="pt-16 sm:pt-20" />
+  {/* PAGINAKOP */}
+  <section class="bg-ink pt-16">
+    <div class="wrap pb-6 pt-14 sm:pt-20">
+      <p class="eyebrow text-paper/70"><span class="text-magenta-hot">Agenda</span> — Wo t/m za + PSV-zondag</p>
+      <h1 class="display mt-2 text-[clamp(5rem,24vw,22rem)] leading-[0.82] text-paper">Agenda</h1>
+    </div>
+  </section>
 
   {/* SECTIE 1 — DEZE WEEK (het enige wekelijkse blok, bron: src/data/deze-week.json).
       Poster wekelijks vervangen: public/deze-week/programma.jpg (zelfde bestandsnaam). */}
-  <section class="mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
-    <h2 class="display text-3xl text-white sm:text-5xl">
-      Deze week <span class="text-sun">bij Costa</span>
-    </h2>
-    {dezeWeek.weekLabel && dezeWeek.weekLabel !== 'deze week' && (
-      <p class="mt-3 text-lg font-bold uppercase tracking-wide text-cream/60">{dezeWeek.weekLabel}</p>
-    )}
+  <section class="bg-ink">
+    <div class="wrap border-t border-white/20 pb-20 pt-10 sm:pb-28">
+      <div class="flex flex-wrap items-baseline justify-between gap-4">
+        <h2 class="display display-lg">Deze week <span class="text-magenta-hot">bij Costa</span></h2>
+        {dezeWeek.weekLabel && dezeWeek.weekLabel !== 'deze week' && (
+          <p class="eyebrow text-paper/60">{dezeWeek.weekLabel}</p>
+        )}
+      </div>
 
-    <div class="mt-10 grid gap-8 lg:grid-cols-5 lg:items-start">
-      {dezeWeek.poster && (
-        <button
-          type="button"
-          data-lightbox-src={dezeWeek.poster}
-          data-lightbox-alt={dezeWeek.posterAlt}
-          class="group relative block cursor-zoom-in lg:col-span-2"
-          aria-label="Vergroot de weekposter"
-        >
-          <img
-            src={dezeWeek.poster}
-            alt={dezeWeek.posterAlt}
-            width="1080"
-            height="1350"
-            fetchpriority="high"
-            class="w-full rounded-2xl border border-night-line shadow-xl transition-transform group-hover:scale-[1.01]"
-          />
-          <span
-            class="pointer-events-none absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-night/80 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-cream backdrop-blur-sm transition-opacity group-hover:bg-magenta"
-            aria-hidden="true"
+      <div class="mt-10 grid gap-10 lg:grid-cols-12 lg:items-start">
+        {dezeWeek.poster && (
+          <button
+            type="button"
+            data-lightbox-src={dezeWeek.poster}
+            data-lightbox-alt={dezeWeek.posterAlt}
+            class="ruimte-foto group relative block cursor-zoom-in lg:col-span-5"
+            aria-label="Vergroot de weekposter"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="7"></circle>
-              <path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path>
-            </svg>
-            Vergroot
-          </span>
-        </button>
-      )}
+            <img
+              src={dezeWeek.poster}
+              alt={dezeWeek.posterAlt}
+              width="1080"
+              height="1350"
+              fetchpriority="high"
+              class="w-full"
+            />
+            <span class="foto-badge !h-auto !w-auto gap-2 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.2em]" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg>
+              Vergroot
+            </span>
+          </button>
+        )}
 
-      {weekRegels.length > 0 && (
-        <ul
-          class:list={[
-            'divide-y divide-night-line overflow-hidden rounded-2xl border border-night-line bg-night-soft',
-            dezeWeek.poster ? 'lg:col-span-3' : 'lg:col-span-5',
-          ]}
-        >
-          {weekRegels.map((r) => (
-            <li class="flex flex-col gap-1 px-6 py-5 sm:flex-row sm:items-baseline sm:gap-6">
-              <span class="display w-28 shrink-0 text-sm text-magenta-hot">{r.dag}</span>
-              <span class="text-lg text-cream/90">{r.tekst}</span>
-            </li>
-          ))}
-        </ul>
-      )}
+        {weekRegels.length > 0 && (
+          <ul class:list={['border-t border-white/20', dezeWeek.poster ? 'lg:col-span-6 lg:col-start-7' : 'lg:col-span-12']}>
+            {weekRegels.map((r) => (
+              <li class="grid gap-1 border-b border-white/20 py-5 sm:grid-cols-[9rem_1fr] sm:gap-6">
+                <span class="display text-3xl text-magenta-hot">{r.dag}</span>
+                <span class="text-lg text-paper/90 sm:pt-1.5">{r.tekst}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   </section>
 
   {/* Lightbox voor week- en dagposters — vergroot op de site, weg te klikken */}
   <div
     id="poster-lightbox"
-    class="fixed inset-0 z-50 hidden items-center justify-center bg-night/90 p-4 backdrop-blur-sm sm:p-8"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/95 p-4 sm:p-8"
     role="dialog"
     aria-modal="true"
     aria-label="Poster van Café Costa, vergroot"
@@ -136,135 +131,141 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
     <button
       type="button"
       data-poster-close
-      class="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-night-soft text-cream transition-colors hover:bg-magenta focus-visible:outline-4 focus-visible:outline-sun sm:right-6 sm:top-6"
+      class="absolute right-4 top-4 flex h-11 w-11 items-center justify-center bg-paper text-ink transition-colors hover:bg-magenta hover:text-white focus-visible:outline-3 focus-visible:outline-magenta-hot sm:right-6 sm:top-6"
       aria-label="Sluiten"
     >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square">
         <path d="M6 6l12 12M18 6L6 18"></path>
       </svg>
     </button>
-    <img id="poster-lightbox-image" src="" alt="" class="max-h-full w-auto max-w-full rounded-xl shadow-2xl" />
+    <img id="poster-lightbox-image" src="" alt="" class="max-h-full w-auto max-w-full" />
   </div>
 
   {/* SECTIE 2 — HET VASTE WEEKPROGRAMMA */}
-  <section class="border-y border-night-line bg-night-soft">
-    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-      <h2 class="display max-w-3xl text-3xl text-white sm:text-5xl">
-        Elke week. <span class="text-teal">Elke avond anders.</span>
-      </h2>
-      <p class="mt-6 max-w-2xl text-lg text-cream/85">
-        Vier vaste avonden, één vast recept: elke week een andere line-up uit onze vaste poule van acht feest-DJ's,
-        entertainment en een zaal die om 01:00 nog net zo vol staat als om 23:00. En op zondag? Dan kijken we PSV.
-      </p>
+  <section class="bg-paper text-ink">
+    <div class="wrap py-20 sm:py-28">
+      <div class="grid gap-8 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          <p class="eyebrow"><span class="text-magenta">Vast programma</span></p>
+          <h2 class="display display-xl mt-5">Elke week. <span class="text-magenta">Elke avond anders.</span></h2>
+        </div>
+        <p class="text-lg text-ink/75 lg:col-span-5 lg:self-end">
+          Vier vaste avonden, één vast recept: elke week een andere line-up uit onze vaste poule van acht feest-DJ's,
+          entertainment en een zaal die om 01:00 nog net zo vol staat als om 23:00. En op zondag? Dan kijken we PSV.
+        </p>
+      </div>
 
       {/* TODO: liggende (16:9) dagposters voor vrijdag/zaterdag zodra beschikbaar — wo en do hebben er al een. */}
-      <div class="mt-12 space-y-6">
-        <article class="rounded-2xl border border-night-line bg-night p-8">
-          <div class="grid gap-6 lg:grid-cols-[1fr_15rem] lg:items-center">
-            <div>
-              <h3 class="display text-xl text-sun">Woensdag — Costa's Game Nights</h3>
-              <p class="mt-4 max-w-3xl text-cream/85">
-                Midden in de week, gratis meespelen: darts, beerpong, XXL Jenga, de borrelkrokodil en een stapel bord-
-                en kaartspellen. Verlies je? Dan trakteer jij. Win je? Dan ook eigenlijk wel.
-              </p>
-              <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 19:00 · tot 02:00</p>
-            </div>
-            <button
-              type="button"
-              data-lightbox-src={gameNightsGroot.src}
-              data-lightbox-alt="Poster: Cafe Costa's Game Nights, elke woensdagavond"
-              class="ruimte-foto group relative block w-full max-w-60 cursor-zoom-in overflow-hidden rounded-xl justify-self-start lg:justify-self-end"
-              aria-label="Vergroot de Game Nights-poster"
-            >
-              <Image
-                src={posterGameNights}
-                alt="Poster: Cafe Costa's Game Nights, elke woensdagavond"
-                widths={[240, 480, 960]}
-                sizes="240px"
-                loading="lazy"
-                class="aspect-video w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
-            </button>
+      <div class="mt-14 border-t-2 border-ink">
+        <article class="grid gap-6 border-b border-ink/20 py-10 lg:grid-cols-12">
+          <p class="display text-6xl text-magenta lg:col-span-2">Wo</p>
+          <div class="lg:col-span-6">
+            <h3 class="display display-md">Costa's Game Nights</h3>
+            <p class="mt-4 text-ink/75">
+              Midden in de week, gratis meespelen: darts, beerpong, XXL Jenga, de borrelkrokodil en een stapel bord-
+              en kaartspellen. Verlies je? Dan trakteer jij. Win je? Dan ook eigenlijk wel.
+            </p>
+            <p class="eyebrow mt-4 text-ink/55">Deuren open 19:00 · tot 02:00</p>
+          </div>
+          <button
+            type="button"
+            data-lightbox-src={gameNightsGroot.src}
+            data-lightbox-alt="Poster: Cafe Costa's Game Nights, elke woensdagavond"
+            class="ruimte-foto group relative block w-full max-w-72 cursor-zoom-in self-start overflow-hidden lg:col-span-4 lg:justify-self-end"
+            aria-label="Vergroot de Game Nights-poster"
+          >
+            <Image
+              src={posterGameNights}
+              alt="Poster: Cafe Costa's Game Nights, elke woensdagavond"
+              widths={[288, 576, 960]}
+              sizes="288px"
+              loading="lazy"
+              class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
+          </button>
+        </article>
+
+        <article class="grid gap-6 border-b border-ink/20 py-10 lg:grid-cols-12">
+          <p class="display text-6xl text-magenta lg:col-span-2">Do</p>
+          <div class="lg:col-span-6">
+            <h3 class="display display-md">Studentendonderdag</h3>
+            <p class="mt-4 text-ink/75">
+              De kick-off van je weekend. Wisselende acties, wisselende DJ's, en één constante: donderdag bij Costa
+              voelt nooit als een doordeweekse dag. Welke actie er deze week loopt? Die staat bovenaan deze pagina.
+            </p>
+            <p class="eyebrow mt-4 text-ink/55">Deuren open 19:00 · tot 02:00</p>
+          </div>
+          <button
+            type="button"
+            data-lightbox-src={stelzGroot.src}
+            data-lightbox-alt="Poster: Costa op Stëlz'n — 3 Stëlz voor € 10 op donderdagavond"
+            class="ruimte-foto group relative block w-full max-w-40 cursor-zoom-in self-start overflow-hidden lg:col-span-4 lg:justify-self-end"
+            aria-label="Vergroot de donderdag-actieposter"
+          >
+            <Image
+              src={posterStelz}
+              alt="Poster: Costa op Stëlz'n — 3 Stëlz voor € 10 op donderdagavond"
+              widths={[160, 320, 640]}
+              sizes="160px"
+              loading="lazy"
+              class="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
+          </button>
+        </article>
+
+        <article class="grid gap-6 border-b border-ink/20 py-10 lg:grid-cols-12">
+          <p class="display text-6xl text-magenta lg:col-span-2">Vr</p>
+          <div class="lg:col-span-6">
+            <h3 class="display display-md">De Ontlading</h3>
+            <p class="mt-4 text-ink/75">
+              De werkweek zit erop en dat gaat iemand merken. Feest-DJ's, entertainment aan de bar en een zaal die van
+              borrel naar escalatie schuift zonder dat je doorhebt wanneer het gebeurde.
+            </p>
+            <p class="eyebrow mt-4 text-ink/55">Deuren open 19:00 · tot 04:00</p>
           </div>
         </article>
 
-        <article class="rounded-2xl border border-night-line bg-night p-8">
-          <div class="grid gap-6 lg:grid-cols-[1fr_10rem] lg:items-center">
-            <div>
-              <h3 class="display text-xl text-magenta-hot">Donderdag — Studentendonderdag</h3>
-              <p class="mt-4 max-w-3xl text-cream/85">
-                De kick-off van je weekend. Wisselende acties, wisselende DJ's, en één constante: donderdag bij Costa
-                voelt nooit als een doordeweekse dag. Welke actie er deze week loopt? Die staat bovenaan deze pagina.
-              </p>
-              <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 19:00 · tot 02:00</p>
-            </div>
-            <button
-              type="button"
-              data-lightbox-src={stelzGroot.src}
-              data-lightbox-alt="Poster: Costa op Stëlz'n — 3 Stëlz voor € 10 op donderdagavond"
-              class="ruimte-foto group relative block w-full max-w-36 cursor-zoom-in overflow-hidden rounded-xl justify-self-start lg:justify-self-end"
-              aria-label="Vergroot de donderdag-actieposter"
-            >
-              <Image
-                src={posterStelz}
-                alt="Poster: Costa op Stëlz'n — 3 Stëlz voor € 10 op donderdagavond"
-                widths={[160, 320, 640]}
-                sizes="160px"
-                loading="lazy"
-                class="aspect-[4/5] w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <span class="foto-badge" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></span>
-            </button>
+        <article class="grid gap-6 border-b border-ink/20 py-10 lg:grid-cols-12">
+          <p class="display text-6xl text-magenta lg:col-span-2">Za</p>
+          <div class="lg:col-span-6">
+            <h3 class="display display-md">Het Hoofdpodium</h3>
+            <p class="mt-4 text-ink/75">
+              De grootste avond van de week. De bekendste feest-DJ's van het land, confettikanonnen en een vloer die
+              tot sluit vol staat. Dit is de avond waarvoor mensen uit het hele land naar het Stratumseind komen.
+            </p>
+            <p class="eyebrow mt-4 text-ink/55">Deuren open 17:00 · tot 04:00</p>
           </div>
-        </article>
-
-        <article class="rounded-2xl border border-night-line bg-night p-8">
-          <h3 class="display text-xl text-teal">Vrijdag — De Ontlading</h3>
-          <p class="mt-4 max-w-3xl text-cream/85">
-            De werkweek zit erop en dat gaat iemand merken. Feest-DJ's, entertainment aan de bar en een zaal die van
-            borrel naar escalatie schuift zonder dat je doorhebt wanneer het gebeurde.
-          </p>
-          <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 19:00 · tot 04:00</p>
-        </article>
-
-        <article class="overflow-hidden rounded-2xl border border-night-line bg-night">
           <Image
             src={sfeerVolleZaak}
             alt="Stampvolle zaal bij Café Costa op zaterdagavond"
             widths={[480, 768, 1200]}
-            sizes="(min-width: 1024px) 60vw, 100vw"
+            sizes="(min-width: 1024px) 30vw, 100vw"
             loading="lazy"
-            class="aspect-[21/9] w-full object-cover"
+            class="aspect-[4/3] w-full object-cover lg:col-span-4"
           />
-          <div class="p-8">
-            <h3 class="display text-xl text-sun">Zaterdag — Het Hoofdpodium</h3>
-            <p class="mt-4 max-w-3xl text-cream/85">
-              De grootste avond van de week. De bekendste feest-DJ's van het land, confettikanonnen en een vloer die
-              tot sluit vol staat. Dit is de avond waarvoor mensen uit het hele land naar het Stratumseind komen.
-            </p>
-            <p class="mt-3 text-sm font-bold uppercase tracking-wide text-cream/60">Deuren open 17:00 · tot 04:00</p>
-          </div>
         </article>
 
-        <article class="rounded-2xl border border-night-line bg-night p-8">
-          <h3 class="display text-xl text-magenta-hot">Zondag — PSV-zondag</h3>
-          <div class="mt-4 grid gap-8 lg:grid-cols-5 lg:items-center">
-            <p class="max-w-3xl text-cream/85 lg:col-span-3">
+        <article class="grid gap-6 py-10 lg:grid-cols-12">
+          <p class="display text-6xl text-magenta lg:col-span-2">Zo</p>
+          <div class="lg:col-span-6">
+            <h3 class="display display-md">PSV-zondag</h3>
+            <p class="mt-4 text-ink/75">
               Speelt PSV? Dan is Costa open. Elke wedstrijd op groot scherm, met de sfeer die je van ons gewend bent —
               en na het laatste fluitsignaal gaat het feest gewoon door. Binnen op groot scherm én buiten op ons
               terras. Kampioensduels, topper of uitwedstrijd: jij kijkt hier.
             </p>
-            {/* MATCHDAY-poster als staande kaart naast de tekst (ronde 3, §6) */}
-            <Image
-              src={psvPoster}
-              alt="MATCHDAY-poster: kijk elke PSV-wedstrijd bij Café Costa, live op groot scherm, binnen en buiten op het terras"
-              widths={[360, 640, 1080]}
-              sizes="(min-width: 1024px) 30vw, 100vw"
-              loading="lazy"
-              class="mx-auto w-full max-w-xs rounded-xl lg:col-span-2"
-            />
           </div>
+          {/* MATCHDAY-poster als staande kaart naast de tekst (ronde 3, §6) */}
+          <Image
+            src={psvPoster}
+            alt="MATCHDAY-poster: kijk elke PSV-wedstrijd bij Café Costa, live op groot scherm, binnen en buiten op het terras"
+            widths={[288, 576, 1080]}
+            sizes="(min-width: 1024px) 288px, 100vw"
+            loading="lazy"
+            class="w-full max-w-72 lg:col-span-4 lg:justify-self-end"
+          />
         </article>
       </div>
     </div>
@@ -273,40 +274,44 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
   {/* SECTIE 3 — SPECIALS & EVENTS: geen aankomende specials = sectie onzichtbaar (bron: src/data/specials.json) */}
   {
     specials.length > 0 && (
-      <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <h2 class="display text-3xl text-white sm:text-5xl">Specials</h2>
-        <div class="mt-10 space-y-6">
-          {specials.map((s) => (
-            <article class="overflow-hidden rounded-2xl border border-night-line bg-night-soft">
-              {s.poster && (
-                <img src={s.poster} alt={`Poster: ${s.titel}`} loading="lazy" class="aspect-video w-full object-cover" />
-              )}
-              <div class="p-8">
-                <p class="text-sm font-bold uppercase tracking-wide text-sun">{datumFormat.format(new Date(s.datum))}</p>
-                <h3 class="display mt-2 text-xl text-white">{s.titel}</h3>
-                <p class="mt-4 max-w-3xl text-cream/85">{s.tekst}</p>
-                {s.ticketUrl && (
-                  <a href={s.ticketUrl} class="btn-primary mt-6" target="_blank" rel="noopener">
-                    Tickets
-                  </a>
+      <section class="bg-ink">
+        <div class="wrap py-20 sm:py-28">
+          <h2 class="display display-xl">Specials</h2>
+          <div class="mt-10 border-t border-white/20">
+            {specials.map((s) => (
+              <article class="grid gap-6 border-b border-white/20 py-10 lg:grid-cols-12">
+                {s.poster && (
+                  <img src={s.poster} alt={`Poster: ${s.titel}`} loading="lazy" class="aspect-video w-full object-cover lg:col-span-5" />
                 )}
-              </div>
-            </article>
-          ))}
+                <div class:list={[s.poster ? 'lg:col-span-6 lg:col-start-7' : 'lg:col-span-12']}>
+                  <p class="eyebrow text-magenta-hot">{datumFormat.format(new Date(s.datum))}</p>
+                  <h3 class="display display-md mt-3">{s.titel}</h3>
+                  <p class="mt-4 max-w-2xl text-paper/80">{s.tekst}</p>
+                  {s.ticketUrl && (
+                    <a href={s.ticketUrl} class="btn-primary mt-6" target="_blank" rel="noopener">
+                      Tickets
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     )
   }
 
   {/* SECTIE 4 — AFSLUITER */}
-  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-    <h2 class="display max-w-3xl text-3xl text-white sm:text-5xl">
-      Zeker weten dat je erbij bent<span class="text-magenta-hot">?</span>
-    </h2>
-    <p class="mt-6 max-w-2xl text-lg text-cream/85">
-      De leukste avonden zijn de drukste. Leg je plek vast met een VIP-tafel — dan hoef jij alleen nog te komen.
-    </p>
-    <a href="/groepen#vip-tafel" class="btn-primary mt-8">Boek een VIP-tafel</a>
+  <section class="bg-magenta text-white">
+    <div class="wrap grid gap-8 py-20 sm:py-28 lg:grid-cols-12 lg:items-end">
+      <h2 class="display display-xl lg:col-span-7">Zeker weten dat je erbij bent?</h2>
+      <div class="lg:col-span-5">
+        <p class="text-lg text-white/90">
+          De leukste avonden zijn de drukste. Leg je plek vast met een VIP-tafel — dan hoef jij alleen nog te komen.
+        </p>
+        <a href="/groepen#vip-tafel" class="btn-primary mt-8 !bg-ink hover:!bg-ink-2">Boek een VIP-tafel</a>
+      </div>
+    </div>
   </section>
 </Base>
 

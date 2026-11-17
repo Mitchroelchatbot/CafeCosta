@@ -9,63 +9,71 @@ const links = [
 const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
-<header class="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-night/80 backdrop-blur-md">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2.5 sm:px-6" aria-label="Hoofdmenu">
-    {/* Kaal woordmerk (zonder EINDHOVEN) in de header, conform ronde 3 §3; max ±56px hoog op mobiel */}
-    <a href="/" class="text-white transition-colors hover:text-magenta-hot" aria-label="Café Costa — home">
-      <Logo variant="kaal" class="h-11" />
+<header class="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-ink/85 backdrop-blur-md">
+  <nav class="wrap flex h-16 items-center justify-between gap-6" aria-label="Hoofdmenu">
+    <a href="/" class="text-paper transition-colors hover:text-magenta-hot" aria-label="Café Costa — home">
+      <Logo variant="kaal" class="h-9" />
     </a>
 
-    <div class="hidden items-center gap-6 md:flex">
+    <div class="hidden items-center gap-8 md:flex">
       {
         links.map((l) => (
           <a
             href={l.href}
             aria-current={current === l.href ? 'page' : undefined}
             class:list={[
-              'text-sm font-bold uppercase tracking-wide transition-colors hover:text-sun',
-              current === l.href ? 'text-sun' : 'text-cream/90',
+              'eyebrow border-b-2 py-1 transition-colors hover:text-paper',
+              current === l.href ? 'border-magenta-hot text-paper' : 'border-transparent text-paper/70',
             ]}
           >
             {l.label}
           </a>
         ))
       }
-      <a href="/groepen#aanvragen" class="btn-primary !px-6 !py-2.5 !text-sm">Zet je avond vast</a>
+      <a href="/groepen#aanvragen" class="btn-primary !px-5 !py-2.5 !text-xs">Zet je avond vast</a>
     </div>
 
     <button
       id="menu-toggle"
-      class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-cream md:hidden"
+      class="inline-flex h-11 w-11 items-center justify-center text-paper md:hidden"
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Menu openen"
     >
-      <svg id="icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      <svg id="icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+        <path d="M3 8h18M3 16h18"></path>
       </svg>
-      <svg id="icon-close" class="hidden" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-        <path d="M6 6l12 12M18 6L6 18"></path>
+      <svg id="icon-close" class="hidden" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19"></path>
       </svg>
     </button>
   </nav>
 
-  <div id="mobile-menu" class="hidden border-t border-white/10 bg-night px-4 pb-6 pt-2 md:hidden">
-    {
-      links.map((l) => (
-        <a
-          href={l.href}
-          aria-current={current === l.href ? 'page' : undefined}
-          class:list={[
-            'block border-b border-white/5 py-4 text-lg font-bold uppercase tracking-wide',
-            current === l.href ? 'text-sun' : 'text-cream',
-          ]}
-        >
-          {l.label}
-        </a>
-      ))
-    }
-    <a href="/groepen#aanvragen" class="btn-primary mt-5 w-full">Zet je avond vast</a>
+  {/* Mobiel: volledig scherm, enorme koppen */}
+  <div id="mobile-menu" class="hidden h-[calc(100svh-4rem)] flex-col justify-between bg-ink md:hidden">
+    <ol class="wrap pt-6">
+      {
+        links.map((l, i) => (
+          <li class="border-b border-white/15">
+            <a
+              href={l.href}
+              aria-current={current === l.href ? 'page' : undefined}
+              class:list={[
+                'flex items-baseline gap-4 py-4',
+                current === l.href ? 'text-magenta-hot' : 'text-paper',
+              ]}
+            >
+              <span class="eyebrow text-paper/50">0{i + 1}</span>
+              <span class="display text-5xl">{l.label}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+    <div class="wrap pb-8">
+      <a href="/groepen#aanvragen" class="btn-primary w-full">Zet je avond vast</a>
+      <p class="eyebrow mt-5 text-paper/50">Stratumseind 31 · Eindhoven</p>
+    </div>
   </div>
 </header>
 
@@ -74,11 +82,16 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
   const menu = document.getElementById('mobile-menu');
   const iconOpen = document.getElementById('icon-open');
   const iconClose = document.getElementById('icon-close');
-  toggle?.addEventListener('click', () => {
-    const open = menu?.classList.toggle('hidden') === false;
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+  const setOpen = (open: boolean) => {
+    menu?.classList.toggle('hidden', !open);
+    menu?.classList.toggle('flex', open);
+    toggle?.setAttribute('aria-expanded', String(open));
+    toggle?.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
     iconOpen?.classList.toggle('hidden', open);
     iconClose?.classList.toggle('hidden', !open);
-  });
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  toggle?.addEventListener('click', () => setOpen(menu?.classList.contains('hidden') ?? false));
+  // Een link in het menu kan naar een anker op dezelfde pagina wijzen: menu dan sluiten
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
 </script>

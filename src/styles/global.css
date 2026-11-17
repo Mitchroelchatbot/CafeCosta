@@ -1,84 +1,129 @@
-@import '@fontsource/archivo-black';
-@import '@fontsource/protest-strike';
+@import '@fontsource/anton';
 @import '@fontsource-variable/inter';
 @import 'tailwindcss';
 
+/* ── Huisstijl: festival-editorial ──
+   Zwart en gebroken wit in afwisselende secties, magenta als énige kleur.
+   Contrast: wit op --color-magenta = 5,0:1 (AA), --color-magenta-hot op zwart = 6,4:1. */
 @theme {
-  /* Huisstijl: donkere basis met de zomerse logokleuren als accenten.
-     Waarden benaderd van de ronde Costa-sticker (magenta/geel/groen).
-     TODO: exact samplen zodra costa-logo-web.png als bestand geleverd is. */
-  --color-night: #0b0b10;
-  --color-night-soft: #15151f;
-  --color-night-line: #26263a;
-  --color-magenta: #e7217f;
-  --color-magenta-hot: #ff5ba8;
-  --color-sun: #ffd500;
-  --color-teal: #2ec98a; /* fris logo-groen */
-  --color-cream: #f5f2ec;
+  --color-ink: #0a0a0a;
+  --color-ink-2: #151515;
+  --color-paper: #f2efe8;
+  --color-magenta: #d4146e;
+  --color-magenta-hot: #ff3d97;
+  --color-magenta-deep: #a50e55;
 
-  /* Banner-stijl (ronde 3): gesampled uit de aangeleverde banners */
-  --color-berry: #9c2063; /* magenta-kern van de gradiënt */
-  --color-grape: #4a1240; /* dieppaars */
-  --color-plum: #150811; /* bijna-zwarte hoeken */
+  /* Aliassen zodat de inhoud van oudere bestanden blijft kloppen */
+  --color-night: #0a0a0a;
+  --color-night-soft: #151515;
+  --color-night-line: #2a2a2a;
+  --color-cream: #f2efe8;
 
-  --font-display: 'Archivo Black', system-ui, sans-serif;
-  --font-banner: 'Protest Strike', 'Archivo Black', system-ui, sans-serif;
+  --font-display: 'Anton', 'Arial Narrow', Impact, sans-serif;
   --font-sans: 'Inter Variable', system-ui, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--color-night);
+  background-color: var(--color-ink);
 }
 
 body {
   font-family: var(--font-sans);
-  color: var(--color-cream);
-  background-color: var(--color-night);
+  color: var(--color-paper);
+  background-color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
 }
 
-/* Koppen: kapitalen, extra bold — zoals de contentdocumenten voorschrijven */
+::selection {
+  background: var(--color-magenta);
+  color: #fff;
+}
+
+/* Paginabreedte */
+.wrap {
+  @apply mx-auto w-full max-w-[90rem] px-5 sm:px-8 lg:px-12;
+}
+
+/* Koppen: Anton, kapitalen, strak op elkaar */
 .display {
   font-family: var(--font-display);
+  font-weight: 400;
   text-transform: uppercase;
-  line-height: 1.05;
-  letter-spacing: 0.01em;
+  line-height: 0.9;
+  letter-spacing: 0.005em;
   text-wrap: balance;
 }
-
-/* Primaire CTA: magenta, groot, duimbereikbaar op mobiel */
-.btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-full bg-magenta px-8 py-4 text-base font-extrabold uppercase tracking-wide text-white transition-colors duration-150 hover:bg-magenta-hot focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-sun;
+.display-hero {
+  font-size: clamp(3.25rem, 12vw, 11.5rem);
+  line-height: 0.86;
+}
+.display-xl {
+  font-size: clamp(2.75rem, 8.5vw, 8rem);
+}
+.display-lg {
+  font-size: clamp(2.25rem, 5.5vw, 5rem);
+}
+.display-md {
+  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+}
+.display-sm {
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  line-height: 1;
 }
 
-/* Secundaire CTA: outline */
+/* Kleine genummerde labels: "01 — Groepen & verhuur" */
+.eyebrow {
+  @apply text-[11px] font-semibold uppercase tracking-[0.22em] sm:text-xs;
+}
+
+/* Knoppen: rechthoekig, met pijl die meebeweegt */
+.btn-primary,
 .btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-cream/70 px-8 py-4 text-base font-extrabold uppercase tracking-wide text-cream transition-colors duration-150 hover:border-teal hover:text-teal focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-sun;
+  @apply inline-flex items-center justify-center gap-3 px-7 py-4 text-sm font-bold uppercase tracking-[0.14em] transition-colors duration-150 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-magenta-hot;
+}
+.btn-primary::after,
+.btn-secondary::after {
+  content: '→';
+  font-weight: 400;
+  transition: transform 150ms;
+}
+.btn-primary:hover::after,
+.btn-secondary:hover::after {
+  transform: translateX(4px);
+}
+.btn-primary {
+  @apply bg-magenta text-white hover:bg-magenta-deep;
+}
+.btn-secondary {
+  @apply border border-current hover:border-magenta hover:bg-magenta hover:text-white;
 }
 
+/* Formulieren staan altijd op een zwarte sectie */
 .input {
-  @apply w-full rounded-xl border border-night-line bg-night-soft px-4 py-3.5 text-base text-cream placeholder:text-cream/40 focus:border-magenta focus:outline-none;
+  @apply w-full border border-white/25 bg-transparent px-4 py-3.5 text-base text-paper placeholder:text-paper/40 focus:border-magenta-hot focus:outline-none;
+  color-scheme: dark;
 }
-
+.input option {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
 .label {
-  @apply mb-1.5 block text-sm font-bold uppercase tracking-wide text-cream/80;
+  @apply mb-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-paper/70;
 }
 
-/* Zoom-badge op klikbare foto's/posters */
+/* Klikbare foto's: zoom-badge rechtsonder */
 .foto-badge {
   position: absolute;
-  right: 0.6rem;
-  bottom: 0.6rem;
+  right: 0.5rem;
+  bottom: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 2rem;
   width: 2rem;
-  border-radius: 9999px;
-  background: color-mix(in srgb, var(--color-night) 75%, transparent);
-  color: var(--color-cream);
-  backdrop-filter: blur(4px);
+  background: var(--color-ink);
+  color: var(--color-paper);
   transition: background-color 150ms;
   pointer-events: none;
 }
@@ -86,45 +131,27 @@ body {
   background: var(--color-magenta);
 }
 
-/* ── Banner-stijl (ronde 3): herbouwd uit de aangeleverde banners ── */
-
-/* Diepdonkere paars-magenta gradiënt: hoeken vrijwel zwart, midden dieppaars/magenta */
-.banner-gradient {
-  background:
-    radial-gradient(110% 130% at 50% 45%, var(--color-berry) 0%, #6e1450 34%, var(--color-grape) 58%, var(--color-plum) 100%);
+/* Lichtkrant-band */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
 }
-
-/* Witte blocky kop met roze neongloed, zoals "AGENDA"/"IMPRESSIE" op de banners */
-.neon-title {
-  font-family: var(--font-banner);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #fff;
-  text-shadow:
-    0 0 6px rgba(255, 91, 168, 0.95),
-    0 0 18px #ff2e9d,
-    0 0 46px #e7217f,
-    0 0 90px rgba(231, 33, 127, 0.55);
+.marquee__track {
+  display: flex;
+  flex-shrink: 0;
+  animation: marquee 38s linear infinite;
 }
-
-/* Bladeren-crops uit de banners: uitfaden richting de sectieachtergrond */
-.leaf-fade-tl {
-  mask-image: radial-gradient(135% 135% at 0% 0%, black 35%, transparent 82%);
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
 }
-.leaf-fade-tr {
-  mask-image: radial-gradient(135% 135% at 100% 0%, black 35%, transparent 82%);
-}
-.leaf-fade-l {
-  mask-image: radial-gradient(145% 125% at 0% 50%, black 32%, transparent 82%);
-}
-.leaf-fade-r {
-  mask-image: radial-gradient(145% 125% at 100% 50%, black 32%, transparent 82%);
-}
-
-/* Gescheurde/organische fotorand in collagestijl (subtiel, voor het impressiegrid) */
-.torn-a {
-  clip-path: polygon(2% 3%, 31% 0%, 52% 2%, 78% 0%, 99% 4%, 100% 38%, 98% 63%, 100% 88%, 97% 98%, 66% 100%, 38% 97%, 12% 100%, 0% 96%, 2% 66%, 0% 34%);
-}
-.torn-b {
-  clip-path: polygon(0% 5%, 22% 0%, 49% 3%, 71% 0%, 100% 2%, 98% 30%, 100% 58%, 97% 84%, 100% 97%, 74% 99%, 47% 100%, 21% 98%, 2% 100%, 0% 70%, 3% 38%);
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

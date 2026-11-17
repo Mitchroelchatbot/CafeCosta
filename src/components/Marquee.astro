@@ -1,0 +1,29 @@
+---
+/**
+ * Magenta lichtkrant-band. Puur sfeer: de inhoud staat ook elders op de
+ * pagina, dus voor schermlezers verborgen. Staat stil bij reduced motion.
+ */
+interface Props {
+  items: string[];
+}
+const { items } = Astro.props;
+// Twee identieke sporen naast elkaar zodat de loop naadloos is; elk spoor
+// bevat de items twee keer zodat het ook op brede schermen breder is dan het beeld
+const sporen = [0, 1];
+const reeks = [...items, ...items];
+---
+
+<div class="marquee border-y border-ink bg-magenta py-3 text-white sm:py-4" aria-hidden="true">
+  {
+    sporen.map(() => (
+      <div class="marquee__track">
+        {reeks.map((t) => (
+          <span class="display flex items-center text-2xl sm:text-4xl">
+            <span class="px-5 sm:px-8">{t}</span>
+            <span class="text-ink">✶</span>
+          </span>
+        ))}
+      </div>
+    ))
+  }
+</div>

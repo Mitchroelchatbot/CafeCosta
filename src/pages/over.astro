@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import BannerHeader from '../components/BannerHeader.astro';
 import { JAREN_COSTA } from '../data/site';
 
 import stickerCosta from '../assets/costa-sticker.png';
@@ -28,148 +27,186 @@ const impressie = [
   title="Over Café Costa | Sinds 2002 hét feestcafé van het Stratumseind, Eindhoven"
   description="Van de zomer van Costa! tot drie keer Beste Feestcafé van Nederland. Lees het verhaal van Café Costa — en kom bij het team van 50 dat er elke week een feest van maakt."
 >
-  {/* SECTIE 1 — HET VERHAAL, met de ronde sticker groot ernaast (ronde 3, §3) */}
-  <section class="mx-auto max-w-5xl px-4 pb-16 pt-32 sm:px-6 sm:pt-40">
-    <div class="flex flex-col-reverse items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
-      <h1 class="display max-w-2xl text-4xl text-white sm:text-6xl">
-        Sinds 2002. En nog steeds <span class="text-sun">niet uitgefeest.</span>
-      </h1>
-      <Image
-        src={stickerCosta}
-        alt="Het ronde logo van Café Costa Eindhoven, sinds 2002"
-        widths={[280, 560]}
-        sizes="(min-width: 640px) 280px, 176px"
-        loading="eager"
-        class="w-44 shrink-0 sm:w-64 lg:w-72"
-      />
-    </div>
-    <div class="mt-8 max-w-3xl space-y-6 text-lg text-cream/85">
-      <p>
-        In 2001 kende heel Nederland maar één zomer: die van <em>Costa!</em> — de film over zon, proppers en escaleren
-        aan de Spaanse kust. Een jaar later opende op Stratumseind 31 een café dat die zomer simpelweg mee naar huis
-        nam. Naam: Costa. Missie: hier gaat de vakantie nooit meer uit.
-      </p>
-      <p>
-        De helden die toen achter de bar stonden zijn inmiddels vergeten — maar wat ze deden, zie je vandaag in elke
-        kroeg van de straat terug. Costa was het eerste café op het Stratumseind met een DJ ín de zaak en
-        discoverlichting aan het plafond. Toen werden we ervoor uitgelachen. Nu doet iedereen het na. Zo werkt dat met
-        goede ideeën.
-      </p>
-      <p>
-        {JAREN_COSTA} jaar later staat Costa er nog steeds — midden in de langste uitgaansstraat van de Benelux,
-        tussen vijftig concurrenten die allemaal om dezelfde avond vechten. Dat je die strijd {JAREN_COSTA} jaar
-        volhoudt, is geen geluk. Dat is elke week opnieuw de lat hoger leggen: de beste feest-DJ's van het land,
-        artiesten op de bar, confettikanonnen en een zaal waar het altijd zomer is — ook als het buiten november
-        regent.
-      </p>
-      <p>
-        Drie keer werd Costa uitgeroepen tot Beste Feestcafé van Nederland. Mooi voor aan de muur. Maar wij spelen niet
-        voor de prijzenkast — wij spelen Champions League, elke avond dat de deuren opengaan. De enige jury die telt,
-        staat op de dansvloer.
-      </p>
+  {/* SECTIE 1 — HET VERHAAL */}
+  <section class="bg-ink pt-16">
+    <div class="wrap pb-20 pt-14 sm:pb-28 sm:pt-20">
+      <p class="eyebrow text-paper/70"><span class="text-magenta-hot">Over Costa</span> — Stratumseind 31</p>
+      <div class="mt-4 grid gap-8 lg:grid-cols-12 lg:items-end">
+        <h1 class="display display-hero lg:col-span-9">
+          Sinds 2002. En nog steeds <span class="text-magenta-hot">niet uitgefeest.</span>
+        </h1>
+        <Image
+          src={stickerCosta}
+          alt="Het ronde logo van Café Costa Eindhoven, sinds 2002"
+          widths={[280, 560]}
+          sizes="(min-width: 1024px) 280px, 160px"
+          loading="eager"
+          class="w-40 sm:w-56 lg:col-span-3 lg:w-full lg:max-w-72 lg:justify-self-end"
+        />
+      </div>
+
+      <div class="mt-14 grid gap-10 border-t border-white/20 pt-10 lg:grid-cols-12">
+        <p class="display display-lg text-paper lg:col-span-5" aria-hidden="true">
+          “Hier gaat de vakantie <span class="text-magenta-hot">nooit meer uit.</span>”
+        </p>
+        <div class="space-y-6 text-lg text-paper/80 lg:col-span-6 lg:col-start-7">
+          <p>
+            In 2001 kende heel Nederland maar één zomer: die van <em>Costa!</em> — de film over zon, proppers en
+            escaleren aan de Spaanse kust. Een jaar later opende op Stratumseind 31 een café dat die zomer simpelweg mee
+            naar huis nam. Naam: Costa. Missie: hier gaat de vakantie nooit meer uit.
+          </p>
+          <p>
+            De helden die toen achter de bar stonden zijn inmiddels vergeten — maar wat ze deden, zie je vandaag in elke
+            kroeg van de straat terug. Costa was het eerste café op het Stratumseind met een DJ ín de zaak en
+            discoverlichting aan het plafond. Toen werden we ervoor uitgelachen. Nu doet iedereen het na. Zo werkt dat
+            met goede ideeën.
+          </p>
+          <p>
+            {JAREN_COSTA} jaar later staat Costa er nog steeds — midden in de langste uitgaansstraat van de Benelux,
+            tussen vijftig concurrenten die allemaal om dezelfde avond vechten. Dat je die strijd {JAREN_COSTA} jaar
+            volhoudt, is geen geluk. Dat is elke week opnieuw de lat hoger leggen: de beste feest-DJ's van het land,
+            artiesten op de bar, confettikanonnen en een zaal waar het altijd zomer is — ook als het buiten november
+            regent.
+          </p>
+          <p>
+            Drie keer werd Costa uitgeroepen tot Beste Feestcafé van Nederland. Mooi voor aan de muur. Maar wij spelen
+            niet voor de prijzenkast — wij spelen Champions League, elke avond dat de deuren opengaan. De enige jury die
+            telt, staat op de dansvloer.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
+  {/* Kerncijfers */}
+  <section class="bg-magenta text-white">
+    <dl class="wrap grid grid-cols-2 lg:grid-cols-4">
+      <div class="border-b border-r border-white/30 py-8 pr-4 lg:border-b-0">
+        <dt class="eyebrow">Sinds</dt>
+        <dd class="display mt-2 text-6xl sm:text-7xl">2002</dd>
+      </div>
+      <div class="border-b border-white/30 py-8 pl-4 lg:border-b-0 lg:border-r lg:pr-4">
+        <dt class="eyebrow">Jaar feest</dt>
+        <dd class="display mt-2 text-6xl sm:text-7xl">{JAREN_COSTA}</dd>
+      </div>
+      <div class="border-r border-white/30 py-8 pr-4 lg:pl-4">
+        <dt class="eyebrow">Beste feestcafé NL</dt>
+        <dd class="display mt-2 text-6xl sm:text-7xl">3×</dd>
+      </div>
+      <div class="py-8 pl-4">
+        <dt class="eyebrow">Man sterk team</dt>
+        <dd class="display mt-2 text-6xl sm:text-7xl">50+</dd>
+      </div>
+    </dl>
+  </section>
+
   {/* SECTIE 2 — HET TEAM */}
-  <section class="border-y border-night-line bg-night-soft">
-    <div class="mx-auto max-w-3xl px-4 py-20 sm:px-6">
-      <h2 class="display text-3xl text-white sm:text-4xl">Vijftig man. <span class="text-teal">Één opdracht.</span></h2>
-      <div class="mt-8 space-y-6 text-lg text-cream/85">
-        <p>
-          Achter elke Costa-avond staat een team van ruim vijftig mensen: barpersoneel, entertainment, DJ's, en de
-          mensen die je nooit ziet maar zonder wie niets draait.
-        </p>
-        <p>
-          Aan het roer: <strong>Gert-Jan van der Zee</strong> en <strong>Mitch Bastiaans</strong>. En hun verhaal ís het
-          verhaal van Costa: Gert-Jan begon hier als DJ — in het café dat als eerste op de straat een DJ neerzette — en
-          nam later de hele zaak over. Mitch begon met een bijbaantje achter de bar en werkte zich op tot mede-eigenaar.
-          Bij Costa is dat geen uitzondering. Dat is hoe het hier werkt.
-        </p>
+  <section class="bg-paper text-ink">
+    <div class="wrap grid gap-10 py-20 sm:py-28 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <p class="eyebrow"><span class="text-magenta">Het team</span></p>
+        <h2 class="display display-xl mt-5">Vijftig man. <span class="text-magenta">Één opdracht.</span></h2>
+        <div class="mt-8 space-y-5 text-lg text-ink/75">
+          <p>
+            Achter elke Costa-avond staat een team van ruim vijftig mensen: barpersoneel, entertainment, DJ's, en de
+            mensen die je nooit ziet maar zonder wie niets draait.
+          </p>
+          <p>
+            Aan het roer: <strong class="text-ink">Gert-Jan van der Zee</strong> en <strong class="text-ink">Mitch Bastiaans</strong>.
+            En hun verhaal ís het verhaal van Costa: Gert-Jan begon hier als DJ — in het café dat als eerste op de
+            straat een DJ neerzette — en nam later de hele zaak over. Mitch begon met een bijbaantje achter de bar en
+            werkte zich op tot mede-eigenaar. Bij Costa is dat geen uitzondering. Dat is hoe het hier werkt.
+          </p>
+        </div>
       </div>
 
       {/*
         TODO: hier komt één goede foto van Gert-Jan en Mitch samen in de zaak.
         Geen pasfoto's, geen pakken — gewoon in het café waar het gebeurt.
-        Vervang deze placeholder door: <img src="/img/gertjan-en-mitch.jpg" alt="Gert-Jan van der Zee en Mitch Bastiaans samen in Café Costa" loading="lazy" class="mt-10 w-full rounded-2xl" />
+        Vervang deze placeholder door: <img src="/img/gertjan-en-mitch.jpg" alt="Gert-Jan van der Zee en Mitch Bastiaans samen in Café Costa" loading="lazy" class="w-full lg:col-span-6 lg:col-start-7" />
       */}
-      <div class="mt-10 flex aspect-video w-full items-center justify-center rounded-2xl border-2 border-dashed border-night-line bg-night">
-        <p class="px-6 text-center text-sm font-bold uppercase tracking-wide text-cream/40">
-          Foto volgt: Gert-Jan &amp; Mitch, samen in de zaak
-        </p>
+      <div class="flex aspect-[4/5] w-full items-center justify-center border border-dashed border-ink/30 lg:col-span-6 lg:col-start-7">
+        <p class="eyebrow px-6 text-center text-ink/40">Foto volgt: Gert-Jan &amp; Mitch, samen in de zaak</p>
       </div>
     </div>
   </section>
 
-  {/* IMPRESSIE — sectiekop in banner-stijl + compact fotogrid in collagestijl (ronde 3, §5) */}
-  <BannerHeader title="Impressie" tag="h2" variant="impressie" />
-  <section class="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-    <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">
-      {
-        impressie.map((f, i) => (
-          <Image
-            src={f.img}
-            alt={f.alt}
-            widths={[360, 640, 960]}
-            sizes="(min-width: 640px) 30vw, 45vw"
-            loading="lazy"
-            class:list={[
-              'aspect-[4/3] w-full object-cover',
-              i % 2 === 0 ? 'torn-a' : 'torn-b',
-              ['rotate-1', '-rotate-1', 'rotate-0'][i % 3],
-            ]}
-          />
-        ))
-      }
+  {/* IMPRESSIE — compact fotogrid (ronde 3, §5) */}
+  <section class="bg-ink">
+    <div class="wrap py-20 sm:py-28">
+      <h2 class="display text-[clamp(4rem,16vw,14rem)] leading-[0.82]">Impressie</h2>
+      <div class="mt-10 grid grid-cols-2 gap-1 sm:grid-cols-3">
+        {
+          impressie.map((f, i) => (
+            <Image
+              src={f.img}
+              alt={f.alt}
+              widths={[360, 640, 960]}
+              sizes="(min-width: 640px) 33vw, 50vw"
+              loading="lazy"
+              class:list={[
+                'w-full object-cover',
+                i === 0 && 'col-span-2 row-span-2 aspect-square sm:aspect-auto sm:h-full',
+                i > 0 && i < impressie.length - 1 && 'aspect-square',
+                i === impressie.length - 1 && 'col-span-2 aspect-[2/1] sm:col-span-1 sm:aspect-square',
+              ]}
+            />
+          ))
+        }
+      </div>
     </div>
   </section>
 
   {/* SECTIE 3 — WERKEN BIJ COSTA */}
-  <section id="werken-bij" class="mx-auto max-w-3xl scroll-mt-24 px-4 py-20 sm:px-6">
-    <h2 class="display text-3xl text-white sm:text-4xl">Werken waar <span class="text-magenta-hot">anderen uitgaan</span></h2>
-    <p class="mt-8 text-lg text-cream/85">
-      De leukste bijbaan van Eindhoven bestaat, en je staat er middenin. Bij Costa werk je op de avonden waar de rest
-      van de stad naartoe komt — met een team dat na sluitingstijd net zo hecht is als tijdens de dienst.
-    </p>
-
-    <div class="mt-10 grid gap-10 sm:grid-cols-2">
-      <div>
-        <h3 class="display text-sm text-sun">Wat we zoeken</h3>
-        <ul class="mt-4 space-y-3 text-cream/85">
-          <li class="flex gap-3"><span class="text-magenta-hot" aria-hidden="true">★</span>Barpersoneel — ervaring is mooi, energie is verplicht</li>
-          <li class="flex gap-3"><span class="text-magenta-hot" aria-hidden="true">★</span>Runners — de snelste benen van het Stratumseind</li>
-          <li class="flex gap-3"><span class="text-magenta-hot" aria-hidden="true">★</span>Shiftmanagers — jij houdt het overzicht als de avond escaleert</li>
-        </ul>
+  <section id="werken-bij" class="scroll-mt-16 bg-paper text-ink">
+    <div class="wrap py-20 sm:py-28">
+      <p class="eyebrow"><span class="text-magenta">Werken bij</span></p>
+      <div class="mt-5 grid gap-8 lg:grid-cols-12">
+        <h2 class="display display-xl lg:col-span-7">Werken waar <span class="text-magenta">anderen uitgaan</span></h2>
+        <p class="text-lg text-ink/75 lg:col-span-5 lg:self-end">
+          De leukste bijbaan van Eindhoven bestaat, en je staat er middenin. Bij Costa werk je op de avonden waar de
+          rest van de stad naartoe komt — met een team dat na sluitingstijd net zo hecht is als tijdens de dienst.
+        </p>
       </div>
-      <div>
-        <h3 class="display text-sm text-sun">Wat je krijgt</h3>
-        <ul class="mt-4 space-y-3 text-cream/85">
-          <li class="flex gap-3"><span class="text-teal" aria-hidden="true">★</span>Werken in het drie keer beste feestcafé van Nederland</li>
-          <li class="flex gap-3"><span class="text-teal" aria-hidden="true">★</span>Een team van 50 collega's die je vrienden worden</li>
-          <li class="flex gap-3"><span class="text-teal" aria-hidden="true">★</span>Doorgroeien dat écht bestaat: beide huidige eigenaren begonnen op de vloer — de een als DJ, de ander achter de bar</li>
-          {/* TODO: personeelsfeesten / flexibele roosters toevoegen zodra bevestigd — zie costa-over.md open punt 4 */}
-        </ul>
-      </div>
-    </div>
 
-    {/* Sollicitatieformulier — kort: een sollicitant op zijn telefoon haakt af bij meer (Netlify Forms) */}
-    <form
-      name="sollicitatie"
-      method="POST"
-      action="/gesolliciteerd"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      class="mt-12 space-y-6 rounded-2xl border border-night-line bg-night-soft p-8"
-    >
-      <input type="hidden" name="form-name" value="sollicitatie" />
-      <p class="hidden" aria-hidden="true">
-        <label>Niet invullen als je een mens bent: <input name="bot-field" /></label>
-      </p>
-
-      <div>
-        <label for="naam" class="label">Naam</label>
-        <input id="naam" name="naam" type="text" required autocomplete="name" class="input" />
+      <div class="mt-14 grid gap-10 border-t-2 border-ink pt-8 sm:grid-cols-2">
+        <div>
+          <h3 class="eyebrow">Wat we zoeken</h3>
+          <ul class="mt-3">
+            <li class="flex gap-4 border-b border-ink/15 py-3"><span class="text-magenta" aria-hidden="true">—</span>Barpersoneel — ervaring is mooi, energie is verplicht</li>
+            <li class="flex gap-4 border-b border-ink/15 py-3"><span class="text-magenta" aria-hidden="true">—</span>Runners — de snelste benen van het Stratumseind</li>
+            <li class="flex gap-4 border-b border-ink/15 py-3"><span class="text-magenta" aria-hidden="true">—</span>Shiftmanagers — jij houdt het overzicht als de avond escaleert</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="eyebrow">Wat je krijgt</h3>
+          <ul class="mt-3">
+            <li class="flex gap-4 border-b border-ink/15 py-3"><span class="text-magenta" aria-hidden="true">—</span>Werken in het drie keer beste feestcafé van Nederland</li>
+            <li class="flex gap-4 border-b border-ink/15 py-3"><span class="text-magenta" aria-hidden="true">—</span>Een team van 50 collega's die je vrienden worden</li>
+            <li class="flex gap-4 border-b border-ink/15 py-3"><span class="text-magenta" aria-hidden="true">—</span>Doorgroeien dat écht bestaat: beide huidige eigenaren begonnen op de vloer — de een als DJ, de ander achter de bar</li>
+            {/* TODO: personeelsfeesten / flexibele roosters toevoegen zodra bevestigd — zie costa-over.md open punt 4 */}
+          </ul>
+        </div>
       </div>
-      <div class="grid gap-6 sm:grid-cols-2">
+
+      {/* Sollicitatieformulier — kort: een sollicitant op zijn telefoon haakt af bij meer (Netlify Forms) */}
+      <form
+        name="sollicitatie"
+        method="POST"
+        action="/gesolliciteerd"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="mt-14 grid gap-6 bg-ink p-6 text-paper sm:grid-cols-2 sm:p-10"
+      >
+        <input type="hidden" name="form-name" value="sollicitatie" />
+        <p class="hidden" aria-hidden="true">
+          <label>Niet invullen als je een mens bent: <input name="bot-field" /></label>
+        </p>
+
+        <div class="sm:col-span-2">
+          <label for="naam" class="label">Naam</label>
+          <input id="naam" name="naam" type="text" required autocomplete="name" class="input" />
+        </div>
         <div>
           <label for="leeftijd" class="label">Leeftijd</label>
           <input id="leeftijd" name="leeftijd" type="number" min="15" max="99" required class="input" />
@@ -178,63 +215,68 @@ const impressie = [
           <label for="telefoon" class="label">Telefoonnummer</label>
           <input id="telefoon" name="telefoonnummer" type="tel" required autocomplete="tel" class="input" />
         </div>
-      </div>
-      <div>
-        <label for="motivatie" class="label">Motivatie in één zin</label>
-        <input id="motivatie" name="motivatie" type="text" required class="input" />
-      </div>
+        <div class="sm:col-span-2">
+          <label for="motivatie" class="label">Motivatie in één zin</label>
+          <input id="motivatie" name="motivatie" type="text" required class="input" />
+        </div>
 
-      <button type="submit" class="btn-primary w-full">Kom bij het team</button>
-    </form>
+        <button type="submit" class="btn-primary w-full sm:col-span-2">Kom bij het team</button>
+      </form>
+    </div>
   </section>
 
-  {/* CONTACT — sectiekop in banner-stijl (ronde 3, §2); /contact redirect landt op deze pagina.
-      Bewust geen e-mailadres: het formulier is het enige kanaal. */}
-  <BannerHeader title="Contact" tag="h2" variant="agenda" />
-  <section class="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-    <div class="grid items-center gap-10 lg:grid-cols-2">
-      <div>
-        <h3 class="display text-xl text-white">Zo vind je ons</h3>
-        <p class="mt-4 text-lg text-cream/85">
-          Café Costa<br />
-          Stratumseind 31, Eindhoven
-        </p>
-        <p class="mt-4 text-lg text-cream/85">
-          Woensdag t/m zaterdag — en op zondag bij elke wedstrijd van PSV.<br />
-          Deuren open om 19:00, zaterdag al om 17:00.<br />
-          Vrijdag &amp; zaterdag tot 04:00, overige dagen tot 02:00.
-        </p>
-        <p class="mt-4 text-lg text-cream/85">
-          Iets boeken of vragen over een feest? Via het aanvraagformulier hoor je binnen 24 uur van ons — meestal veel
-          sneller.
-        </p>
-        <div class="mt-8 flex flex-col gap-4 sm:flex-row">
-          <a href="/groepen#aanvragen" class="btn-primary">Zet je avond vast</a>
-          <a href="#werken-bij" class="btn-secondary">Werken bij Costa</a>
+  {/* CONTACT — /contact redirect landt op deze pagina. Bewust geen e-mailadres: het formulier is het enige kanaal. */}
+  <section id="contact" class="scroll-mt-16 bg-ink">
+    <div class="wrap py-20 sm:py-28">
+      <h2 class="display text-[clamp(4rem,16vw,14rem)] leading-[0.82]">Contact</h2>
+      <div class="mt-10 grid gap-10 border-t border-white/20 pt-10 lg:grid-cols-12">
+        <div class="space-y-6 text-lg lg:col-span-5">
+          <div>
+            <h3 class="eyebrow text-paper/50">Zo vind je ons</h3>
+            <p class="mt-2">Café Costa<br />Stratumseind 31, Eindhoven</p>
+          </div>
+          <div>
+            <h3 class="eyebrow text-paper/50">Open</h3>
+            <p class="mt-2">
+              Woensdag t/m zaterdag — en op zondag bij elke wedstrijd van PSV.<br />
+              Deuren open om 19:00, zaterdag al om 17:00.<br />
+              Vrijdag &amp; zaterdag tot 04:00, overige dagen tot 02:00.
+            </p>
+          </div>
+          <p class="text-paper/75">
+            Iets boeken of vragen over een feest? Via het aanvraagformulier hoor je binnen 24 uur van ons — meestal veel
+            sneller.
+          </p>
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a href="/groepen#aanvragen" class="btn-primary">Zet je avond vast</a>
+            <a href="#werken-bij" class="btn-secondary text-paper">Werken bij Costa</a>
+          </div>
         </div>
+        <Image
+          src={sfeerTerras}
+          alt="Het terras van Café Costa op het Stratumseind"
+          widths={[480, 768, 1200]}
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          loading="lazy"
+          class="w-full object-cover lg:col-span-6 lg:col-start-7"
+        />
       </div>
-      <Image
-        src={sfeerTerras}
-        alt="Het terras van Café Costa op het Stratumseind"
-        widths={[480, 768, 1200]}
-        sizes="(min-width: 1024px) 45vw, 100vw"
-        loading="lazy"
-        class="w-full rounded-2xl object-cover"
-      />
     </div>
   </section>
 
   {/* SECTIE 4 — AFSLUITER */}
-  <section class="border-t border-night-line bg-night-soft">
-    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-      <h2 class="display text-3xl text-white sm:text-5xl">Genoeg <span class="text-sun">gelezen.</span></h2>
-      <p class="mt-6 max-w-2xl text-lg text-cream/85">
-        Het echte verhaal van Costa lees je niet — dat maak je mee. Woensdag t/m zaterdag, Stratumseind 31. Of leg je
-        avond nu alvast vast.
-      </p>
-      <div class="mt-8 flex flex-col gap-4 sm:flex-row">
-        <a href="/agenda" class="btn-secondary">Bekijk de agenda</a>
-        <a href="/groepen#aanvragen" class="btn-primary">Zet je avond vast</a>
+  <section class="bg-magenta text-white">
+    <div class="wrap grid gap-8 py-20 sm:py-28 lg:grid-cols-12 lg:items-end">
+      <h2 class="display display-xl lg:col-span-7">Genoeg gelezen.</h2>
+      <div class="lg:col-span-5">
+        <p class="text-lg text-white/90">
+          Het echte verhaal van Costa lees je niet — dat maak je mee. Woensdag t/m zaterdag, Stratumseind 31. Of leg je
+          avond nu alvast vast.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="/groepen#aanvragen" class="btn-primary !bg-ink hover:!bg-ink-2">Zet je avond vast</a>
+          <a href="/agenda" class="btn-secondary text-white hover:!border-ink hover:!bg-ink">Bekijk de agenda</a>
+        </div>
       </div>
     </div>
   </section>

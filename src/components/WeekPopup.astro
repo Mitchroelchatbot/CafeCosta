@@ -18,37 +18,36 @@ const popupKey = `costa-weekpopup:${dezeWeek.weekLabel || 'onbekend'}`;
     <div
       id="week-popup"
       data-popup-key={popupKey}
-      class="fixed inset-0 z-50 hidden items-center justify-center bg-night/85 p-4 backdrop-blur-sm sm:p-8"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/90 p-4 sm:p-8"
       role="dialog"
       aria-modal="true"
       aria-label="Het weekprogramma van Café Costa"
     >
-      <div class="relative flex max-h-full w-full max-w-sm flex-col">
-        <button
-          type="button"
-          data-week-popup-close
-          class="absolute -right-2 -top-2 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-magenta text-white shadow-lg transition-colors hover:bg-magenta-hot focus-visible:outline-4 focus-visible:outline-sun"
-          aria-label="Sluiten"
-        >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <path d="M6 6l12 12M18 6L6 18" />
-          </svg>
-        </button>
-
-        <p class="display rounded-t-2xl bg-night-soft px-5 py-3 text-sm text-sun">
-          Deze week bij Costa{dezeWeek.weekLabel && dezeWeek.weekLabel !== 'deze week' ? ` · ${dezeWeek.weekLabel}` : ''}
-        </p>
+      <div class="relative flex max-h-full w-full max-w-sm flex-col bg-ink">
+        <div class="flex items-center justify-between border-b border-white/15 pl-4">
+          <p class="eyebrow py-3 text-paper">
+            <span class="text-magenta-hot">Deze week</span>{dezeWeek.weekLabel && dezeWeek.weekLabel !== 'deze week' ? ` — ${dezeWeek.weekLabel}` : ''}
+          </p>
+          <button
+            type="button"
+            data-week-popup-close
+            class="flex h-11 w-11 shrink-0 items-center justify-center bg-magenta text-white transition-colors hover:bg-magenta-deep focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-magenta-hot"
+            aria-label="Sluiten"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
         <img
           src={dezeWeek.poster}
           alt={dezeWeek.posterAlt}
           width="1080"
           height="1350"
           loading="lazy"
-          class="min-h-0 w-full flex-1 bg-night-soft object-contain"
+          class="min-h-0 w-full flex-1 object-contain"
         />
-        <div class="rounded-b-2xl bg-night-soft p-4">
-          <a href="/agenda" class="btn-primary w-full !py-3">Bekijk de agenda</a>
-        </div>
+        <a href="/agenda" class="btn-primary w-full !py-3.5">Bekijk de agenda</a>
       </div>
     </div>
   )
