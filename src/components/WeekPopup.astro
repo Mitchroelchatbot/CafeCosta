@@ -1,23 +1,90 @@
 ---
 /**
- * Weekprogramma-popup: verschijnt eenmalig bij het openen van de site en
- * onthoudt de sluiting per weekeditie (localStorage, gekeyd op weekLabel) —
- * een nieuwe weekposter mag dus opnieuw één keer oppoppen.
- * Makkelijk afsluitbaar: kruisje, klik naast de poster, of Escape.
- * Wordt niet getoond op /agenda (daar staat het programma al) en op de
- * bevestigingspagina's — zie Base.astro.
+ * Popup bij het openen van de site — hooguit één per paginabezoek:
+ *  1. een special met `popup: true` (bv. oud & nieuw), t/m de dag van het event;
+ *  2. anders het weekprogramma.
+ * Elke popup verschijnt eenmalig: de sluiting wordt onthouden in localStorage
+ * (weekpopup per weekLabel, eventpopup per event). Afsluitbaar via kruisje,
+ * klik naast de poster of Escape.
  */
 import dezeWeek from '../data/deze-week.json';
+import { aankomendeSpecials, isExtern } from '../data/specials';
 
-const tonen = Boolean(dezeWeek.poster);
-const popupKey = `costa-weekpopup:${dezeWeek.weekLabel || 'onbekend'}`;
+interface Props {
+  /** weekprogramma niet tonen (bv. op /agenda, waar het al staat) */
+  zonderWeek?: boolean;
+}
+const { zonderWeek = false } = Astro.props;
+
+const event = aankomendeSpecials.find((s) => s.popup && s.poster);
+const eventLink = event?.ticketUrl ?? '/agenda';
+// Einde van de eventdag + 6 uur (Nederlandse wintertijd): daarna nooit meer tonen, ook zonder nieuwe build
+const eventTot = event ? new Date(`${event.datum}T23:59:59+01:00`).getTime() + 6 * 3600 * 1000 : 0;
+
+const week = !zonderWeek && dezeWeek.poster ? dezeWeek : undefined;
+const weekLabel = week?.weekLabel && week.weekLabel !== 'deze week' ? week.weekLabel : '';
 ---
 
 {
-  tonen && (
+  event && (
     <div
-      id="week-popup"
-      data-popup-key={popupKey}
+      data-promo-popup
+      data-popup-key={`costa-eventpopup:${event.datum}:${event.titel}`}
+      data-popup-tot={eventTot}
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/90 p-4 sm:p-8"
+      role="dialog"
+      aria-modal="true"
+      aria-label={event.titel}
+    >
+      <div class="relative flex max-h-full w-full max-w-3xl flex-col bg-ink">
+        <div class="flex items-center justify-between border-b border-white/15 pl-4">
+          <p class="eyebrow py-3 text-paper">
+            <span class="text-magenta-hot">Special</span> — {event.titel}
+          </p>
+          <button
+            type="button"
+            data-popup-close
+            class="flex h-11 w-11 shrink-0 items-center justify-center bg-magenta text-white transition-colors hover:bg-magenta-deep focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-magenta-hot"
+            aria-label="Sluiten"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+        <a
+          href={eventLink}
+          data-popup-link
+          class="block min-h-0 flex-1"
+          {...(isExtern(eventLink) ? { target: '_blank', rel: 'noopener' } : {})}
+        >
+          <img
+            src={event.poster}
+            alt={event.posterAlt ?? `Poster: ${event.titel}`}
+            width="1600"
+            height="900"
+            loading="lazy"
+            class="max-h-[70vh] w-full object-contain"
+          />
+        </a>
+        <a
+          href={eventLink}
+          data-popup-link
+          class="btn-primary w-full !py-3.5"
+          {...(isExtern(eventLink) ? { target: '_blank', rel: 'noopener' } : {})}
+        >
+          {event.ticketUrl ? 'Bestel je ticket' : 'Bekijk de agenda'}
+        </a>
+      </div>
+    </div>
+  )
+}
+
+{
+  week && (
+    <div
+      data-promo-popup
+      data-popup-key={`costa-weekpopup:${week.weekLabel || 'onbekend'}`}
       class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/90 p-4 sm:p-8"
       role="dialog"
       aria-modal="true"
@@ -26,11 +93,11 @@ const popupKey = `costa-weekpopup:${dezeWeek.weekLabel || 'onbekend'}`;
       <div class="relative flex max-h-full w-full max-w-sm flex-col bg-ink">
         <div class="flex items-center justify-between border-b border-white/15 pl-4">
           <p class="eyebrow py-3 text-paper">
-            <span class="text-magenta-hot">Deze week</span>{dezeWeek.weekLabel && dezeWeek.weekLabel !== 'deze week' ? ` — ${dezeWeek.weekLabel}` : ''}
+            <span class="text-magenta-hot">Deze week</span>{weekLabel ? ` — ${weekLabel}` : ''}
           </p>
           <button
             type="button"
-            data-week-popup-close
+            data-popup-close
             class="flex h-11 w-11 shrink-0 items-center justify-center bg-magenta text-white transition-colors hover:bg-magenta-deep focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-magenta-hot"
             aria-label="Sluiten"
           >
@@ -40,58 +107,66 @@ const popupKey = `costa-weekpopup:${dezeWeek.weekLabel || 'onbekend'}`;
           </button>
         </div>
         <img
-          src={dezeWeek.poster}
-          alt={dezeWeek.posterAlt}
+          src={week.poster}
+          alt={week.posterAlt}
           width="1080"
           height="1350"
           loading="lazy"
           class="min-h-0 w-full flex-1 object-contain"
         />
-        <a href="/agenda" class="btn-primary w-full !py-3.5">Bekijk de agenda</a>
+        <a href="/agenda" data-popup-link class="btn-primary w-full !py-3.5">Bekijk de agenda</a>
       </div>
     </div>
   )
 }
 
 <script>
-  const popup = document.getElementById('week-popup');
-  if (popup) {
-    const key = popup.dataset.popupKey ?? 'costa-weekpopup';
-    let alGezien = false;
+  const gezien = (key: string) => {
     try {
-      alGezien = localStorage.getItem(key) !== null;
+      return localStorage.getItem(key) !== null;
     } catch {
-      alGezien = true; // geen storage (privémodus met blokkade) → liever niet elke keer poppen
+      return true; // geen storage (privémodus met blokkade) → liever niet elke keer poppen
     }
-
-    if (!alGezien) {
-      const close = () => {
-        popup.classList.add('hidden');
-        popup.classList.remove('flex');
-        document.body.style.overflow = '';
-        try {
-          localStorage.setItem(key, String(Date.now()));
-        } catch {
-          /* geen storage — dan poppen we een volgende keer gewoon nog eens */
-        }
-      };
-
-      // Even wachten zodat de pagina eerst rustig kan laden
-      setTimeout(() => {
-        popup.classList.remove('hidden');
-        popup.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-        popup.querySelector<HTMLButtonElement>('[data-week-popup-close]')?.focus();
-      }, 900);
-
-      popup.querySelector('[data-week-popup-close]')?.addEventListener('click', close);
-      popup.querySelector('a[href="/agenda"]')?.addEventListener('click', close);
-      popup.addEventListener('click', (e) => {
-        if (e.target === popup) close();
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !popup.classList.contains('hidden')) close();
-      });
+  };
+  const markeer = (key: string) => {
+    try {
+      localStorage.setItem(key, String(Date.now()));
+    } catch {
+      /* geen storage — dan poppen we een volgende keer gewoon nog eens */
     }
+  };
+
+  // De eerste popup (in volgorde: event, dan week) die nog niet gezien en niet verlopen is
+  const popup = [...document.querySelectorAll<HTMLElement>('[data-promo-popup]')].find((el) => {
+    const tot = Number(el.dataset.popupTot || 0);
+    if (tot && Date.now() > tot) return false;
+    return !gezien(el.dataset.popupKey ?? '');
+  });
+
+  if (popup) {
+    const key = popup.dataset.popupKey ?? '';
+    const close = () => {
+      popup.classList.add('hidden');
+      popup.classList.remove('flex');
+      document.body.style.overflow = '';
+      markeer(key);
+    };
+
+    // Even wachten zodat de pagina eerst rustig kan laden
+    setTimeout(() => {
+      popup.classList.remove('hidden');
+      popup.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      popup.querySelector<HTMLButtonElement>('[data-popup-close]')?.focus();
+    }, 900);
+
+    popup.querySelector('[data-popup-close]')?.addEventListener('click', close);
+    popup.querySelectorAll('[data-popup-link]').forEach((a) => a.addEventListener('click', close));
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !popup.classList.contains('hidden')) close();
+    });
   }
 </script>

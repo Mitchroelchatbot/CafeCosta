@@ -1,0 +1,12 @@
+{
+  "_instructie": [
+    "== TICKETSHOP — koppeling met de ticketprovider ==",
+    "De pagina /tickets toont de aankomende events uit specials.json én de ticketshop hieronder.",
+    "Vul ÉÉN van beide in (of allebei):",
+    "  shopEmbed: de embedcode die je ticketprovider geeft (de HTML met <script>/<iframe>), letterlijk geplakt.",
+    "  shopUrl:   een directe link naar je ticketshop — dan verschijnt er een grote 'Bestel tickets'-knop.",
+    "Zolang beide null zijn, staat er op /tickets een duidelijke 'shop wordt gekoppeld'-melding. NIET live zetten zo."
+  ],
+  "shopEmbed": null,
+  "shopUrl": null
+}

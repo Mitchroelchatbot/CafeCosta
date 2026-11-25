@@ -14,14 +14,14 @@
     "De site is de bron, Instagram is de megafoon."
   ],
   "poster": "/deze-week/programma.jpg",
-  "bronFileId": "chat-upload-wk-5-8-aug",
-  "posterAlt": "Weekprogramma van Café Costa: woensdag Game Nights met hele avond 4 bier voor € 10, donderdag Costa op Stëlz'n met Jordy Graat en 3 Stëlz voor € 10, vrijdag Park Hilaria After Party met DJ Mitch Official, zaterdag Lakedance After Party met Mister Costa en PSV–Fortuna (aftrap 20:00), open vanaf 16:00.",
-  "weekLabel": "wo 5 t/m za 8 augustus",
+  "bronFileId": "chat-upload-wk-48",
+  "posterAlt": "Weekprogramma van Café Costa: woensdag Costa's Game Nights, donderdag International Student Night met DJ Mitch Official, vrijdag Blackfridayy met Mister Costa (Blikfriday: Stëlz € 4), zaterdag XXL Saturday met DJ Riva Soul en PSV – Go Ahead Eagles om 18:45. Woensdag t/m vrijdag open vanaf 19:00, zaterdag vanaf 16:00.",
+  "weekLabel": "wo 25 t/m za 28 november",
   "dagen": {
-    "wo": "Costa's Game Nights — hele avond 4 bier € 10. Open vanaf 19:00",
-    "do": "Costa op Stëlz'n met Jordy Graat — actie: 3 Stëlz € 10. Open vanaf 19:00",
-    "vr": "Park Hilaria After Party met DJ Mitch Official. Open vanaf 19:00",
-    "za": "Lakedance After Party met Mister Costa + PSV – Fortuna op groot scherm (aftrap 20:00). Open vanaf 16:00",
+    "wo": "Costa's Game Nights + live Champions League. Open vanaf 19:00",
+    "do": "International Student Night met DJ Mitch Official. Open vanaf 19:00",
+    "vr": "Blackfridayy met Mister Costa — Blikfriday: Stëlz € 4. Open vanaf 19:00",
+    "za": "XXL Saturday met DJ Riva Soul + PSV – Go Ahead Eagles op groot scherm (18:45). Open vanaf 16:00",
     "zo": ""
   }
 }

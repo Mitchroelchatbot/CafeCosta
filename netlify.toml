@@ -6,14 +6,10 @@
 
 # ── Redirects: oude Google-resultaten mogen niet doodlopen (bouwprompt §3) ──
 
-[[redirects]]
-  from = "/tickets"
-  to = "/agenda"
-  status = 301
-
+# /tickets is weer een echte pagina (ticketshop). Oude diepe links eronder komen daar uit.
 [[redirects]]
   from = "/tickets/*"
-  to = "/agenda"
+  to = "/tickets"
   status = 301
 
 [[redirects]]

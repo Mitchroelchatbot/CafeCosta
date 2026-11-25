@@ -22,6 +22,17 @@ npm run dev      # http://localhost:4321
 npm run build    # productie-build naar dist/
 ```
 
+## Tickets & specials
+
+- **Events/specials** staan in `src/data/specials.json` (titel, datum, tekst, poster, line-up, details, `ticketUrl`).
+  Ze verschijnen op `/agenda` en — als ze een `ticketUrl` hebben — op `/tickets`, en verdwijnen vanzelf na hun datum.
+- **`popup: true`** bij een special = die poster verschijnt eenmalig als popup bij het openen van de site
+  (gaat vóór de weekprogramma-popup), tot en met de dag van het event. Nooit meer dan één popup per bezoek,
+  en nooit op `/tickets`.
+- **De ticketshop zelf** koppel je in `src/data/tickets.json`: plak de embedcode van de ticketprovider in
+  `shopEmbed`, of zet een directe shoplink in `shopUrl`. Zolang beide leeg zijn toont `/tickets` een
+  "wordt gekoppeld"-melding — **niet live zetten zo.**
+
 ## Formulieren (Netlify Forms)
 
 - `boekingsaanvraag` op `/groepen` → bevestigingspagina `/bedankt`

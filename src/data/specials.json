@@ -2,11 +2,32 @@
   "_instructie": [
     "== SPECIALS & EVENTS — alleen vullen als er écht iets gepland staat ==",
     "Lege lijst = de hele sectie is onzichtbaar op de site. Nooit 'binnenkort meer' laten staan.",
-    "Per special: titel, datum (JJJJ-MM-DD), eventueel eindtijd niet nodig, één alinea tekst.",
-    "poster: pad naar een LIGGENDE (16:9) afbeelding in /public/img/, of null voor geen beeld.",
-    "ticketUrl: alléén invullen als er kaartverkoop is — dan verschijnt er een ticketknop bij dat event.",
-    "Voorbeeld-item:",
-    "{ \"titel\": \"OUD & NIEUW BIJ COSTA\", \"datum\": \"2026-12-31\", \"tekst\": \"...\", \"poster\": \"/img/special-onw.jpg\", \"ticketUrl\": null }"
+    "Specials verdwijnen vanzelf van de site zodra hun datum voorbij is.",
+    "Per special: titel, datum (JJJJ-MM-DD), één alinea tekst, en optioneel:",
+    "  poster: pad naar een LIGGENDE (16:9) afbeelding in /public/specials/, of null.",
+    "  ticketUrl: alléén invullen als er kaartverkoop is — '/tickets' voor onze eigen ticketpagina.",
+    "  lineup: lijst met DJ's/artiesten; details: lijst met korte feiten (open, entree, actie).",
+    "  popup: true = deze special verschijnt eenmalig als popup bij het openen van de site",
+    "         (gaat dan vóór de weekprogramma-popup) tot en met de dag van het event."
   ],
-  "specials": []
+  "specials": [
+    {
+      "titel": "New Years Eve 2026-2027",
+      "datum": "2026-12-31",
+      "tijd": "21:00",
+      "tekst": "Oud & nieuw bij Café Costa. Gratis entree, open vanaf 21:00 uur tot …. En met de all-you-can-drink-actie geniet je voor maar € 35 van onbeperkt bier, fris, wijn & mix van 21:00 tot 03:00.",
+      "lineup": ["DJ Finn", "Mister Costa", "DJ Mitch Official"],
+      "details": [
+        "Gratis entree",
+        "Open vanaf 21:00 uur",
+        "All you can drink: € 35 — onbeperkt bier, fris, wijn & mix van 21:00 tot 03:00",
+        "Let op: je ticket moet gescand of opgehaald zijn vóór 23:00 uur"
+      ],
+      "poster": "/specials/oud-en-nieuw-2026.webp",
+      "posterAlt": "Poster: Café Costa presents New Years Eve 2026-2027, donderdag 31 december. Gratis entree, open vanaf 21:00 uur. Line-up DJ Finn, Mister Costa en DJ Mitch Official. All you can drink actie: voor € 35 onbeperkt bier, fris, wijn en mix van 21:00 tot 03:00.",
+      "ticketUrl": "/tickets",
+      "ticketPrijs": 35,
+      "popup": true
+    }
+  ]
 }

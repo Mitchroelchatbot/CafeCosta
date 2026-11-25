@@ -2,8 +2,7 @@
 import { Image, getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import dezeWeek from '../data/deze-week.json';
-import specialsData from '../data/specials.json';
-import { SITE } from '../data/site';
+import { aankomendeSpecials as specials, datumFormat, eventSchema as maakEventSchema, isExtern } from '../data/specials';
 import sfeerVolleZaak from '../assets/sfeer/sfeer-volle-zaak.jpg';
 import psvPoster from '../assets/psv-matchday.jpg';
 import posterGameNights from '../assets/dagposters/game-nights.jpg';
@@ -24,36 +23,8 @@ const weekRegels = (['wo', 'do', 'vr', 'za', 'zo'] as const)
   .map((dag) => ({ dag: dagNamen[dag], tekst: (dezeWeek.dagen as Record<string, string>)[dag]?.trim() }))
   .filter((r) => r.tekst);
 
-type Special = { titel: string; datum: string; tekst: string; poster?: string | null; ticketUrl?: string | null };
-const specials = (specialsData.specials as Special[]) ?? [];
-
 // Specials als schema.org/Event zodra ze bestaan (bouwprompt §6)
-const eventSchema =
-  specials.length > 0
-    ? {
-        '@context': 'https://schema.org',
-        '@graph': specials.map((s) => ({
-          '@type': 'Event',
-          name: s.titel,
-          startDate: s.datum,
-          description: s.tekst,
-          ...(s.poster ? { image: new URL(s.poster, SITE.url).href } : {}),
-          ...(s.ticketUrl ? { offers: { '@type': 'Offer', url: s.ticketUrl } } : {}),
-          location: {
-            '@type': 'BarOrPub',
-            name: SITE.name,
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: SITE.address.street,
-              addressLocality: SITE.address.city,
-              addressCountry: SITE.address.country,
-            },
-          },
-        })),
-      }
-    : null;
-
-const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'numeric', month: 'long' });
+const eventSchema = maakEventSchema(specials);
 ---
 
 <Base
@@ -281,14 +252,21 @@ const datumFormat = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'nu
             {specials.map((s) => (
               <article class="grid gap-6 border-b border-white/20 py-10 lg:grid-cols-12">
                 {s.poster && (
-                  <img src={s.poster} alt={`Poster: ${s.titel}`} loading="lazy" class="aspect-video w-full object-cover lg:col-span-5" />
+                  <img src={s.poster} alt={s.posterAlt ?? `Poster: ${s.titel}`} loading="lazy" class="aspect-video w-full object-cover lg:col-span-5" />
                 )}
                 <div class:list={[s.poster ? 'lg:col-span-6 lg:col-start-7' : 'lg:col-span-12']}>
                   <p class="eyebrow text-magenta-hot">{datumFormat.format(new Date(s.datum))}</p>
                   <h3 class="display display-md mt-3">{s.titel}</h3>
                   <p class="mt-4 max-w-2xl text-paper/80">{s.tekst}</p>
+                  {s.lineup?.length && (
+                    <p class="eyebrow mt-4 text-paper/60">Line-up: {s.lineup.join(' · ')}</p>
+                  )}
                   {s.ticketUrl && (
-                    <a href={s.ticketUrl} class="btn-primary mt-6" target="_blank" rel="noopener">
+                    <a
+                      href={s.ticketUrl}
+                      class="btn-primary mt-6"
+                      {...(isExtern(s.ticketUrl) ? { target: '_blank', rel: 'noopener' } : {})}
+                    >
                       Tickets
                     </a>
                   )}
