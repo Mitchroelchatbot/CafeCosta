@@ -7,6 +7,6 @@
     "  shopUrl:   een directe link naar je ticketshop — dan verschijnt er een grote 'Bestel tickets'-knop.",
     "Zolang beide null zijn, staat er op /tickets een duidelijke 'shop wordt gekoppeld'-melding. NIET live zetten zo."
   ],
-  "shopEmbed": null,
-  "shopUrl": null
+  "shopEmbed": "<div data-shop-url='https://shop.ticketapp.com/rqxfy'></div>\n<script src='https://shop.ticketapp.com/js/integration.js'></script>",
+  "shopUrl": "https://shop.ticketapp.com/rqxfy"
 }

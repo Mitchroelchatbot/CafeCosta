@@ -92,13 +92,21 @@ const shopGekoppeld = Boolean(shopEmbed || shopUrl);
       <p class="eyebrow">Ticketshop</p>
       <h2 class="display display-xl mt-5">Bestel je tickets</h2>
 
-      {shopUrl && (
+      {/* Alleen een shoplink: grote knop. Embed + shoplink: de shop staat hier, de link is de reserve als het script niet laadt. */}
+      {shopUrl && !shopEmbed && (
         <a href={shopUrl} target="_blank" rel="noopener" class="btn-primary mt-8 !bg-ink hover:!bg-ink-2">
           Naar de ticketshop
         </a>
       )}
 
       {shopEmbed && <div class="mt-10 bg-paper p-4 text-ink sm:p-8" set:html={shopEmbed} />}
+
+      {shopEmbed && shopUrl && (
+        <p class="mt-4 text-sm text-white/85">
+          Zie je de shop niet?
+          <a href={shopUrl} target="_blank" rel="noopener" class="font-semibold underline underline-offset-4">Open de ticketshop in een nieuw venster</a>.
+        </p>
+      )}
 
       {
         !shopGekoppeld && (
